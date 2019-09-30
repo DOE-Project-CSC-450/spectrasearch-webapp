@@ -1,8 +1,14 @@
 import React from 'react';
 import { Component } from 'react'
-import { Button, Segment, Divider, Search, Grid, Header } from 'semantic-ui-react';
+import { Button, Segment, Divider, Search, Grid, Header, Dropdown } from 'semantic-ui-react';
 
 
+const type1_options = [
+    { key: 'option A', text: 'optionA', value: '1' },
+      { key: 'option B', text: 'option B', value: '2' },
+      { key: 'option C', text: 'option C', value: '3' },
+      { key: 'option D', text: 'option D', value: '4' },
+    ]
 /* const initialState = { isLoading: false, results: [], value: '' }
 
 const source = _.times(5, () => ({
@@ -38,8 +44,11 @@ export default class Searching extends Component {
     
     /* const { isLoading, value, results } = this.state */
     return (
-        <Grid.Column width={20}>
-          <Segment>
+
+        
+        <Grid.Column width={15}>
+
+          <Segment fluid>
             <Header>Illuminant</Header>
             <Search
            
@@ -52,6 +61,11 @@ export default class Searching extends Component {
 
         <Divider>
             <Header>Search via lighting type</Header>
+            <Dropdown
+            placeholder="TYPE 1"
+            selection
+            options={type1_options}
+            />
 
         </Divider>
             
