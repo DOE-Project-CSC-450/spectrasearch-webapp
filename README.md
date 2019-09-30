@@ -1,4 +1,6 @@
-Hello welcome to Rebbranch!
+#Hello welcome to Rebbranch!
+
+I'm adding this commmet to make sure my VS studio is all synced with Git :^)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
