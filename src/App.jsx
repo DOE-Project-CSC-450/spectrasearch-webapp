@@ -14,7 +14,6 @@ function App() {
         <Searching />
         
         
-        
       </header>
     </div>
   );
