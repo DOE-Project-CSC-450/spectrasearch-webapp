@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Header, Label, Form, Checkbox, Divider } from 'semantic-ui-react';
 
+/* the login/signup page. **/
+
 const genderOptions = [
     {key: 'm', text: 'Male', value: 'Male'},
     {key: 'f', text: 'Female', value: 'Female'},
