@@ -1,12 +1,12 @@
-.App {
+h1 {
   text-align: center;
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
 }
 
-.App-logo {
-  height: 40vmin;
-}
 
-.App-header {
+
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -15,8 +15,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #09d3ac;
 }
+
+

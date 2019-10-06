@@ -1,0 +1,2 @@
+//first you have to do npm install to get node modules
+//then you have to do npm run build to get build folder then you are good to go
