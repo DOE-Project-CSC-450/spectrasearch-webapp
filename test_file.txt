@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+hello i am a test file
+=======
 hello I am a test file to see if RS can push things to the master! If you're reading this on GitHub then it's a success!!
+<<<<<<< HEAD
+>>>>>>> ac16dc1d23a8c3f6c36c75e3a93fdf1f75b88b3e
+=======
 hiii
 hello
 
 change to the test file for my branch
+>>>>>>> fbe6aa64940e2034b69112d5e38939bd87bf61ec
