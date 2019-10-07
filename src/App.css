@@ -1,6 +1,25 @@
-h1 {
-  text-align: center;
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+input[type=text], select {
+  align-content: center;
+  width: 80%;
+  padding: 12px 10px;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+h3{
+  padding: 20px;
+  margin-block: 15px;
+}
+
+#form{
+  background-color: #ccc;
+  align-content: center
+}
+
+
+body{
+  background-color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
 }
 
 

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'semantic-ui-react'
 import Searching from './components/Search'
-import Form from './components/uploadpage'
+import Uploadpage from './components/uploadpage'
 //need to import everything into app and then put all the elements inside of app
 
 
@@ -12,8 +12,8 @@ function App() {
    
     <div className="App">
       <header className="App-header">
-        <Searching />
-        <Form />
+        {/* <Searching /> */}
+        <Uploadpage />
         
         
         
