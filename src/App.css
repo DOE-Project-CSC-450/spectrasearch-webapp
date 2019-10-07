@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  
+
+}
+
+#header-id{
+  text-align: left;
+}
+
+#grand-search{
+  /* temorary solution need to change width to help zoom */
+  width: 80em;
+  border-radius: 0% !important;
+
 }
 
 
