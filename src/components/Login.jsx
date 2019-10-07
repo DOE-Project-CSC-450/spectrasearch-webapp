@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { Button, Header, Label, Form, Checkbox, Divider, Segment, Grid, TextArea, Icon } from 'semantic-ui-react';
+import { Button, Header, Label, Form, Checkbox, Divider, Segment, Grid, TextArea, Icon, Dropdown } from 'semantic-ui-react';
 
 /* the login/signup page. **/
 
@@ -14,78 +14,73 @@ export default class Login extends Component {
     render(){
         return(
             <Grid textAlign = 'center' style = {{height: '130vh'}} verticalAlign = 'middle'>
-                <Grid.Column style = {{maxWidth: 600}}>
-                    <Header as = 'h1' color = 'teal' textAlign = 'left'>SpectraSearch</Header>    
+                <Grid.Column style = {{maxWidth: 800}}>
+                    <Header as = 'h1' color = 'black' textAlign = 'center'>SpectraSearch</Header>    
                         <Segment stacked>
                             <Form size = 'large'>
                                 <Header as = 'h2' color = 'teal' textAlign = 'left'>Log In</Header> 
                                 <Form.Field>
-                                    <Label textAlign = 'left'>Username / E-mail</Label>
+                                    <Header as = 'h4' color = 'teal' textAlign = 'left'>Username / E-mail</Header> 
                                     <input fluid icon = 'user' iconPosition = 'left' placeholder='Username / E-mail' />
                                 </Form.Field>
                                 <Form.Field>
-                                    <Label>Password</Label>
-                                    <input placeholder='Password' />
+                                    <Header as = 'h4' color = 'teal' textAlign = 'left'>Password</Header>
+                                    <input fluid Icon name = 'lock' IconPosition = 'left' placeholder='Password' />
                                 </Form.Field>
                                 <Form.Field>
                                     <Checkbox label = 'Keep me logged in' />
                                 </Form.Field>
-                                <Button type = 'Log in' primary>Log in</Button>
-                                <Button type = 'Cancel'>cancel</Button>
+
+                                <Form.Group widths = 'equal'>
+                                    <Form.Button primary>Log In</Form.Button>
+                                    <Form.Button secondary>Cancel</Form.Button>
+                                </Form.Group>
 
                                 <Divider horizontal>Not having an account?</Divider>
                                 <Button type = 'Signup' primary >Sign up</Button>
                             </Form>
                         
                             <Divider section/>
-                            <header size  = 'huge'>Sign up</header>
-                            <Form>
+                            
+                            <Form size = 'large'>
+                                <Header as = 'h2' color = 'teal' textAlign = 'left'>Sign Up</Header>
                                 <Form.Field>
-                                    <label>Username</label>
+                                    <Header as = 'h4' color = 'teal' textAlign = 'left'>Username</Header>
                                     <input placeholder = 'Username' />
                                 </Form.Field>
                                 <Form.Field>
-                                    <label>E-mail</label>
+                                    <Header as = 'h4' color = 'teal' textAlign = 'left'>E-mail</Header>
                                     <input fluid label = 'your E-mail address' placeholder = 'E-mail address' />
                                 </Form.Field>
                                 <Form.Field>
-                                    <label>Re-enter E-mail</label>
+                                    <Header as = 'h4' color = 'teal' textAlign = 'left'>Re-enter E-mail</Header>
                                     <input fluid label = 're-enter your E-mail address' placeholder = 'Re-enter E-mail' />
                                 </Form.Field>
+                                <Header as = 'h4' color = 'teal' textAlign = 'left'> Your Name </Header>
                                 <Form.Group widths = 'equal'>
-                                    <Form.Field
-                                        id='First Name'
-                                        control={TextArea}
-                                        label='First Name'
-                                        placeholder='First Name'
-                                    />
-                                    <Form.Field
-                                        id='M.'
-                                        control={TextArea}
-                                        label='Middle'
-                                        placeholder='Middle'
-                                    />
-                                    <Form.Field
-                                        id='Last Name'
-                                        control={TextArea}
-                                        label='Last Name'
-                                        placeholder='Last Name'
-                                    />
+                                    <Form.Input fluid placeholder = "First Name" />
+                                    <Form.Input fluid placeholder = "Middle" />
+                                    <Form.Input fluid placeholder = "Last Name" />
                                 </Form.Group>
 
-                                <Form.Field>
-                                    <Checkbox label = 'I hereby agree to all conditions and terms.' />
-                                </Form.Field>
+                                <Header as = 'h4' color = 'teal' textAlign = 'left'> Birthdate </Header>
 
                                 <Form.Group widths = 'equal'>
-                                    <Form.Button primary>Signup</Form.Button>
-                                    <Form.Button>Cancel</Form.Button>
+                                    <Form.Input fluid placeholder = 'Month (MM)' />
+                                    <Form.Input fluid placeholder = 'Day (DD)' />
+                                    <Form.Input fluid placeholder = 'Year (YYYY)' />
+                                </Form.Group>
+                                
+                                <Header as = 'h4' color = 'teal' textAlign = 'left'> Gender </Header>
+                                <Form.Select options = {genderOptions} placeholder = 'Gender' />
+                                <Form.Checkbox label = 'I hereby agree to all conditions and terms.' />
+                                
+                                <Form.Group widths = 'equal'>
+                                    <Form.Button primary>Sign Up</Form.Button>
+                                    <Form.Button secondary>Cancel</Form.Button>
                                 </Form.Group>
 
                             </Form>
-
-
-
                     </Segment>
                 </Grid.Column>
             </Grid>

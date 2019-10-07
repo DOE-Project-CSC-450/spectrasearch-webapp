@@ -1,6 +1,16 @@
 h1 {
   text-align: center;
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); 
+}
+
+#header-id{
+  text-align: left;
+}
+
+#grand-search{
+  /* temorary solution need to change width to help zoom */
+  width: 80em;
+  border-radius: 0% !important;
 }
 
 
