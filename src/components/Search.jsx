@@ -83,182 +83,182 @@ export default class Searching extends Component {
   render() {
     return (
       <Segment.Group>
-  <Menu inverted>
-  {/* <Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search */}
-          <Menu.Item
-          
-            name='Home'
-            //active={activeItem === 'home'}
-            //onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='Upload'
-            //active={activeItem === 'messages'}
-            //onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='Recent'
-            //active={activeItem === 'friends'}
-            //onClick={this.handleItemClick}
-          />
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
-            <Menu.Item
-              name='login'
-              //active={activeItem === 'logout'}
-              //onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu>
+      <Menu inverted>
+      {/* <Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search */}
+              <Menu.Item
+              
+                name='Home'
+                //active={activeItem === 'home'}
+                //onClick={this.handleItemClick}
+              />
+              <Menu.Item
+                name='Upload'
+                //active={activeItem === 'messages'}
+                //onClick={this.handleItemClick}
+              />
+              <Menu.Item
+                name='Recent'
+                //active={activeItem === 'friends'}
+                //onClick={this.handleItemClick}
+              />
+              <Menu.Menu position='right'>
+                <Menu.Item>
+                  <Input icon='search' placeholder='Search...' />
+                </Menu.Item>
+                <Menu.Item
+                  name='login'
+                  //active={activeItem === 'logout'}
+                  //onClick={this.handleItemClick}
+                />
+              </Menu.Menu>
+            </Menu>
 
 
-          <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
-          </Header></Segment>
+              <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
+              </Header></Segment>
 
 
-          <Segment.Group>
-            <Segment><Header>Search for Lighting Instruments</Header>
-              <Search fluid id="grand-search"/>
-            </Segment>
+              <Segment.Group>
+                <Segment><Header>Search for Lighting Instruments</Header>
+                  <Search fluid id="grand-search"/>
+                </Segment>
+                
+                <Segment><Header as='h4'>Frequent Instruments:</Header>
+                <Label as='a'>
+                  Lighting instrumet B
+                  <Icon name='delete' />
+                </Label>
+                <Label as='a'>
+                  Lighting instrumet magna
+                  <Icon name='delete' />
+                </Label>
+                <Label as='a'>
+                  Lighting instrumet wanter
+                  <Icon name='delete' />
+                </Label>
+                <Label as='a'>
+                  Lighting instrumet year3
+                  <Icon name='delete' />
+                </Label>
+                </Segment>
+
+                <Divider/>OR
+
+              </Segment.Group>
+
+
+
+              <Header as='h4'>Search via Lighting Type:</Header>
+              <List horizontal>
+              <List.Item>
+                <List.Header as='a'>Type 1</List.Header>
+                <List.Description>
+                  omni light <a>omni page</a>.
+                </List.Description>
+
+
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+
+
+              </List.Item>
+              <List.Item>
+                <List.Header as='a'>Type 2</List.Header>
+                <List.Description>
+                  bright <a>bright page</a>.
+                </List.Description>
+
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+
+
+              </List.Item>
+
+
+              <List.Item>
+                <List.Header as='a'>Type 3</List.Header>
+                <List.Description>
+                  multidirectional <a>multi page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+
+
+              </List.Item>
+              <List.Item>
+                <List.Header as='a'>Type 4</List.Header>
+                <List.Description>
+                  lumincescent <a>lumincescent page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+              <List.Item>
+                <List.Header as='a'>Type 5</List.Header>
+                <List.Description>
+                  rounded <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+              </List>
             
-            <Segment><Header as='h4'>Frequent Instruments:</Header>
-            <Label as='a'>
-              Lighting instrumet B
-              <Icon name='delete' />
-            </Label>
-            <Label as='a'>
-              Lighting instrumet magna
-              <Icon name='delete' />
-            </Label>
-            <Label as='a'>
-              Lighting instrumet wanter
-              <Icon name='delete' />
-            </Label>
-            <Label as='a'>
-              Lighting instrumet year3
-              <Icon name='delete' />
-            </Label>
-            </Segment>
-
-            <Divider/>OR
-
+            
           </Segment.Group>
+          //   <Grid>
+          //     <Grid.Column width={3}>
+          //       <Image src='./spd graph image.png'/> 
+          // </Grid.Column>
+          // <Grid.Column width={1}>
+          // <h2>Spectra Search</h2> 
+          // </Grid.Column>
 
-
-
-          <Header as='h4'>Search via Lighting Type:</Header>
-          <List horizontal>
-          <List.Item>
-            <List.Header as='a'>Type 1</List.Header>
-            <List.Description>
-              omni light <a>omni page</a>.
-            </List.Description>
-
-
-            <List as='ul'>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>
-
-
-          </List.Item>
-          <List.Item>
-            <List.Header as='a'>Type 2</List.Header>
-            <List.Description>
-              bright <a>bright page</a>.
-            </List.Description>
-
-            <List as='ul'>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>
-
-
-          </List.Item>
-
-
-          <List.Item>
-            <List.Header as='a'>Type 3</List.Header>
-            <List.Description>
-              multidirectional <a>multi page</a>.
-            </List.Description>
-            <List as='ul'>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>
-
-
-          </List.Item>
-          <List.Item>
-            <List.Header as='a'>Type 4</List.Header>
-            <List.Description>
-              lumincescent <a>lumincescent page</a>.
-            </List.Description>
-            <List as='ul'>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>
-          </List.Item>
-          <List.Item>
-            <List.Header as='a'>Type 5</List.Header>
-            <List.Description>
-              rounded <a>rounded page</a>.
-            </List.Description>
-            <List as='ul'>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                  <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>
-          </List.Item>
-          </List>
-        
-        
-      </Segment.Group>
-      //   <Grid>
-      //     <Grid.Column width={3}>
-      //       <Image src='./spd graph image.png'/> 
-      // </Grid.Column>
-      // <Grid.Column width={1}>
-      // <h2>Spectra Search</h2> 
-      // </Grid.Column>
-
-        
-      // <Grid.Column width={10}>
             
-      //   <Header>Search for Lighting Instruments</Header>
-      //         <Search/>
-      //     <Divider></Divider>
-      //     <div>Frequent Instruments</div>
-      //     <Button>LED Bulb</Button>
-      //     <Button>Cool Light name</Button>
-      //     <Button>Another light</Button>
-      //     <Divider/>
-      //         <Header>Search via lighting type</Header>
-      //         <Dropdown
-      //         placeholder="TYPE 1"
-      //         selection
-      //         options={type1_options}
-      //         />
-            
-          
-      //       </Grid.Column>
-      //     </Grid>
+          // <Grid.Column width={10}>
+                
+          //   <Header>Search for Lighting Instruments</Header>
+          //         <Search/>
+          //     <Divider></Divider>
+          //     <div>Frequent Instruments</div>
+          //     <Button>LED Bulb</Button>
+          //     <Button>Cool Light name</Button>
+          //     <Button>Another light</Button>
+          //     <Divider/>
+          //         <Header>Search via lighting type</Header>
+          //         <Dropdown
+          //         placeholder="TYPE 1"
+          //         selection
+          //         options={type1_options}
+          //         />
+                
+              
+          //       </Grid.Column>
+          //     </Grid>
         
     )
   }
