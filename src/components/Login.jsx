@@ -5,6 +5,7 @@ import { Button, Header, Label, Form, Checkbox, Divider, Segment, Grid, TextArea
 /* the login/signup page. **/
 
 const genderOptions = [
+    {key: 'd', text: 'Select your gender', value: 'default'}, 
     {key: 'm', text: 'Male', value: 'Male'},
     {key: 'f', text: 'Female', value: 'Female'},
     {key: 'o', text: 'Other', value: 'Other'},  
@@ -42,19 +43,21 @@ export default class Login extends Component {
                         
                             <Divider section/>
                             
+
+
                             <Form size = 'large'>
                                 <Header as = 'h2' color = 'teal' textAlign = 'left'>Sign Up</Header>
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>Username</Header>
-                                    <input placeholder = 'Username' />
+                                    <input placeholder = 'Username (8-10 characters)' />
                                 </Form.Field>
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>E-mail</Header>
-                                    <input fluid label = 'your E-mail address' placeholder = 'E-mail address' />
+                                    <input fluid label = 'E-mail address' placeholder = 'Enter your E-mail address' />
                                 </Form.Field>
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>Re-enter E-mail</Header>
-                                    <input fluid label = 're-enter your E-mail address' placeholder = 'Re-enter E-mail' />
+                                    <input fluid label = 're-enter E-mail address' placeholder = 'Re-enter your E-mail address' />
                                 </Form.Field>
                                 <Header as = 'h4' color = 'teal' textAlign = 'left'> Your Name </Header>
                                 <Form.Group widths = 'equal'>
