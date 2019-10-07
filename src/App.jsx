@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import InstProf from './components/Instrument_Profile.jsx'; 
+import InstProf from './components/Instrument_Profile'; 
 
 function App() {
   return (

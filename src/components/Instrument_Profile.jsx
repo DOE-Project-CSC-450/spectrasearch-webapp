@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react'
-import { Header, Segment, Image } from 'semantic-ui-react'; 
+import { Header, Segment, Image, Grid } from 'semantic-ui-react'; 
 
 
 /*
@@ -14,12 +14,6 @@ let BasicInfo = {
     description={BasicInfo.description}/>
 
     */ 
-
-
-const ImageExampleImage = () => (
-<Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' />
-)
-
 
 
 export default class InstProf extends Component {
@@ -56,13 +50,39 @@ export default class InstProf extends Component {
                     <div> Reflection Geometry: di:8 </div>
                 </div>
 
-            </Segment>
             
 
-                
-           
-               
+            <Grid.Column width={3}>
+            <Grid.Row>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            <Grid.Column>
+                <Image src='/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+            </Grid.Row>
+            </Grid.Column>
+            
+
+            </Segment>
         )
+               
+        
     }
 } 
 
