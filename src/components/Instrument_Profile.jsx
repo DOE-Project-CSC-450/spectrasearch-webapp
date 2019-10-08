@@ -2,90 +2,36 @@ import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid } from 'semantic-ui-react'; 
 
-
-/*
-let BasicInfo = {
-    manufacturer: "Lighting Co",
-    description: "This is a basic description about a hot lighting instrument"  
-}
-
-<BasicInfo
-    manufacturer={BasicInfo.manufacturer}
-    description={BasicInfo.description}/>
-
-    */ 
-
-
 export default class InstProf extends Component {
     render () {
         return (
             <Segment>
-                <div class="Heading Info">
-                    <Header size='huge'>LED Bulb</Header>
-                    <Header size='medium'>Catalog #: 902398378</Header>  
-                </div>
+                <Header size='huge'>LED Bulb</Header>
+                <Header size='medium'>Catalog #: 902398378</Header>  
+                <Grid>
+                    <Grid.Column width={8}>
+                        <Header size='medium'>Basic Information</Header>
+                        <p> Manufacturer: Lighting Co.</p>
+                        <p> Description: This is a great lightbulb to use everyday. </p>
 
-                <div class="Basic Info">
-                    <Header size='medium'>Basic Information</Header>
-                    <div> Manufacturer: Lighting Co.</div>
-                    <div> Description: This is a great lightbulb to use everyday. </div>
-                </div>
+                        <Header size='medium'>Creation Information</Header>
+                        <p> Document Creator: John Smith</p>
+                        <p> Labratory: Lighting Lab LLC </p>
+                        <p> Creation Date: Sept 2006 </p>
+                        <p> Report Number: 0283 </p> 
+                    </Grid.Column>
 
-                <div class="Creation Info">
-                    <Header size='medium'>Creation Information</Header>
-                    <div> Document Creator: John Smith</div>
-                    <div> Labratory: Lighting Lab LLC </div>
-                    <div> Creation Date: Sept 2006 </div>
-                    <div> Report Number: 0283 </div> 
-                </div>
+                    <Grid.Column width={8}>
+                        <Header size='medium'>Spectral Graph</Header>
+                        <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='medium' centered/>
 
-                <div class="Image">
-                    <Header size='medium'>Spectral Graph</Header>
-                    export default ImageExampleImage
-                </div>
+                        <Header size='medium'>Spectral Information</Header>
+                        <p> Spectral Quantity: transmittance</p>
+                        <p> Reflection Geometry: di:8 </p>
+                    </Grid.Column>
+                </Grid>
+           </Segment>
 
-                <div class="Spectral Info">
-                    <Header size='medium'>Spectral Information</Header>
-                    <div> Spectral Quantity: transmittance</div>
-                    <div> Reflection Geometry: di:8 </div>
-                </div>
-
-            
-
-            <Grid.Column width={3}>
-            <Grid.Row>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
-            </Grid.Column>
-            </Grid.Row>
-            </Grid.Column>
-            
-
-            </Segment>
-        )
-               
-        
-    }
-} 
-
-
-
-
+        ) // end return
+    } // end render
+} //end InstProf class
