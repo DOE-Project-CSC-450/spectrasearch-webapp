@@ -1,9 +1,11 @@
+//import all needed modules and components from React.
 import React from 'react';
 import { Component } from 'react';
-import { Button, Header, Label, Form, Checkbox, Divider, Segment, Grid, TextArea, Icon, Dropdown } from 'semantic-ui-react';
+import { Button, Header, Form, Checkbox, Divider, Segment, Grid} from 'semantic-ui-react';
 
 /* the login/signup page. **/
 
+//Options for gender selection (Form.select))
 const genderOptions = [
     {key: 'd', text: 'Select your gender', value: 'default'}, 
     {key: 'm', text: 'Male', value: 'Male'},
@@ -11,6 +13,7 @@ const genderOptions = [
     {key: 'o', text: 'Other', value: 'Other'},  
 ]
 
+//actual Login class export. (imported in app.jsx)
 export default class Login extends Component {  
     render(){
         return(
@@ -18,34 +21,32 @@ export default class Login extends Component {
                 <Grid.Column style = {{maxWidth: 800}}>
                     <Header as = 'h1' color = 'black' textAlign = 'center'>SpectraSearch</Header>    
                         <Segment stacked>
-                            <Form size = 'large'>
+                            <Form size = 'huge'>
                                 <Header as = 'h2' color = 'teal' textAlign = 'left'>Log In</Header> 
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>Username / E-mail</Header> 
-                                    <input fluid icon = 'user' iconPosition = 'left' placeholder='Username / E-mail' />
+                                    <input fluid placeholder='Username / E-mail' />
                                 </Form.Field>
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>Password</Header>
-                                    <input fluid Icon name = 'lock' IconPosition = 'left' placeholder='Password' />
+                                    <input fluid placeholder='Password' />
                                 </Form.Field>
                                 <Form.Field>
                                     <Checkbox label = 'Keep me logged in' />
                                 </Form.Field>
 
                                 <Form.Group widths = 'equal'>
-                                    <Form.Button primary>Log In</Form.Button>
-                                    <Form.Button secondary>Cancel</Form.Button>
+                                    <Form.Button size = 'large' primary>Log In</Form.Button>
+                                    <Form.Button size = 'large' secondary>Cancel</Form.Button>
                                 </Form.Group>
 
                                 <Divider horizontal>Not having an account?</Divider>
-                                <Button type = 'Signup' primary >Sign up</Button>
+                                <Button type = 'Signup' size = 'large' primary >Sign up</Button>
                             </Form>
                         
                             <Divider section/>
                             
-
-
-                            <Form size = 'large'>
+                            <Form size = 'huge'>
                                 <Header as = 'h2' color = 'teal' textAlign = 'left'>Sign Up</Header>
                                 <Form.Field>
                                     <Header as = 'h4' color = 'teal' textAlign = 'left'>Username</Header>
@@ -79,14 +80,14 @@ export default class Login extends Component {
                                 <Form.Checkbox label = 'I hereby agree to all conditions and terms.' />
                                 
                                 <Form.Group widths = 'equal'>
-                                    <Form.Button primary>Sign Up</Form.Button>
-                                    <Form.Button secondary>Cancel</Form.Button>
+                                    <Form.Button size = 'large' primary>Sign Up</Form.Button>
+                                    <Form.Button size = 'large' secondary>Cancel</Form.Button>
                                 </Form.Group>
 
                             </Form>
                     </Segment>
                 </Grid.Column>
             </Grid>
-        )   
-    }
-}
+        )//return() ends.   
+    }//render() ends.
+}//class ends.
