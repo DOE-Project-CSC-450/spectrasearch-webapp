@@ -1,4 +1,4 @@
-input[type=text], select {
+input[type=text]{
   align-content: center;
   width: 80%;
   padding: 12px 10px;
@@ -12,10 +12,38 @@ h3{
   margin-block: 15px;
 }
 
-#form{
-  background-color: #ccc;
-  align-content: center
+
+
+.formElementDecor{
+  width: 60%;
+  color:red;
+  font-weight: bold;
+  align-self: center;
 }
+
+
+#form{
+  align-content: center;
+  padding: 50px;
+  border-color: linear-gradient(violet, indigo, blue, green, yellow, orange, red);
+}
+
+#uploadForm{
+  display: block;
+  align-items: center;
+  padding: 15px;
+  width: 200px;
+  background-color: red;
+}
+
+#h1Form{
+  text-align: center;
+}
+
+input{
+  width:40%;
+}
+
 
 
 body{
@@ -39,5 +67,3 @@ body{
 .App-link {
   color: #09d3ac;
 }
-
-
