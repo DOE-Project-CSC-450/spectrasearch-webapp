@@ -1,7 +1,6 @@
-.App {
+h1 {
   text-align: center;
-  
-
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); 
 }
 
 #header-id{
@@ -12,8 +11,8 @@
   /* temorary solution need to change width to help zoom */
   
   border-radius: 0% !important;
-
 }
+
 
 
 
@@ -31,3 +30,5 @@
 .App-link {
   color: #09d3ac;
 }
+
+
