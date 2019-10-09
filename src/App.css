@@ -26,8 +26,63 @@ h1 {
 }
 */
 
+/*------------------------------------------Upload page------------------------------------------*/
+/*
+input[type=text]{
+  align-content: center;
+  width: 80%;
+  padding: 12px 10px;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+h3{
+  padding: 20px;
+  margin-block: 15px;
+}
 
 
+
+.formElementDecor{
+  width: 60%;
+  color:red;
+  font-weight: bold;
+  align-self: center;
+}
+
+
+#form{
+  align-content: center;
+  padding: 50px;
+  border-color: linear-gradient(violet, indigo, blue, green, yellow, orange, red);
+}
+
+#uploadForm{
+  display: block;
+  align-items: center;
+  padding: 15px;
+  width: 200px;
+  background-color: red;
+}
+
+#h1Form{
+  text-align: center;
+}
+
+input{
+  width:40%;
+}
+
+
+
+body{
+  background-color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+}
+
+
+
+*/
 
 
 

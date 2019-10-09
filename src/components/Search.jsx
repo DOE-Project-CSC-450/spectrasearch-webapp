@@ -3,6 +3,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Login from './Login'
+import Uploadpage from './uploadpage'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 
 const source = [
@@ -79,6 +80,12 @@ export default class Searching extends Component {
     alert("you clicked login");
   }
 
+  handleUploadClick = () =>{
+    window.open("uploadpage.jsx")
+    
+    
+  }
+
 
   render() {
 
@@ -99,11 +106,44 @@ export default class Searching extends Component {
                 //active={activeItem === 'home'}
                 //onClick={this.handleItemClick}
               />
-              <Menu.Item
+
+
+
+
+
+                  <Modal trigger={<Menu.Item
                 name='Upload'
                 //active={activeItem === 'messages'}
-                //onClick={this.handleItemClick}
-              />
+             
+              />}>
+                    <Modal.Header>Upload Page</Modal.Header>
+                    <Modal.Content image scrolling>
+                    <Modal.Description>
+                    <Header>Complete Upload Form</Header>
+                    <Uploadpage />
+                    </Modal.Description>
+                 
+                    </Modal.Content>
+                    <Modal.Actions>
+        
+                    </Modal.Actions>
+                     </Modal>
+        
+                  }}
+
+
+
+
+
+
+
+              
+
+
+
+
+
+
               <Menu.Item
                 name='Recent'
                 //active={activeItem === 'friends'}

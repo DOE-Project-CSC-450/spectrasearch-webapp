@@ -4,6 +4,8 @@ import './App.css';
 import { Button, Header, Label, Form, Checkbox, Divider } from 'semantic-ui-react';
 import Searching from './components/Search.jsx'
 
+
+
 //need to import everything into app and then put all the elements inside of app
 
 
@@ -13,6 +15,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Searching />
+        
         
  
       </header>
