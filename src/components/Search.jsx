@@ -4,57 +4,61 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { Button, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 
-
 const source = [
   {
-    "title": "Beahan, Ziemann and Lemke",
-    "description": "Total zero administration system engine",
-    "image": "https://s3.amazonaws.com/uifaces/faces/twitter/wikiziner/128.jpg",
-    "price": "$64.74"
+    "title": "Downlight Solid State Retrofit kits",
+    "description": "Model Number: RF408ICAT27W",
+    "image": "/downlight.PNG",
+    "price": "Maxlite Inc"
   },
   {
-    "title": "Pacocha, Harris and Ryan",
-    "description": "Function-based even-keeled middleware",
-    "image": "https://s3.amazonaws.com/uifaces/faces/twitter/thedjpetersen/128.jpg",
-    "price": "$29.73"
+    "title": "Rounded Solid State Lighting",
+    "description": "Model Number: EF407ICAT27T",
+    "image": "/special 2.PNG",
+    "price": "Lighting Incoorporated"
   },
   {
-    "title": "Quigley, O'Reilly and Jacobson",
-    "description": "Profound uniform implementation",
-    "image": "https://s3.amazonaws.com/uifaces/faces/twitter/looneydoodle/128.jpg",
-    "price": "$12.75"
+    "title": "Circular Enhaced Bulb",
+    "description": "Model Number: RFE07ICAT27S",
+    "image": "/special 2.PNG",
+    "price": "Fixed Inc."
   },
   {
-    "title": "Wuckert, Pacocha and Hessel",
-    "description": "Cross-group 24/7 superstructure",
-    "image": "https://s3.amazonaws.com/uifaces/faces/twitter/abelcabans/128.jpg",
-    "price": "$17.83"
+    "title": "Outdoor Parking Bulb",
+    "description": "Model Number: TYE07IRAT27Y",
+    "image": "/special 2.PNG",
+    "price": "Lendly"
   },
   {
-    "title": "Predovic, Crooks and Gibson",
-    "description": "Phased reciprocal toolset",
-    "image": "https://s3.amazonaws.com/uifaces/faces/twitter/amayvs/128.jpg",
-    "price": "$35.90"
+    "title": "Preding Bulb",
+    "description": "Model Number: UYE07IRAT27Y",
+    "image": "/special 2.PNG",
+    "price": "Exato"
   }
 ]
-
 const initialState = { isLoading: false, results: [], value: '' }
 const resultRenderer = ({ title }) => <Label content={title} />
 
-resultRenderer.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-}
 
 export default class Searching extends Component {
- 
+  constructor(props) {
+    super(props);
+    this.state = {search: '' }
+  }
+
+
+  handle_search = (e) => {
+    e.preventDefault();
+    this.setState({search: e.target.value});
+    console.log(this.state.search);
+    
+  }
   state = initialState
 
   handleResultSelect = (e, { result }) => this.setState({ value: result.title })
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
-
     setTimeout(() => {
       if (this.state.value.length < 1) return this.setState(initialState)
 
@@ -69,24 +73,21 @@ export default class Searching extends Component {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
   render() {
+
+    const { isLoading, value, results } = this.state
+
+
+
+
+
+
+
     return (
       <Segment.Group>
       <Menu inverted>
       {/* <Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search */}
               <Menu.Item
-              
                 name='Home'
                 //active={activeItem === 'home'}
                 //onClick={this.handleItemClick}
@@ -112,17 +113,37 @@ export default class Searching extends Component {
                 />
               </Menu.Menu>
             </Menu>
+            <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
+            </Header></Segment>
 
 
-              <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
-              </Header></Segment>
+
+
+
+
 
 
               <Segment.Group>
                 <Segment><Header>Search for Lighting Instruments</Header>
-                  <Search fluid id="grand-search"/>
+                  <Search 
+                  fluid
+                  input={{ fluid: true }} 
+                  loading={isLoading}  
+                  onResultSelect={this.handleResultSelect} 
+                  onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                  leading: true,})}  
+                  results={results}
+                  value={value}
+                  {...this.props} 
+                  id="grand-search" 
+                  size='small' 
+                  placeholder='Enter lighting search here' 
+                  //onSearchChange = {this.handle_search}
+                  />
                 </Segment>
                 
+
+
                 <Segment><Header as='h4'>Frequent Instruments:</Header>
                 <Label as='a'>
                   Lighting instrumet B
@@ -141,10 +162,12 @@ export default class Searching extends Component {
                   <Icon name='delete' />
                 </Label>
                 </Segment>
-
                 <Divider/>OR
-
               </Segment.Group>
+
+
+
+
 
 
 
@@ -230,35 +253,7 @@ export default class Searching extends Component {
             
             
           </Segment.Group>
-          //   <Grid>
-          //     <Grid.Column width={3}>
-          //       <Image src='./spd graph image.png'/> 
-          // </Grid.Column>
-          // <Grid.Column width={1}>
-          // <h2>Spectra Search</h2> 
-          // </Grid.Column>
-
-            
-          // <Grid.Column width={10}>
-                
-          //   <Header>Search for Lighting Instruments</Header>
-          //         <Search/>
-          //     <Divider></Divider>
-          //     <div>Frequent Instruments</div>
-          //     <Button>LED Bulb</Button>
-          //     <Button>Cool Light name</Button>
-          //     <Button>Another light</Button>
-          //     <Divider/>
-          //         <Header>Search via lighting type</Header>
-          //         <Dropdown
-          //         placeholder="TYPE 1"
-          //         selection
-          //         options={type1_options}
-          //         />
-                
-              
-          //       </Grid.Column>
-          //     </Grid>
+          
         
     )
   }
