@@ -2,7 +2,8 @@ import React from 'react';
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { Button, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
+import Login from './Login'
+import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 
 const source = [
   {
@@ -53,6 +54,7 @@ export default class Searching extends Component {
     console.log(this.state.search);
     
   }
+
   state = initialState
 
   handleResultSelect = (e, { result }) => this.setState({ value: result.title })
@@ -70,6 +72,11 @@ export default class Searching extends Component {
         results: _.filter(source, isMatch),
       })
     }, 300)
+  }
+
+  handleItemClick = () =>{
+    window.location.href = '';
+    alert("you clicked login");
   }
 
 
@@ -106,12 +113,34 @@ export default class Searching extends Component {
                 <Menu.Item>
                   <Input icon='search' placeholder='Search...' />
                 </Menu.Item>
-                <Menu.Item
+
+
+
+                <Modal trigger={<Menu.Item
                   name='login'
                   //active={activeItem === 'logout'}
-                  //onClick={this.handleItemClick}
-                />
+                
+                />}>
+                    <Modal.Header>Login</Modal.Header>
+                    <Modal.Content image scrolling>
+                    <Modal.Description>
+                    <Header>Enter login Information</Header>
+                    <Login />
+                    </Modal.Description>
+                 
+                    </Modal.Content>
+                    <Modal.Actions>
+        
+                    </Modal.Actions>
+                     </Modal>
+        
+                  }}
+
               </Menu.Menu>
+
+
+
+
             </Menu>
             <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
             </Header></Segment>
