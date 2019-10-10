@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
+import InstProf from './Instrument_Profile'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 
 const source = [
@@ -58,7 +59,12 @@ export default class Searching extends Component {
 
   state = initialState
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+  handleResultSelect = (e, { result }) => {
+    this.setState({ value: result.title })
+    window.open("https://drive.google.com/file/d/1fYtEBMducLvZZNotV5a1P98mmXb5goV1/view")
+   
+   
+ }
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
