@@ -94,7 +94,32 @@ export default class Searching extends Component {
 
 
   render() {
+    // connect to your database
+var mysql = require('mysql');
+var Net = require('net');
+ 
+var connection = mysql.createConnection({
+ user : 'root',
+ password : "root",
+socketPath : '/tmp/mysql.sock',
+ 
 
+});
+ 
+connection.connect(function(err) {
+ if (err) {
+ console.log('db_connection_err', err);
+ return;
+ }
+});
+ 
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+ if (err) throw err;
+console.log('The solution is: ', rows[0].solution);
+ 
+});
+ 
+connection.end();
     const { isLoading, value, results } = this.state
 
 
