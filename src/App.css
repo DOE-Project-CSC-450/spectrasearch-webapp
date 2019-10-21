@@ -16,9 +16,9 @@ h3{
 
 .formElementDecor{
   width: 60%;
-  color:red;
   font-weight: bold;
   align-self: center;
+  margin:auto;
 }
 
 
@@ -29,16 +29,16 @@ h3{
 }
 
 #uploadForm{
-  display: block;
-  align-items: center;
-  padding: 15px;
-  width: 200px;
-  background-color: red;
+  width: 500px;
+  border-width: 600px;
+  border-color: #cccccc;
+  
 }
 
 #h1Form{
   text-align: center;
 }
+
 
 input{
   width:40%;
@@ -48,6 +48,13 @@ input{
 
 body{
   background-color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+}
+
+#submitButton{
+  color: #09d3ac;
+  width: 15%;
+  height: 10%;
+  margin-left: 45%;
 }
 
 
@@ -67,3 +74,4 @@ body{
 .App-link {
   color: #09d3ac;
 }
+

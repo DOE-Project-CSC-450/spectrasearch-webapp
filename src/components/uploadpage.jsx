@@ -30,10 +30,16 @@ export default class Uploadpage extends Component {
       labratory: "",
       reportNum: "",
       reportData: "",
+      DocumentCreationDate: "",
+      comments: "",
+      reportData: "",
       reflectionGeom: "",
       transGeom: "",
       bandfwhm: "",
-      bandConn: ""
+      bandConn: "",
+      //below is for the error messages and validation
+      descriptionError: "thiwerwerewklrwerlkwejl",
+      documentCreationError: ""
     };
 
     //bind manufactuer
@@ -52,6 +58,8 @@ export default class Uploadpage extends Component {
     this.labratoryHandle_change = this.labratoryHandle_change.bind(this);
     //bind report num
     this.reportNumHandle_change = this.reportNumHandle_change.bind(this);
+    //bind comments
+    this.commentsHandle_change = this.commentsHandle_change.bind(this);
     //bind report data
     this.reportDataHandle_change = this.reportDataHandle_change.bind(this);
     //bind reflection geometry
@@ -84,6 +92,12 @@ export default class Uploadpage extends Component {
   descriptionHandle_change(event) {
     this.setState({ description: event.target.value });
     console.log(this.state.description);
+    if (this.state.description.length > 255) {
+      this.setState.descriptionError =
+        "Description cannot be more than 255 characters";
+    } else {
+      this.setState.descriptionError = "";
+    }
   }
 
   //for document creator
@@ -116,6 +130,12 @@ export default class Uploadpage extends Component {
     console.log(this.state.reportNum);
   }
 
+  //for Comments:
+  commentsHandle_change(event) {
+    this.setState({ comments: event.target.value });
+    console.log(this.state.comments);
+  }
+
   //for report data
   reportDataHandle_change(event) {
     this.setState({ reportData: event.target.value });
@@ -146,10 +166,38 @@ export default class Uploadpage extends Component {
     console.log(this.state.bandConn);
   }
 
+  //validation function
+  validate = () => {
+    let descriptionError = "";
+    let documentCreationError = "";
+
+    if(typeof(this.setState.docCreat) == 'undefined'){
+      documentCreationError="Document Creator is required";
+      return false;
+    }
+    if(typeof(this.setState.description) == 'undefined'){
+      descriptionError = "Description is required";
+    }
+
+    if(descriptionError){
+      this.setState({descriptionError});
+      return false;
+    }
+    if(documentCreationError){
+      this.setState({documentCreationError});
+      return false;
+    }
+    return true;
+  };
+
   //for the submission button
   handle_submit(event) {
-    alert("You submitted the form " + this.state.manufacturer);
-    event.preventDefault();
+    const validForm = this.validate();
+    console.log("VALID "+validForm);
+    if (validForm == true) {
+      alert("You submitted the form " + this.state.manufacturer);
+      event.preventDefault();
+    }
   }
 
   render() {
@@ -157,89 +205,118 @@ export default class Uploadpage extends Component {
       <div id="form">
         <div id="h1Form">
           <Header as="h1">Upload Form</Header>
+          <h2>
+            Enter the information below. Questions marked with * are required
+          </h2>
+          <br />
         </div>
 
         <Form>
           <div class="formElementDecor">
-          <Form.Input
-            label="Manufacturer:"
-            type="text"
-            onChange={this.handle_change}
-          />
-          <br></br>
-          <Form.Input
-            label="Catalog Number:"
-            type="number"
-            onChange={this.cnHandle_change}
-          />
-          {/* <Form.Input label='Description:' type='text' maxLength ="255" rows="4" onChange={this.descriptionHandle_change} /> */}
-          <label>Description</label>
-          <TextArea
-            label="Description"
-            placeholder="Tell us more"
-            maxLength="255"
-            onChange={this.descriptionHandle_change}
-          />
-          <Form.Input
-            label="Document Creator"
-            type="text"
-            onChange={this.docCreatHandle_change}
-          />
-          <Form.Input
-            label="Unique identifier:"
-            type="text"
-            onChange={this.uniqueIdentHandle_change}
-          />
-          <Form.Input
-            label="Measurement equipment::"
-            type="text"
-            onChange={this.measureEquipHandle_change}
-          />
-          <Form.Input
-            label="Laboratory:"
-            type="text"
-            onChange={this.labratoryHandle_change}
-          />
-          <Form.Input
-            label="Report #:"
-            type="text"
-            onChange={this.reportNumHandle_change}
-          />
-          <Form.Input
-            label="Report data:"
-            type="text"
-            onChange={this.reportDataHandle_change}
-          />
-          <Form.Input
-            label="Reflection geometry:"
-            type="text"
-            onChange={this.reflectionGeomHandle_change}
-          />
-          <Form.Input
-            label="Transmission geometry:"
-            type="text"
-            onChange={this.transGeomHandle_change}
-          />
-          <Form.Input
-            label="bandwidth fwhm:"
-            type="text"
-            onChange={this.bandfwhmHandle_change}
-          />
-          <label>Is the Bandwidth corrected</label>
-          <select class="ui dropdown" onChange={this.bandConnHandle_change}>
-            <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
+            <Form.Input
+              label="1) Manufacturer:"
+              type="text"
+              onChange={this.handle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="2) Catalog Number:"
+              type="number"
+              onChange={this.cnHandle_change}
+            />
+            <br></br>
+            <label>3) Description: *</label>
+            <TextArea
+              placeholder="Tell us more"
+              // maxLength="255"
+              onChange={this.descriptionHandle_change}
+            />
+            <div style={{ color: "red" }}>{this.setState.descriptionError}</div>
+            <br />
+            <br />
+            <br />
+            <Form.Input
+              label="4) Document Creator: *"
+              type="text"
+              onChange={this.docCreatHandle_change}
+            />
+            <div style={{ color: "red" }}>
+              {this.setState.documentCreationError}
+            </div>
+            <br></br>
+            <Form.Input
+              label="5) Unique Identifier:"
+              type="text"
+              onChange={this.uniqueIdentHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="6) Measurement Equipment:"
+              type="text"
+              onChange={this.measureEquipHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="7) Laboratory:"
+              type="text"
+              onChange={this.labratoryHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="8) Report Number:"
+              type="text"
+              onChange={this.reportNumHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="9) Comments:"
+              type="text"
+              onChange={this.commentsHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="10) Report Data:"
+              type="text"
+              onChange={this.reportDataHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="11) Reflection geometry:"
+              type="text"
+              onChange={this.reflectionGeomHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="12) Transmission geometry:"
+              type="text"
+              onChange={this.transGeomHandle_change}
+            />
+            <br></br>
+            <Form.Input
+              label="13) bandwidth fwhm:"
+              type="text"
+              onChange={this.bandfwhmHandle_change}
+            />
+            <br></br>
+            <label>14) Is the Bandwidth corrected:</label>
+            <select class="ui dropdown" onChange={this.bandConnHandle_change}>
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <br />
+            <br />
+            <Form.Input label="15) Upload Form:" type="file" />
           </div>
         </Form>
 
         <br />
-        <div id="uploadForm">
-          <Button>Upload</Button>
-        </div>
 
-        <Button onClick={this.handle_submit}>Submit</Button>
+        <br />
+
+        <Button id="submitButton" size="huge" onClick={this.handle_submit}>
+          Submit
+        </Button>
       </div>
     );
   }
