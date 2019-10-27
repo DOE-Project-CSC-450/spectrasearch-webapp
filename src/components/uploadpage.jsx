@@ -38,7 +38,7 @@ export default class Uploadpage extends Component {
       bandfwhm: "",
       bandConn: "",
       //below is for the error messages and validation
-      descriptionError: "thiwerwerewklrwerlkwejl",
+      descriptionError: "",
       documentCreationError: ""
     };
 
@@ -168,32 +168,38 @@ export default class Uploadpage extends Component {
 
   //validation function
   validate = () => {
+    let allGood = true;
     let descriptionError = "";
     let documentCreationError = "";
 
-    if(typeof(this.setState.docCreat) == 'undefined'){
-      documentCreationError="Document Creator is required";
-      return false;
+    if (this.state.docCreat === "") {
+      documentCreationError = "Document Creator is required";
     }
-    if(typeof(this.setState.description) == 'undefined'){
+    else{
+      documentCreationError = "";
+    }
+    if (this.state.description === "") {
       descriptionError = "Description is required";
     }
+    else{
+      descriptionError = "";
+    }
 
-    if(descriptionError){
-      this.setState({descriptionError});
-      return false;
+    if (descriptionError) {
+      this.setState({ descriptionError });
+      allGood = false;
     }
-    if(documentCreationError){
-      this.setState({documentCreationError});
-      return false;
+    if (documentCreationError) {
+      this.setState({ documentCreationError });
+      allGood = false;
     }
-    return true;
+    return allGood;
   };
 
   //for the submission button
   handle_submit(event) {
     const validForm = this.validate();
-    console.log("VALID "+validForm);
+    console.log("VALID " + validForm);
     if (validForm == true) {
       alert("You submitted the form " + this.state.manufacturer);
       event.preventDefault();
@@ -231,7 +237,7 @@ export default class Uploadpage extends Component {
               // maxLength="255"
               onChange={this.descriptionHandle_change}
             />
-            <div style={{ color: "red" }}>{this.setState.descriptionError}</div>
+            <div style={{ color: "red" }}>{this.state.descriptionError}</div>
             <br />
             <br />
             <br />
@@ -241,7 +247,7 @@ export default class Uploadpage extends Component {
               onChange={this.docCreatHandle_change}
             />
             <div style={{ color: "red" }}>
-              {this.setState.documentCreationError}
+              {this.state.documentCreationError}
             </div>
             <br></br>
             <Form.Input
