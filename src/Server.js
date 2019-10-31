@@ -1,4 +1,11 @@
 
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+
+
+
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "localhost",
@@ -16,6 +23,40 @@ con.connect(function(err){
     console.log(result);
   });
 });
+
+app.use(cors());
+
+
+app.get('/', (req, res) =>{
+  res.send("hello from the lighting server");
+  
+})
+
+/* app.get('products/add', (req, res) =>{
+  const {value, SpectralQKey} = req.query;
+  console.log(value, SpectralQKey);
+  res.send("adding product");
+  //to insert things into the database not done
+})
+ */
+app.get('/lighting', (req, res) => {
+  con.query("SELECT * FROM SpectralQuantity", (err, results) => {
+    if (err){
+      return res.send(error);
+    }
+    else{
+      return res.json({
+        data: results
+      })
+    }
+  });
+})
+
+
+
+app.listen(4000, () => {
+  console.log("lighting server listening on port 4000");
+})
 
 
 

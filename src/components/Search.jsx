@@ -46,6 +46,7 @@ export default class Searching extends Component {
   constructor(props) {
     super(props);
     this.state = {search: '' }
+    this.state = {lighting: []}
   }
   handle_search = (e) => {
     e.preventDefault();
@@ -84,8 +85,20 @@ export default class Searching extends Component {
   }
 
 
+  componentDidMount(){
+    this.getProducts();
+  }
+
+  getProducts = _ =>{
+    fetch('http://localhost:4000/lighting')
+    .then(response => response.json())
+    .then(response => this.setState({lighting: response.data}))
+      .catch(err => console.error(err))
+  }
+
+  renderLighting = ({Value}) => <div key={Value}>{Value}</div>
   render() {
-    const { isLoading, value, results } = this.state
+    const { lighting, isLoading, value, results } = this.state
     return (
       <Segment.Group>
       <Menu inverted>
@@ -114,11 +127,6 @@ export default class Searching extends Component {
         
                   }}  
 
-
-
-
-
-
               <Menu.Item
                 name='Recent'
                 //active={activeItem === 'friends'}
@@ -128,9 +136,6 @@ export default class Searching extends Component {
                 <Menu.Item>
                   <Input icon='search' placeholder='Search...' />
                 </Menu.Item>
-
-
-
                 <Modal trigger={<Menu.Item
                   name='login'
                   //active={activeItem === 'logout'}
@@ -196,11 +201,6 @@ export default class Searching extends Component {
                 </Segment>
                 <Divider/>OR
               </Segment.Group>
-
-
-
-
-
 
 
               <Header as='h4'>Search via Lighting Type:</Header>
@@ -282,6 +282,11 @@ export default class Searching extends Component {
                 </List>
               </List.Item>
               </List>
+
+                 
+
+                <div> {lighting.map(this.renderLighting)}</div>
+        
             
             
           </Segment.Group>
