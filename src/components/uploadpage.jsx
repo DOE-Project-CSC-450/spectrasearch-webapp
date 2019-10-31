@@ -144,9 +144,7 @@ export default class Uploadpage extends Component {
   render() {
     return (
       <div id="form">
-        <div id="h1Form">
-          <Header as="h1">Upload Form</Header>
-        </div>
+        
 
         <Form>
           <div class="formElementDecor">
@@ -224,11 +222,7 @@ export default class Uploadpage extends Component {
         </Form>
 
         <br />
-        <div id="uploadForm">
-          <Button>Upload</Button>
-        </div>
-
-        <Button onClick={this.handle_submit}>Submit</Button>
+        <Button>Upload</Button><Button onClick={this.handle_submit}>Submit</Button>
       </div>
     );
   }
