@@ -5,7 +5,11 @@ import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
+import { Link } from 'react-router-dom'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
+import { uptime } from 'os';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 const source = [
   {
@@ -274,7 +278,18 @@ export default class Searching extends Component {
                   rounded <a>rounded page</a>.
                 </List.Description>
                 <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+  <List.Item as='li'>
+  <Router>
+  <div>
+  <Link to="./uploadpage">Lighting page</Link>
+  <Route
+      path="./uploadpage"
+      component={<Uploadpage/>} 
+                />
+  </div>
+</Router>
+</List.Item>            
+                     
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
