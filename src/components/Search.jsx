@@ -42,28 +42,21 @@ const source = [
 const initialState = { isLoading: false, results: [], value: '' }
 const resultRenderer = ({ title }) => <Label content={title} />
 
-
 export default class Searching extends Component {
   constructor(props) {
     super(props);
     this.state = {search: '' }
   }
-
-
   handle_search = (e) => {
     e.preventDefault();
     this.setState({search: e.target.value});
     console.log(this.state.search);
     
   }
-
   state = initialState
-
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
     window.open("https://drive.google.com/file/d/1fYtEBMducLvZZNotV5a1P98mmXb5goV1/view")
-   
-   
  }
 
   handleSearchChange = (e, { value }) => {
@@ -88,21 +81,11 @@ export default class Searching extends Component {
 
   handleUploadClick = () =>{
     window.open("uploadpage.jsx")
-    
-    
   }
 
 
   render() {
-
     const { isLoading, value, results } = this.state
-
-
-
-
-
-
-
     return (
       <Segment.Group>
       <Menu inverted>
@@ -112,15 +95,9 @@ export default class Searching extends Component {
                 //active={activeItem === 'home'}
                 //onClick={this.handleItemClick}
               />
-
-
-
-
-
-                  <Modal trigger={<Menu.Item
+              <Modal trigger={<Menu.Item
                 name='Upload'
                 //active={activeItem === 'messages'}
-             
               />}>
                     <Modal.Header>Upload Page</Modal.Header>
                     <Modal.Content image scrolling>
@@ -135,15 +112,7 @@ export default class Searching extends Component {
                     </Modal.Actions>
                      </Modal>
         
-                  }}
-
-
-
-
-
-
-
-              
+                  }}  
 
 
 
@@ -184,19 +153,9 @@ export default class Searching extends Component {
 
               </Menu.Menu>
 
-
-
-
             </Menu>
             <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
             </Header></Segment>
-
-
-
-
-
-
-
 
               <Segment.Group>
                 <Segment><Header>Search for Lighting Instruments</Header>
@@ -216,9 +175,7 @@ export default class Searching extends Component {
                   //onSearchChange = {this.handle_search}
                   />
                 </Segment>
-                
-
-
+            
                 <Segment><Header as='h4'>Frequent Instruments:</Header>
                 <Label as='a'>
                   Lighting instrumet B
