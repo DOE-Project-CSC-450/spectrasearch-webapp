@@ -5,10 +5,14 @@ import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
-import { Link } from 'react-router-dom'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 const source = [
@@ -49,6 +53,8 @@ const resultRenderer = ({ title }) => <Label content={title} />
 export default class Searching extends Component {
   constructor(props) {
     super(props);
+   
+    this.state = {routings: false}
     this.state = {search: '' }
     this.state = {lighting: []}
   }
@@ -61,7 +67,7 @@ export default class Searching extends Component {
   state = initialState
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
-    window.open("https://drive.google.com/file/d/1fYtEBMducLvZZNotV5a1P98mmXb5goV1/view")
+    this.setState({routings: true});
  }
 
   handleSearchChange = (e, { value }) => {
@@ -105,64 +111,10 @@ export default class Searching extends Component {
     const { lighting, isLoading, value, results } = this.state
     return (
       <Segment.Group>
-      <Menu inverted>
-      {/* <Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search */}
-              <Menu.Item
-                name='Home'
-                //active={activeItem === 'home'}
-                //onClick={this.handleItemClick}
-              />
-              <Modal trigger={<Menu.Item
-                name='Upload'
-                //active={activeItem === 'messages'}
-              />}>
-                    <Modal.Header>Upload Page</Modal.Header>
-                    <Modal.Content image scrolling>
-                    <Modal.Description>
-                    <Header>Complete Upload Form</Header>
-                    <Uploadpage />
-                    </Modal.Description>
-                 
-                    </Modal.Content>
-                    <Modal.Actions>
-        
-                    </Modal.Actions>
-                     </Modal>
-        
-                  }}  
 
-              <Menu.Item
-                name='Recent'
-                //active={activeItem === 'friends'}
-                //onClick={this.handleItemClick}
-              />
-              <Menu.Menu position='right'>
-                <Menu.Item>
-                  <Input icon='search' placeholder='Search...' />
-                </Menu.Item>
-                <Modal trigger={<Menu.Item
-                  name='login'
-                  //active={activeItem === 'logout'}
-                
-                />}>
-                    <Modal.Header>Login</Modal.Header>
-                    <Modal.Content image scrolling>
-                    <Modal.Description>
-                    <Header>Enter login Information</Header>
-                    <Login />
-                    </Modal.Description>
-                 
-                    </Modal.Content>
-                    <Modal.Actions>
-        
-                    </Modal.Actions>
-                     </Modal>
-        
-                  }}
 
-              </Menu.Menu>
 
-            </Menu>
+    
             <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
             </Header></Segment>
 
@@ -183,6 +135,8 @@ export default class Searching extends Component {
                   placeholder='Enter lighting search here' 
                   //onSearchChange = {this.handle_search}
                   />
+                {this.state.routings ?  <Router><Route path="/" component ={InstProf} />{lighting.map(this.renderLighting)} </Router> : null} 
+                  
                 </Segment>
             
                 <Segment><Header as='h4'>Frequent Instruments:</Header>
@@ -272,35 +226,25 @@ export default class Searching extends Component {
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
               </List.Item>
+
               <List.Item>
                 <List.Header as='a'>Type 5</List.Header>
                 <List.Description>
                   rounded <a>rounded page</a>.
                 </List.Description>
                 <List as='ul'>
-  <List.Item as='li'>
-  <Router>
-  <div>
-  <Link to="./uploadpage">Lighting page</Link>
-  <Route
-      path="./uploadpage"
-      component={<Uploadpage/>} 
-                />
-  </div>
-</Router>
-</List.Item>            
-                     
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
-              </List.Item>
-              </List>
+            </List>            
+        </List.Item>
+        </List>
+          
 
                  
 
-                <div> {lighting.map(this.renderLighting)}</div>
+               {/* <div>{lighting.map(this.renderLighting)}</div>  */}
         
             
             
@@ -311,5 +255,3 @@ export default class Searching extends Component {
   }
 }
   
-
- 
