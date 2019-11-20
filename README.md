@@ -2,7 +2,7 @@ Directions for connecting back end and front end with expresss and node.js **(NO
 
 1. Copy and paste sql code into phpmyadmin. This is the link: https://www.ampps.com/wiki/How_to_use_AMPPS. Let me know if you cant get database set up, I can just send you a copy of my database and we can do it that way. 
 
-1.5. if you have ammps, wamps, mamps, you have to look for a settings config file (for me it was the settings button next to ammps
+1.5. if you have ammps, wamps, mamps, you have to look for a settings config file (for me it was the settings button next to ammps). You need to comment out the line # innodb_force_recovery = 1  by putting a hash tag in front of it. save and restart mysql
 
 2. Clone the front end repo to your local device. Make sure you do a npm install, npm run build, and then npm start. 
 
