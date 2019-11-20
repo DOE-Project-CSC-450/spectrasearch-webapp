@@ -135,7 +135,7 @@ export default class Searching extends Component {
                   placeholder='Enter lighting search here' 
                   //onSearchChange = {this.handle_search}
                   />
-                {this.state.routings ?  <Router><Route path="/" component ={InstProf} />{lighting.map(this.renderLighting)} </Router> : null} 
+                {/* {this.state.routings ?  <Router><Route path="/" component ={InstProf} />{lighting.map(this.renderLighting)} </Router> : null}  */}
                   
                 </Segment>
             
@@ -164,12 +164,45 @@ export default class Searching extends Component {
               <Header as='h4'>Search via Lighting Type:</Header>
               <List horizontal>
               <List.Item>
-                <List.Header as='a'>Type 1</List.Header>
+                <List.Header as='a'>A-TYPE</List.Header>
                 <List.Description>
-                  omni light <a>omni page</a>.
+                  Lamp <a>Lamp page</a>.
                 </List.Description>
 
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
 
+              <List.Item>
+                <List.Header as='a'>DECORATIVE</List.Header>
+                <List.Description>
+                  Lamp and Luminaire <a>bright page</a>.
+                </List.Description>
+
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>Bullet</a></List.Item>
+                      <List.Item as='li'><a href='#'>Candle</a></List.Item>
+                      <List.Item as='li'><a href='#'>Flare</a></List.Item>
+                      <List.Item as='li'><a href='#'>Globe</a></List.Item>
+                      <List.Item as='li'><a href='#'>Integrated Chandelier</a></List.Item>
+                      <List.Item as='li'><a href='#'>Single Head Pendant</a></List.Item>
+                      <List.Item as='li'><a href='#'>Wall Sconce</a></List.Item>
+                      <List.Item as='li'><a href='#'>Lantern</a></List.Item>
+                      <List.Item as='li'><a href='#'>Cove Luminaire Products</a></List.Item>
+                </List>
+              </List.Item>
+
+
+              <List.Item>
+                <List.Header as='a'>DIRECTIONAL</List.Header>
+                <List.Description>
+                  Lamp and Luminaire <a>multi page</a>.
+                </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -181,42 +214,9 @@ export default class Searching extends Component {
 
               </List.Item>
               <List.Item>
-                <List.Header as='a'>Type 2</List.Header>
+                <List.Header as='a'>SMALL DIRECTIONAL</List.Header>
                 <List.Description>
-                  bright <a>bright page</a>.
-                </List.Description>
-
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
-
-
-              </List.Item>
-
-
-              <List.Item>
-                <List.Header as='a'>Type 3</List.Header>
-                <List.Description>
-                  multidirectional <a>multi page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
-
-
-              </List.Item>
-              <List.Item>
-                <List.Header as='a'>Type 4</List.Header>
-                <List.Description>
-                  lumincescent <a>lumincescent page</a>.
+                  Lamp <a>lumincescent page</a>.
                 </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -228,16 +228,140 @@ export default class Searching extends Component {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Type 5</List.Header>
+                <List.Header as='a'>DOWNLIGHTING</List.Header>
                 <List.Description>
-                  rounded <a>rounded page</a>.
+                  Lamp, Retrofit kit, and Luminaire <a>rounded page</a>.
                 </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>            
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+            
+
+        </List.Item>
+        <Divider/>
+
+        <List.Item>
+                <List.Header as='a'>Linear Fixture</List.Header>
+                <List.Description>
+                Lamp, Retrofit kit, and Luminaire <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+
+        <List.Item>
+                <List.Header as='a'>Low/High Bay</List.Header>
+                <List.Description>
+                  Lamp and Luminaire <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+
+        <List.Item>
+                <List.Header as='a'>Indoor Other</List.Header>
+                <List.Description>
+                  No Distinction <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Parking Lot</List.Header>
+                <List.Description>
+                  No Distinction <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Parking Garage</List.Header>
+                <List.Description>
+                  Lamp and Luminaire <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Street/Roadway</List.Header>
+                <List.Description>
+                  No Distinction <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Building/Exterior</List.Header>
+                <List.Description>
+                  No Distinction <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Outdoor Other</List.Header>
+                <List.Description>
+                  No Distinction <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
+        </List.Item>
+        <List.Item>
+                <List.Header as='a'>Connected</List.Header>
+                <List.Description>
+                  Lamp and Luminaire <a>rounded page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+            </List>         
         </List.Item>
         </List>
           
