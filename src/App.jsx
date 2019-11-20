@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Header, Label, Form, Checkbox, Divider } from 'semantic-ui-react';
 import Searching from './components/Search.jsx'
+import Login from './components/Login';
 
 
 

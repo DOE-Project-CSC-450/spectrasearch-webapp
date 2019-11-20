@@ -6,8 +6,7 @@ import { Button, Header, Form, Checkbox, Divider, Segment, Grid} from 'semantic-
 /* the login/signup page. **/
 
 //Options for gender selection (Form.select))
-const genderOptions = [
-    {key: 'd', text: 'Select your gender', value: 'default'}, 
+const genderOptions = [ 
     {key: 'm', text: 'Male', value: 'Male'},
     {key: 'f', text: 'Female', value: 'Female'},
     {key: 'o', text: 'Other', value: 'Other'},  
@@ -76,8 +75,8 @@ export default class Login extends Component {
                                 </Form.Group>
                                 
                                 <Header as = 'h4' color = 'teal' textAlign = 'left'> Gender </Header>
-                                <Form.Select options = {genderOptions} placeholder = 'Gender' />
-                                <Form.Checkbox label = 'I hereby agree to all conditions and terms.' />
+                                <Form.Select options = {genderOptions} placeholder = 'Select your gender' />
+                                <Form.Checkbox label = 'I hereby agree to all conditions and terms. (need to be updated)' />
                                 
                                 <Form.Group widths = 'equal'>
                                     <Form.Button size = 'large' primary>Sign Up</Form.Button>
