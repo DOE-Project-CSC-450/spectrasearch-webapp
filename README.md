@@ -1,6 +1,8 @@
-Directions for connecting back end and front end with expresss and node.js (note the current code in the frontend master still works with Spectra Search database (round 1). The code to work with round 2 database will be uploaded momentarily)
+Directions for connecting back end and front end with expresss and node.js **(NOTE SEE EXPRESS/NODE JS BRANCH FOR FULL EXPLANATION AND EXPORTED DATABASE YOU CAN COPY)
 
 1. Copy and paste sql code into phpmyadmin. This is the link: https://www.ampps.com/wiki/How_to_use_AMPPS. Let me know if you cant get database set up, I can just send you a copy of my database and we can do it that way. 
+
+1.5. if you have ammps, wamps, mamps, you have to look for a settings config file (for me it was the settings button next to ammps
 
 2. Clone the front end repo to your local device. Make sure you do a npm install, npm run build, and then npm start. 
 
@@ -16,7 +18,7 @@ Directions for connecting back end and front end with expresss and node.js (note
 5. We can grab the data and display it as well using axios (get, post) or ajax(fetch) calls. 
 https://www.w3schools.com/xml/ajax_intro.asp (ajax) for example
 
-**This readme is still in the works, more detail on how the code works with new database to be updated momentarily
+
 
 
 
