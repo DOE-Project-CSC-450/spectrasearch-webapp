@@ -1,3 +1,44 @@
+Directions for connecting back end and front end with expresss and node.js (note the current code in the frontend master still works with Spectra Search database (round 1). The code to work with round 2 database will be uploaded momentarily)
+
+1. Copy and paste sql code into phpmyadmin. This is the link: https://www.ampps.com/wiki/How_to_use_AMPPS. Let me know if you cant get database set up, I can just send you a copy of my database and we can do it that way. 
+
+2. Clone the front end repo to your local device. Make sure you do a npm install, npm run build, and then npm start. 
+
+3. Server.js file has most of the code related to connecting backend and front end. It uses express and node js.
+-I watched this video to help understand what node.js is: https://www.youtube.com/watch?v=TlB_eWDSMt4&t=4179s (feel free to watch on double speed).
+-Also this video mimics how I set up node.js in Server.js file of front end: https://www.youtube.com/watch?v=HPIjjFGYSJ4&t=115s&fbclid=IwAR2daqIIiajepOOvq9C46QG6UI3_acSTxpulBGbG9ifpR_oaJqNaL2KJhaI
+
+3. To run the local server for the json, **important step, go to command prompt and enter    node Server.js   it should run and say 'connected!' ...test this by hitting up http://localhost:4000/lighting  ..if there is something there it worked
+
+4. Anyone can feel free to try and test grabbing info and putting info into database by reading how to in these brief tutorials from w3schools: https://www.w3schools.com/sql/sql_select.asp
+-You will be able to see if it worked by hitting http://localhost:4000/lighting, which should output the json for a part of the database.
+
+5. We can grab the data and display it as well using axios (get, post) or ajax(fetch) calls. 
+https://www.w3schools.com/xml/ajax_intro.asp (ajax) for example
+
+**This readme is still in the works, more detail on how the code works with new database to be updated momentarily
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
