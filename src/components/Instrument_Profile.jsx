@@ -2,6 +2,11 @@ import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
 
+//import './App.css'
+import BarChart from './BarChart'
+
+import SpectaGraph from './spectragraph.html'
+
 const export_dropdown_options = [
     { text: '.eis', image: {src:'/'} },
     { text: '.txt', image: { src:'/'} },
