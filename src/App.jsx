@@ -16,10 +16,10 @@ function App() {
    
     <div className="App">
       <header className="App-header">
-        < InstProf />
+        < Searching />
         
         
- 
+
       </header>
     </div>
   );
