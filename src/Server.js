@@ -16,12 +16,12 @@ var ignore;
 con.connect(function(err){
   if(err) throw err;
   console.log("connected!");
-  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
+  /* sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
   ignore = "INSERT INTO `Spectral Distribution Fields` (SpectralQuantity) VALUES ('able')";
   con.query(ignore, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
-  });
+  }); */
 });
 
 app.use(cors());
@@ -40,7 +40,7 @@ app.get('/', (req, res) =>{
 })
  */
 app.get('/lighting', (req, res) => {
-  con.query('SELECT * FROM `Spectral Distribution Fields`', (err, results) => {
+  con.query('SELECT * FROM `Header Element Fields`', (err, results) => {
     if (err){
       return res.send(error);
     }

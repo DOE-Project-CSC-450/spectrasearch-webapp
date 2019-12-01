@@ -5,28 +5,37 @@ import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
+import { Link } from 'react-router-dom'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+var sResult = ''
+var manu = ''
+var desc = ''
+var docCreate = ''
+var Lab = ''
+var createDa = ''
+var reportNum = ''
 
 const source = [
   {
     "title": "Downlight Solid State Retrofit kits",
-    "description": "Model Number: RF408ICAT27W",
-    "image": "/downlight.PNG",
-    "price": "Maxlite Inc"
+    "manufacturer": "lala",
+    "Description": "well this is a light that i demosntrate dynamically",
+    "DocumentCreator": "Maxlite Inc",
+    "Labratory": "Labs INC",
+    "CreationDate": "05/2019",
+    "ReportNumber": "124323"
   },
   {
-    "title": "Rounded Solid State Lighting",
-    "description": "Model Number: EF407ICAT27T",
-    "image": "/special 2.PNG",
-    "price": "Lighting Incoorporated"
+    "title": "Face down light",
+    "manufacturer": "2 alalals",
+    "Description": "Another description that happens magically",
+    "DocumentCreator": "Dufensmirts inc",
+    "Labratory": "bayer",
+    "CreationDate": "06/2021",
+    "ReportNumber": "65743"
   },
   {
     "title": "Circular Enhaced Bulb",
@@ -53,10 +62,9 @@ const resultRenderer = ({ title }) => <Label content={title} />
 export default class Searching extends Component {
   constructor(props) {
     super(props);
-   
-    this.state = {routings: false}
     this.state = {search: '' }
     this.state = {lighting: []}
+    this.state = {ligtingInstClicked: false}
   }
   handle_search = (e) => {
     e.preventDefault();
@@ -65,9 +73,24 @@ export default class Searching extends Component {
     
   }
   state = initialState
+
+ 
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
-    this.setState({routings: true});
+    console.log("yo look here" + JSON.stringify(result.title));
+    console.log("and here" + JSON.stringify(result))
+    sResult = (result.title);
+    manu = (result.manufacturer)
+    desc = (result.Description)
+    docCreate = (result.DocumentCreator)
+    Lab = (result.Labratory)
+    createDa = (result.CreationDate)
+    reportNum = (result.ReportNumber)
+    this.setState({lightingInstClicked: true});
+    //open an insrtument page based on props
+    //pass instrument title manufactuerrer info and graphs and calculations
+    
+    
  }
 
   handleSearchChange = (e, { value }) => {
@@ -87,6 +110,7 @@ export default class Searching extends Component {
 
   handleItemClick = () =>{
     window.location.href = '';
+   
     alert("you clicked login");
   }
 
@@ -108,13 +132,76 @@ export default class Searching extends Component {
 
   renderLighting = ({Value}) => <div key={Value}>{Value}</div>
   render() {
-    const { lighting, isLoading, value, results } = this.state
+  
+    const { lighting, lightingInstClicked, isLoading, value, results } = this.state
+
+
     return (
       <Segment.Group>
+      <Menu inverted>
+     
+              <Menu.Item
+                name='Home'
+                //active={activeItem === 'home'}
+                //onClick={this.handleItemClick}
+              />
+              <Modal trigger={<Menu.Item
+                name='Upload'
+                //active={activeItem === 'messages'}
+              />}>
+                    <Modal.Header>Upload Page</Modal.Header>
+                    <Modal.Content image scrolling>
+                    <Modal.Description>
+                    <Header>Complete Upload Form</Header>
+                    <Uploadpage />
+                    </Modal.Description>
+                 
+                    </Modal.Content>
+                    <Modal.Actions>
+        
+                    </Modal.Actions>
+                     </Modal>
+        
+                  }}  
 
+              <Menu.Item
+                name='Recent'
+                //active={activeItem === 'friends'}
+                //onClick={this.handleItemClick}
+              />
+              <Menu.Menu position='right'>
+                <Menu.Item>
+                  <Input icon='search' placeholder='Search...' />
+                </Menu.Item>
+                <Modal trigger={<Menu.Item
+                  name='login'
+                  //active={activeItem === 'logout'}
+                
+                />}>
+                    <Modal.Header>Login</Modal.Header>
+                    <Modal.Content image scrolling>
+                    <Modal.Description>
+                    <Header>Enter login Information</Header>
+                    <Login />
+                    </Modal.Description>
+                 
+                    </Modal.Content>
+                    <Modal.Actions>
+        
+                    </Modal.Actions>
+                     </Modal>
+        
+                  }}
 
+              </Menu.Menu>
 
-    
+            </Menu>
+
+  {(this.state.lightingInstClicked)? <InstProf s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}/>: 
+            <span>
+
+{/* ------------------------------------------------------------------------------------------------------------------------------- */}
+
             <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
             </Header></Segment>
 
@@ -135,8 +222,6 @@ export default class Searching extends Component {
                   placeholder='Enter lighting search here' 
                   //onSearchChange = {this.handle_search}
                   />
-                {/* {this.state.routings ?  <Router><Route path="/" component ={InstProf} />{lighting.map(this.renderLighting)} </Router> : null}  */}
-                  
                 </Segment>
             
                 <Segment><Header as='h4'>Frequent Instruments:</Header>
@@ -164,45 +249,12 @@ export default class Searching extends Component {
               <Header as='h4'>Search via Lighting Type:</Header>
               <List horizontal>
               <List.Item>
-                <List.Header as='a'>A-TYPE</List.Header>
+                <List.Header as='a'>Type 1</List.Header>
                 <List.Description>
-                  Lamp <a>Lamp page</a>.
+                  omni light <a>omni page</a>.
                 </List.Description>
 
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
-              </List.Item>
 
-              <List.Item>
-                <List.Header as='a'>DECORATIVE</List.Header>
-                <List.Description>
-                  Lamp and Luminaire <a>bright page</a>.
-                </List.Description>
-
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>Bullet</a></List.Item>
-                      <List.Item as='li'><a href='#'>Candle</a></List.Item>
-                      <List.Item as='li'><a href='#'>Flare</a></List.Item>
-                      <List.Item as='li'><a href='#'>Globe</a></List.Item>
-                      <List.Item as='li'><a href='#'>Integrated Chandelier</a></List.Item>
-                      <List.Item as='li'><a href='#'>Single Head Pendant</a></List.Item>
-                      <List.Item as='li'><a href='#'>Wall Sconce</a></List.Item>
-                      <List.Item as='li'><a href='#'>Lantern</a></List.Item>
-                      <List.Item as='li'><a href='#'>Cove Luminaire Products</a></List.Item>
-                </List>
-              </List.Item>
-
-
-              <List.Item>
-                <List.Header as='a'>DIRECTIONAL</List.Header>
-                <List.Description>
-                  Lamp and Luminaire <a>multi page</a>.
-                </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -214,9 +266,42 @@ export default class Searching extends Component {
 
               </List.Item>
               <List.Item>
-                <List.Header as='a'>SMALL DIRECTIONAL</List.Header>
+                <List.Header as='a'>Type 2</List.Header>
                 <List.Description>
-                  Lamp <a>lumincescent page</a>.
+                  bright <a>bright page</a>.
+                </List.Description>
+
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+
+
+              </List.Item>
+
+
+              <List.Item>
+                <List.Header as='a'>Type 3</List.Header>
+                <List.Description>
+                  multidirectional <a>multi page</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+
+
+              </List.Item>
+              <List.Item>
+                <List.Header as='a'>Type 4</List.Header>
+                <List.Description>
+                  lumincescent <a>lumincescent page</a>.
                 </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -226,149 +311,37 @@ export default class Searching extends Component {
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
               </List.Item>
-
               <List.Item>
-                <List.Header as='a'>DOWNLIGHTING</List.Header>
+                <List.Header as='a'>Type 5</List.Header>
                 <List.Description>
-                  Lamp, Retrofit kit, and Luminaire <a>rounded page</a>.
+                  rounded <a>rounded page</a>.
                 </List.Description>
                 <List as='ul'>
+  <List.Item as='li'>
+  <Router>
+  <div>
+  <Link to="./uploadpage">Lighting page</Link>
+  <Route
+      path="./uploadpage"
+      component={<Uploadpage/>} 
+                />
+  </div>
+</Router>
+</List.Item>            
+                     
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-            
-
-        </List.Item>
-        <Divider/>
-
-        <List.Item>
-                <List.Header as='a'>Linear Fixture</List.Header>
-                <List.Description>
-                Lamp, Retrofit kit, and Luminaire <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-
-        <List.Item>
-                <List.Header as='a'>Low/High Bay</List.Header>
-                <List.Description>
-                  Lamp and Luminaire <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-
-        <List.Item>
-                <List.Header as='a'>Indoor Other</List.Header>
-                <List.Description>
-                  No Distinction <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Parking Lot</List.Header>
-                <List.Description>
-                  No Distinction <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Parking Garage</List.Header>
-                <List.Description>
-                  Lamp and Luminaire <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Street/Roadway</List.Header>
-                <List.Description>
-                  No Distinction <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Building/Exterior</List.Header>
-                <List.Description>
-                  No Distinction <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Outdoor Other</List.Header>
-                <List.Description>
-                  No Distinction <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        <List.Item>
-                <List.Header as='a'>Connected</List.Header>
-                <List.Description>
-                  Lamp and Luminaire <a>rounded page</a>.
-                </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-            </List>         
-        </List.Item>
-        </List>
-          
+                </List>
+              </List.Item>
+              </List>
 
                  
 
-               {/* <div>{lighting.map(this.renderLighting)}</div>  */}
+                {/* <div> {lighting.map(this.renderLighting)}</div> */}
+                </span> } 
+
         
             
             
@@ -379,3 +352,5 @@ export default class Searching extends Component {
   }
 }
   
+
+ 
