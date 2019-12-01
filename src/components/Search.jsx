@@ -61,7 +61,10 @@ export default class Searching extends Component {
   state = initialState
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
-    window.open("https://drive.google.com/file/d/1fYtEBMducLvZZNotV5a1P98mmXb5goV1/view")
+    console.log("yo look here" + JSON.stringify(result.title));
+    //so based on what they select
+    //open a new page with that as the title of the instrument page
+    
  }
 
   handleSearchChange = (e, { value }) => {
@@ -81,6 +84,7 @@ export default class Searching extends Component {
 
   handleItemClick = () =>{
     window.location.href = '';
+   
     alert("you clicked login");
   }
 

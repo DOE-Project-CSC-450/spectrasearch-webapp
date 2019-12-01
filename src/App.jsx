@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Header, Label, Form, Checkbox, Divider } from 'semantic-ui-react';
 import Searching from './components/Search.jsx'
-
+import InstProf from './components/Instrument_Profile'
 
 
 
@@ -16,7 +16,7 @@ function App() {
    
     <div className="App">
       <header className="App-header">
-        <Searching />
+        < InstProf />
         
         
  

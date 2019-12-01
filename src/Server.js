@@ -1,9 +1,6 @@
-
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
-
 
 
 var mysql = require("mysql");
@@ -12,13 +9,16 @@ var con = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "mysql",
-  database: "SpectraSearch"
+  database: "Round2"
 });
-
+var sql2;
+var ignore;
 con.connect(function(err){
   if(err) throw err;
   console.log("connected!");
-  con.query("SELECT * FROM SpectralQuantity", function (err, result, fields) {
+  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
+  ignore = "INSERT INTO `Spectral Distribution Fields` (SpectralQuantity) VALUES ('able')";
+  con.query(ignore, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
@@ -40,7 +40,7 @@ app.get('/', (req, res) =>{
 })
  */
 app.get('/lighting', (req, res) => {
-  con.query("SELECT * FROM SpectralQuantity", (err, results) => {
+  con.query('SELECT * FROM `Spectral Distribution Fields`', (err, results) => {
     if (err){
       return res.send(error);
     }
@@ -50,7 +50,7 @@ app.get('/lighting', (req, res) => {
       })
     }
   });
-})
+}) 
 
 
 
