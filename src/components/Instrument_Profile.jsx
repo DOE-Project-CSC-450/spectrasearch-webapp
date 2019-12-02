@@ -13,15 +13,15 @@ export default class InstProf extends Component {
     render () {
         return (
             <Segment>
-                <Header size='huge'>LED Bulb</Header>
+                <Header size='huge'>{this.props.s1}</Header>
                 <Header size='medium'>Catalog #: 902398378</Header>  
                 <Grid>
                     <Grid.Row columns={2}>
 
                         <Grid.Column>
                             <Header size='medium'>Basic Information</Header>
-                            <p> Manufacturer: Lighting Co.</p>
-                            <p> Description: This is a great lightbulb to use everyday. </p>
+                             <p> Manufacturer: {this.props.s2}</p>
+                            <p> Description: {this.props.s3} </p>
                         </Grid.Column>
 
                         <Grid.Column>
@@ -31,10 +31,10 @@ export default class InstProf extends Component {
                             />
 
                             <Header size='medium'>Creation Information</Header>
-                            <p> Document Creator: John Smith</p>
-                            <p> Labratory: Lighting Lab LLC </p>
-                            <p> Creation Date: Sept 2006 </p>
-                            <p> Report Number: 0283 </p>
+                            <p> Document Creator: {this.props.s4}</p>
+                            <p> Labratory: {this.props.s5} </p>
+                            <p> Creation Date: {this.props.s6} </p>
+                            <p> Report Number: {this.props.s7} </p>
 
                         </Grid.Column>
                     </Grid.Row>

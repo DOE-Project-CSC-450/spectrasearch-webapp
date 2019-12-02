@@ -10,25 +10,42 @@ import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid
 import { uptime } from 'os';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+var sResult = ''
+var manu = ''
+var desc = ''
+var docCreate = ''
+var Lab = ''
+var createDa = ''
+var reportNum = ''
 
-const source = [
+
+var source = [
   {
     "title": "Downlight Solid State Retrofit kits",
-    "description": "Model Number: RF408ICAT27W",
-    "image": "/downlight.PNG",
-    "price": "Maxlite Inc"
+    "manufacturer": "lala",
+    "Description": "well this is a light that i demosntrate dynamically",
+    "DocumentCreator": "Maxlite Inc",
+    "Labratory": "Labs INC",
+    "CreationDate": "05/2019",
+    "ReportNumber": "124323"
   },
   {
-    "title": "Rounded Solid State Lighting",
-    "description": "Model Number: EF407ICAT27T",
-    "image": "/special 2.PNG",
-    "price": "Lighting Incoorporated"
+    "title": "Face down light",
+    "manufacturer": "2 alalals",
+    "Description": "Another description that happens magically",
+    "DocumentCreator": "Dufensmirts inc",
+    "Labratory": "bayer",
+    "CreationDate": "06/2021",
+    "ReportNumber": "65743"
   },
   {
-    "title": "Circular Enhaced Bulb",
-    "description": "Model Number: RFE07ICAT27S",
-    "image": "/special 2.PNG",
-    "price": "Fixed Inc."
+    "title": 'temp',
+    "manufacturer": "2 alalals",
+    "Description": "Another description that happens magically",
+    "DocumentCreator": "Dufensmirts inc",
+    "Labratory": "bayer",
+    "CreationDate": "06/2021",
+    "ReportNumber": "65743"
   },
   {
     "title": "Outdoor Parking Bulb",
@@ -43,14 +60,17 @@ const source = [
     "price": "Exato"
   }
 ]
-const initialState = { isLoading: false, results: [], value: '' }
+const initialState = { serverState: 'temp', isLoading: false, results: [], value: '' }
 const resultRenderer = ({ title }) => <Label content={title} />
 
 export default class Searching extends Component {
   constructor(props) {
     super(props);
+    this.state = {serverName: 'temp'}
     this.state = {search: '' }
     this.state = {lighting: []}
+    this.state = {ligtingInstClicked: false}
+    
   }
   handle_search = (e) => {
     e.preventDefault();
@@ -59,11 +79,23 @@ export default class Searching extends Component {
     
   }
   state = initialState
+
+
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
     console.log("yo look here" + JSON.stringify(result.title));
-    //so based on what they select
-    //open a new page with that as the title of the instrument page
+    console.log("and here" + JSON.stringify(result))
+    sResult = (result.title);
+    manu = (result.manufacturer)
+    desc = (result.Description)
+    docCreate = (result.DocumentCreator)
+    Lab = (result.Labratory)
+    createDa = (result.CreationDate)
+    reportNum = (result.ReportNumber)
+    this.setState({lightingInstClicked: true});
+    //open an insrtument page based on props
+    //pass instrument title manufactuerrer info and graphs and calculations
+    
     
  }
 
@@ -95,22 +127,34 @@ export default class Searching extends Component {
 
   componentDidMount(){
     this.getProducts();
+    
+    
   }
 
   getProducts = _ =>{
     fetch('http://localhost:4000/lighting')
     .then(response => response.json())
-    .then(response => this.setState({lighting: response.data}))
+    .then(response => this.setState({lighting: response.data, serverName:Object.values(response.data)[0].Name}))
       .catch(err => console.error(err))
+      
   }
+  
+creator = this.state.serverName
 
-  renderLighting = ({Value}) => <div key={Value}>{Value}</div>
+  
+  
   render() {
-    const { lighting, isLoading, value, results } = this.state
+    var { lighting, lightingInstClicked, serverName, isLoading, value, results } = this.state
+    
+    
+   
+
+    
+    
     return (
       <Segment.Group>
       <Menu inverted>
-      {/* <Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search */}
+     
               <Menu.Item
                 name='Home'
                 //active={activeItem === 'home'}
@@ -167,6 +211,12 @@ export default class Searching extends Component {
               </Menu.Menu>
 
             </Menu>
+
+  {(this.state.lightingInstClicked)? <InstProf s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}/>: 
+            <span>
+
+{/* ------------------------------------------------------------------------------------------------------------------------------- */}
+
             <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
             </Header></Segment>
 
@@ -302,9 +352,17 @@ export default class Searching extends Component {
               </List.Item>
               </List>
 
-                 
+              
+             
+              
+            
+              
 
-                <div> {lighting.map(this.renderLighting)}</div>
+
+
+  
+                </span> } 
+
         
             
             
