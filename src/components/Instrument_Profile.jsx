@@ -2,10 +2,18 @@ import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
 
-//import './App.css'
-import BarChart from './BarChart'
+import SpectaGraph from 'spectragraph'
 
-import SpectaGraph from './spectragraph.html'
+import rd3 from 'react-d3-library';
+import node from 'd3file';
+const RD3Component = rd3.Component;
+
+//const rd3 = require('react-d3-library');
+//const RD3Component = rd3.Component;
+
+
+//import './App.css'
+//import BarChart from './BarChart'
 
 const export_dropdown_options = [
     { text: '.eis', image: {src:'/'} },
@@ -13,6 +21,20 @@ const export_dropdown_options = [
     { text: '.xls', image: { src:'/'} },
 ] //end dropdown options
 
+
+
+
+class my_Specta_Graph extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {d3: ''}
+    }
+  
+    componentDidMount() {
+      this.setState({d3: node});
+    }
+} 
 
 export default class InstProf extends Component {
     render () {
@@ -65,6 +87,7 @@ export default class InstProf extends Component {
                         <Grid.Column>
                             <Header size='medium'>Calculations</Header>
                             <p> Insert Calculuations here. Calculations. </p>
+                            < SpectaGraph />
                         </Grid.Column>
 
                         <Grid.Column>
