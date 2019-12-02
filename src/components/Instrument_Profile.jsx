@@ -1,16 +1,35 @@
 import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
+import jsPDF from 'jspdf';
+
 
 const export_dropdown_options = [
-    { text: '.eis', image: {src:'/temp_icon.png'} },
-    { text: '.txt', image: { src:'/temp_icon.png'} },
-    { text: '.xls', image: { src:'/temp_icon.png'} },
+    { value: 'eis', text: '.eis', image: { src:'/temp_icon.png'} },
+    { value: 'txt', text: '.txt', image: { src:'/temp_icon.png'} },
+    { value: 'xls', text: '.xls', image: { src:'/temp_icon.png'} },
+    { value: 'pdf', text: '.pdf', image: { src:'/temp_icon.png'} },
 ] //end dropdown options
 
 
 export default class InstProf extends Component {
+
+    constructor(props){
+        super(props) 
+        this.state = {
+        }      
+    }
+
+    jsPdfGenerator = () => {
+        var doc = new jsPDF('p','pt');
+        doc.text(20,20,'default text');
+        doc.setFont('courier');
+        doc.setFontType('normal');
+        doc.text(20,30,'this is default text with courier font')
+        doc.save('instrumentPage.pdf');
+    }
     render () {
+
         return (
             <Segment>
                 <Header size='huge'>LED Bulb</Header>
@@ -25,10 +44,7 @@ export default class InstProf extends Component {
                         </Grid.Column>
 
                         <Grid.Column>
-                            <Dropdown
-                                placeholder= "Export As"
-                                options={export_dropdown_options}
-                            />
+                            <button onClick = {this.jsPdfGenerator}> Export as PDF</button>
 
                             <Header size='medium'>Creation Information</Header>
                             <p> Document Creator: John Smith</p>
