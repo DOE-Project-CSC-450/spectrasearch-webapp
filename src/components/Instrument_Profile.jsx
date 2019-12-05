@@ -22,10 +22,18 @@ export default class InstProf extends Component {
 
     jsPdfGenerator = () => {
         var doc = new jsPDF('p','pt');
-        doc.text(20,20,'default text');
-        doc.setFont('courier');
+        var imgData = 'https://scontent-iad3-1.xx.fbcdn.net/v/t1.15752-0/p280x280/78349443_2349797681950533_449888186349387776_n.png?_nc_cat=100&_nc_ohc=IGHwjD24hbQAQkuydUfon9UF6HO7ZSZfD5DfKDZJE8tCpULWYWIUAT7bQ&_nc_ht=scontent-iad3-1.xx&oh=d65e09e98e6c905eabc75c7f35e28099&oe=5E816F42'
+        doc.text(20,30,'LED Bulb');
+        doc.text(20,50,'Catalog #: 902398378');
+        doc.text(20,70,'Manufacturer: Lighting Co.');
+        doc.text(20,90,'Description: This is a great lightbulb to use everyday.');
+        doc.text(20,110,'Spectral Information');
+        doc.text(20,130,'Spectral Quantity: transmittance');
+        doc.text(20,150,'Reflection Geometry: di:8');
+        //oc.addImage(imgData,'JPEG',20, 170);
+        doc.setFont('Garamond');
         doc.setFontType('normal');
-        doc.text(20,30,'this is default text with courier font')
+        //doc.text(20,60,'this is default text with courier font')
         doc.save('instrumentPage.pdf');
     }
     render () {
