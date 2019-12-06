@@ -4,9 +4,9 @@ import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react';
 
 import SpectaGraph from 'spectragraph'
 
-import rd3 from 'react-d3-library';
-import node from 'd3file';
-const RD3Component = rd3.Component;
+//import rd3 from 'react-d3-library';
+//import node from 'd3file';
+//const RD3Component = rd3.Component;
 
 //const rd3 = require('react-d3-library');
 //const RD3Component = rd3.Component;
@@ -24,7 +24,7 @@ const export_dropdown_options = [
 
 
 
-class my_Specta_Graph extends React.Component {
+/*class my_Specta_Graph extends React.Component {
 
     constructor(props) {
       super(props);
@@ -34,7 +34,7 @@ class my_Specta_Graph extends React.Component {
     componentDidMount() {
       this.setState({d3: node});
     }
-} 
+} */ 
 
 export default class InstProf extends Component {
     render () {
