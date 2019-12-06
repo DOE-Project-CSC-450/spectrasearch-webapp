@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+var hold=[];
+var sourceOption;
+var source;
 var sResult = ''
 var manu = ''
 var desc = ''
@@ -17,54 +19,21 @@ var docCreate = ''
 var Lab = ''
 var createDa = ''
 var reportNum = ''
+var z;
 
-const source = [
-  {
-    "title": "Downlight Solid State Retrofit kits",
-    "manufacturer": "lala",
-    "Description": "well this is a light that i demosntrate dynamically",
-    "DocumentCreator": "Maxlite Inc",
-    "Labratory": "Labs INC",
-    "CreationDate": "05/2019",
-    "ReportNumber": "124323"
-  },
-  {
-    "title": "Face down light",
-    "manufacturer": "2 alalals",
-    "Description": "Another description that happens magically",
-    "DocumentCreator": "Dufensmirts inc",
-    "Labratory": "bayer",
-    "CreationDate": "06/2021",
-    "ReportNumber": "65743"
-  },
-  {
-    "title": "Circular Enhaced Bulb",
-    "description": "Model Number: RFE07ICAT27S",
-    "image": "/special 2.PNG",
-    "price": "Fixed Inc."
-  },
-  {
-    "title": "Outdoor Parking Bulb",
-    "description": "Model Number: TYE07IRAT27Y",
-    "image": "/special 2.PNG",
-    "price": "Lendly"
-  },
-  {
-    "title": "Preding Bulb",
-    "description": "Model Number: UYE07IRAT27Y",
-    "image": "/special 2.PNG",
-    "price": "Exato"
-  }
-]
-const initialState = { isLoading: false, results: [], value: '' }
+
+const initialState = { serverName: 'temp', fastArray: [], isLoading: false, results: [], value: '' }
 const resultRenderer = ({ title }) => <Label content={title} />
 
 export default class Searching extends Component {
   constructor(props) {
     super(props);
+    this.state = {serverName: 'temp'}
     this.state = {search: '' }
     this.state = {lighting: []}
     this.state = {ligtingInstClicked: false}
+    this.state = {fastArray: []}
+    
   }
   handle_search = (e) => {
     e.preventDefault();
@@ -74,7 +43,15 @@ export default class Searching extends Component {
   }
   state = initialState
 
+  componentDidMount(){
+    this.getProducts();
+  }
+
+  
+
  
+ 
+
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
     console.log("yo look here" + JSON.stringify(result.title));
@@ -87,10 +64,9 @@ export default class Searching extends Component {
     createDa = (result.CreationDate)
     reportNum = (result.ReportNumber)
     this.setState({lightingInstClicked: true});
+    console.log("everybody 123: ", this.state.serverName.length);
     //open an insrtument page based on props
     //pass instrument title manufactuerrer info and graphs and calculations
-    
-    
  }
 
   handleSearchChange = (e, { value }) => {
@@ -119,23 +95,42 @@ export default class Searching extends Component {
   }
 
 
-  componentDidMount(){
-    this.getProducts();
-  }
+ 
 
   getProducts = _ =>{
     fetch('http://localhost:4000/lighting')
     .then(response => response.json())
-    .then(response => this.setState({lighting: response.data}))
+    .then(_ = (response) =>{ 
+      this.setState({lighting: response.data, serverName:Object.values(response.data)})
+      for (z = 0; z < this.state.serverName.length; z++){
+      sourceOption = 
+      { 
+      "title": this.state.serverName[z].Name,
+      "manufacturer": this.state.serverName[z].Manufacturer,
+      "Description": this.state.serverName[z].Description,
+      "DocumentCreator": this.state.serverName[z].DocumentCreator,
+      "Labratory": this.state.serverName[z].Laboratory,
+      "CreationDate": this.state.serverName[z].ReportDate,
+      "ReportNumber": this.state.serverName[z].ReportNumber 
+      }
+      hold.push(sourceOption);
+      this.setState({fastArray: hold});
+    }
+    console.log("marry", source);    
+    })
       .catch(err => console.error(err))
   }
-
-  renderLighting = ({Value}) => <div key={Value}>{Value}</div>
-  render() {
   
-    const { lighting, lightingInstClicked, isLoading, value, results } = this.state
+creator = this.state.serverName
 
 
+
+  
+  render() {
+    //this.componentDidMount();
+    source = this.state.fastArray
+    var { lighting, lightingInstClicked, serverName, isLoading, value, results } = this.state
+    
     return (
       <Segment.Group>
       <Menu inverted>
@@ -337,9 +332,15 @@ export default class Searching extends Component {
               </List.Item>
               </List>
 
-                 
+              
+             
+              
+            
+              
 
-                {/* <div> {lighting.map(this.renderLighting)}</div> */}
+
+
+  
                 </span> } 
 
         

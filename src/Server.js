@@ -16,12 +16,12 @@ var ignore;
 con.connect(function(err){
   if(err) throw err;
   console.log("connected!");
-  /* sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
-  ignore = "INSERT INTO `Spectral Distribution Fields` (SpectralQuantity) VALUES ('able')";
+  /*  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
+  ignore = "DELETE FROM `Spectral Distribution Fields` WHERE 'SpectralQuantity' = 'able'";
   con.query(ignore, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
-  }); */
+  });  */
 });
 
 app.use(cors());
