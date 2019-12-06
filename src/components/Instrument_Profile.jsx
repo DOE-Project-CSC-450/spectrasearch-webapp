@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
 
-import SpectaGraph from 'spectragraph'
+//import SpectaGraph from 'spectragraph'
 
 //import rd3 from 'react-d3-library';
 //import node from 'd3file';
@@ -87,7 +87,7 @@ export default class InstProf extends Component {
                         <Grid.Column>
                             <Header size='medium'>Calculations</Header>
                             <p> Insert Calculuations here. Calculations. </p>
-                            < SpectaGraph />
+                            {/* < SpectaGraph /> */}
                         </Grid.Column>
 
                         <Grid.Column>
