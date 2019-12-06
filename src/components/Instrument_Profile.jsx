@@ -1,6 +1,8 @@
 import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
+import Viz from './Viz.js';
+
 
 //import SpectaGraph from 'spectragraph'
 
@@ -14,6 +16,7 @@ import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react';
 
 //import './App.css'
 //import BarChart from './BarChart'
+
 
 const export_dropdown_options = [
     { text: '.eis', image: {src:'/'} },
@@ -37,6 +40,26 @@ const export_dropdown_options = [
 } */ 
 
 export default class InstProf extends Component {
+    state = {
+        color: "", 
+        width: "", 
+        toDraw: [], 
+      }
+  
+    onSubmit = (evt) => {
+        evt.preventDefault(); 
+        const newShape = {
+           color: this.state.color, 
+           width: this.state.width,
+        }
+      this.setState({ toDraw: [...this.state.toDraw, newShape]})
+    } 
+  
+    onChange = (evt) => {
+        this.setState({[evt.target.name]: evt.target.value})
+    }
+    
+    
     render () {
         return (
             <Segment>
@@ -87,7 +110,10 @@ export default class InstProf extends Component {
                         <Grid.Column>
                             <Header size='medium'>Calculations</Header>
                             <p> Insert Calculuations here. Calculations. </p>
-                            {/* < SpectaGraph /> */}
+                            <div className="Viz" />
+                            <p>hello!!!</p>
+                            { this.state.toDraw.length ? <Viz shapes={this.state.toDraw}/> : null}
+
                         </Grid.Column>
 
                         <Grid.Column>
