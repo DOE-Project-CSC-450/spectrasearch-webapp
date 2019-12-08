@@ -64,6 +64,7 @@ function adder(n){
   }
 }
 
+//sets domains: 
 y.domain([0, ((d3.max(data)+adder(d3.max(data))).toFixed(2))]); 
 x.domain([350,800]); 
 
