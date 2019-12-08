@@ -1,7 +1,10 @@
 import React from 'react';
 import { Component } from 'react'
 import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
-import Viz from './Viz.js';
+//import Viz from './Viz.js';
+import Spectragraph2 from './Spectragraph2.js';
+
+console.log('test!!!');
 
 
 //import SpectaGraph from 'spectragraph'
@@ -110,9 +113,10 @@ export default class InstProf extends Component {
                         <Grid.Column>
                             <Header size='medium'>Calculations</Header>
                             <p> Insert Calculuations here. Calculations. </p>
-                            <div className="Viz" />
-                            <p>hello!!!</p>
-                            { this.state.toDraw.length ? <Viz shapes={this.state.toDraw}/> : null}
+                            {/* <div className="Viz" /> */}
+                            <p>hello!!!!</p>
+                            <div className="test"></div>
+                            <Spectragraph2 /> 
 
                         </Grid.Column>
 
