@@ -169,12 +169,7 @@ export default class Uploadpage extends Component {
             type="text"
             onChange={_=(event)=>{this.setState({technology: event.target.value});}}
           />
-          <label>Is the Bandwidth corrected</label>
-          <select class="ui dropdown" onChange={this.bandConnHandle_change}>
-            <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
+         
           </div>
         </Form>
 

@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 var mysql = require("mysql");
 var con = mysql.createConnection({
@@ -39,16 +40,25 @@ app.get('/', (req, res) =>{
   //to insert things into the database not done
 })
  */
-app.post('/lighting', (req, result) => {
+ app.post('/lighting', (req, result) => {
   result.set('Access-Control-Allow-Origin', '*');
-  const {SpectraSearchID, Name, manufacturer, catalogNumber, description, docCreat, uniqueIdent, measureEquip, labratory, reportNum, reportData, comments, application, type, technology} = req.body;
-  var user = req.body;
-  con.query('INSERT INTO `Header Element Fields`(`SpectraSearchID`, `Name`, `Manufacturer`, `CatalogNumber`, `Description`, `DocumentCreator`, `UniqueIdentifier`, `MeasurementEquipment`, `Laboratory`, `ReportNumber`, `ReportDate`, `Comments`, `Application`, `Type`, `Technology`) VALUES ?', user);
-  });
+  console.log("this?", typeof(req), "and", typeof(req.body));
   
+  const body = (req.body);
+  console.log("do we make it here tho")
+  console.log("show me", body.SpectraSearchID)
+  //const reqs = {SpectraSearchID, Name, manufacturer, catalogNumber, description, docCreat, uniqueIdent, measureEquip, labratory, reportNum, reportData, comments, application, type, technology}
+  var practice = 'INSERT INTO `Header Element Fields`(`SpectraSearchID`, `Name`, `Manufacturer`, `CatalogNumber`, `Description`, `DocumentCreator`, `UniqueIdentifier`, `MeasurementEquipment`, `Laboratory`, `ReportNumber`, `ReportDate`, `Comments`, `Application`, `Type`, `Technology`) VALUES ('+body.SpectraSearchID+', "'+body.Name+'", "'+body.manufacturer+'", "'+body.catalogNumber+'", "'+body.description+'", "'+body.docCreat+'", "'+body.uniqueIdent+'", "'+body.measureEquip+'", "'+body.labratory+'", "'+body.reportNum+'", "'+body.ReportDate+'", "'+body.Comments+'", "'+body.Application+'", "'+body.Type+'", "'+body.Technology+'")'
+  con.query(practice, function(err, result) {
+    if (err) throw err;
+    console.log("inserted " + result);
+  });
+  result.send({ message: 'Success'})
+  });
+   
 
 
-/* app.get('/lighting', (req, res) => {
+app.get('/lighting', (req, res) => {
   con.query('SELECT * FROM `Header Element Fields`', (err, results) => {
     if (err){
       return res.send(error);
@@ -59,7 +69,7 @@ app.post('/lighting', (req, result) => {
       })
     }
   });
-})  */
+})  
 
 
 
