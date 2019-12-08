@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react'
-import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
+import { Header, Menu, Segment, Image, Grid, Dropdown } from 'semantic-ui-react'; 
 
 const export_dropdown_options = [
     { text: '.eis', image: {src:'/temp_icon.png'} },
@@ -13,23 +13,25 @@ export default class InstProf extends Component {
     render () {
         return (
             <Segment>
+                 
+                
                 <Header size='huge'>{this.props.s1}</Header>
-                <Header size='medium'>Catalog #: 902398378</Header>  
+                <Header size='medium'>Catalog Number: {this.props.s0}</Header>  
+                <Menu compact id="export">
+                    <Dropdown text='Export As' options={export_dropdown_options} simple item />
+                </Menu>
+                
+
                 <Grid>
                     <Grid.Row columns={2}>
 
-                        <Grid.Column>
+                        <Grid.Column width={8} className="info">
                             <Header size='medium'>Basic Information</Header>
-                             <p> Manufacturer: {this.props.s2}</p>
+                            <p> Manufacturer: {this.props.s2}</p>
                             <p> Description: {this.props.s3} </p>
                         </Grid.Column>
 
-                        <Grid.Column>
-                            <Dropdown
-                                placeholder= "Export As"
-                                options={export_dropdown_options}
-                            />
-
+                        <Grid.Column width={8} className="info">
                             <Header size='medium'>Creation Information</Header>
                             <p> Document Creator: {this.props.s4}</p>
                             <p> Labratory: {this.props.s5} </p>

@@ -39,7 +39,16 @@ app.get('/', (req, res) =>{
   //to insert things into the database not done
 })
  */
-app.get('/lighting', (req, res) => {
+app.post('/lighting', (req, result) => {
+  result.set('Access-Control-Allow-Origin', '*');
+  const {SpectraSearchID, Name, manufacturer, catalogNumber, description, docCreat, uniqueIdent, measureEquip, labratory, reportNum, reportData, comments, application, type, technology} = req.body;
+  var user = req.body;
+  con.query('INSERT INTO `Header Element Fields`(`SpectraSearchID`, `Name`, `Manufacturer`, `CatalogNumber`, `Description`, `DocumentCreator`, `UniqueIdentifier`, `MeasurementEquipment`, `Laboratory`, `ReportNumber`, `ReportDate`, `Comments`, `Application`, `Type`, `Technology`) VALUES ?', user);
+  });
+  
+
+
+/* app.get('/lighting', (req, res) => {
   con.query('SELECT * FROM `Header Element Fields`', (err, results) => {
     if (err){
       return res.send(error);
@@ -50,7 +59,7 @@ app.get('/lighting', (req, res) => {
       })
     }
   });
-}) 
+})  */
 
 
 
