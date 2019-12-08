@@ -5,11 +5,16 @@ import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
-import { Link } from 'react-router-dom'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { thisTypeAnnotation } from '@babel/types';
+import TopMenu from './TopMenu'
+import {Link} from 'react-router-dom';
+import App from '../App'
+var w=0;
 var hold=[];
+var holding = '';
 var sourceOption;
 var source;
 var sResult = ''
@@ -19,39 +24,40 @@ var docCreate = ''
 var Lab = ''
 var createDa = ''
 var reportNum = ''
+var catNum = ''
+var spect ='';
 var z;
 
 
-const initialState = { serverName: 'temp', fastArray: [], isLoading: false, results: [], value: '' }
+const initialState = { activeItem: 'home', serverName: 'temp', fastArray: [], isLoading: false, results: [], value: '', there: false }
 const resultRenderer = ({ title }) => <Label content={title} />
 
 export default class Searching extends Component {
   constructor(props) {
     super(props);
+    this.state = {activeItem: ''}
     this.state = {serverName: 'temp'}
     this.state = {search: '' }
     this.state = {lighting: []}
     this.state = {ligtingInstClicked: false}
     this.state = {fastArray: []}
-    
+    this.state = {there: false}
   }
+ 
+
+
   handle_search = (e) => {
+    
     e.preventDefault();
     this.setState({search: e.target.value});
     console.log(this.state.search);
-    
   }
   state = initialState
 
   componentDidMount(){
     this.getProducts();
   }
-
   
-
- 
- 
-
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
     console.log("yo look here" + JSON.stringify(result.title));
@@ -63,13 +69,19 @@ export default class Searching extends Component {
     Lab = (result.Labratory)
     createDa = (result.CreationDate)
     reportNum = (result.ReportNumber)
+    catNum = (result.CatalogNumber)
+    spect = (result.SpectraSearchID)
     this.setState({lightingInstClicked: true});
+    
+    
+    
     console.log("everybody 123: ", this.state.serverName.length);
     //open an insrtument page based on props
     //pass instrument title manufactuerrer info and graphs and calculations
  }
 
   handleSearchChange = (e, { value }) => {
+    document.getElementById("pic").classList.add("playing");
     this.setState({ isLoading: true, value })
     setTimeout(() => {
       if (this.state.value.length < 1) return this.setState(initialState)
@@ -81,22 +93,18 @@ export default class Searching extends Component {
         isLoading: false,
         results: _.filter(source, isMatch),
       })
-    }, 300)
+    }, 2000)
   }
 
   handleItemClick = () =>{
     window.location.href = '';
-   
     alert("you clicked login");
   }
 
   handleUploadClick = () =>{
     window.open("uploadpage.jsx")
   }
-
-
- 
-
+holding = '/instrument' + spect;
   getProducts = _ =>{
     fetch('http://localhost:4000/lighting')
     .then(response => response.json())
@@ -111,11 +119,16 @@ export default class Searching extends Component {
       "DocumentCreator": this.state.serverName[z].DocumentCreator,
       "Labratory": this.state.serverName[z].Laboratory,
       "CreationDate": this.state.serverName[z].ReportDate,
-      "ReportNumber": this.state.serverName[z].ReportNumber 
+      "ReportNumber": this.state.serverName[z].ReportNumber, 
+      "CatalogNumber": this.state.serverName[z].CatalogNumber,
+      "SpectraSearchID": this.state.serverName[z].SpectraSearchID
       }
+       if (hold.length < this.state.serverName.length){
       hold.push(sourceOption);
-      this.setState({fastArray: hold});
+       }
     }
+
+    this.setState({fastArray: hold});
     console.log("marry", source);    
     })
       .catch(err => console.error(err))
@@ -124,81 +137,34 @@ export default class Searching extends Component {
 creator = this.state.serverName
 
 
-
+sendData = () => {
+  alert("hel")
+  this.props.parentCallback("Hey Popsie, How’s it going?");
+}
   
+
+
   render() {
+   
+    holding = '/instrument' + spect;
     //this.componentDidMount();
+    const { activeItem } = this.state
+    
     source = this.state.fastArray
     var { lighting, lightingInstClicked, serverName, isLoading, value, results } = this.state
     
     return (
       <Segment.Group>
-      <Menu inverted>
-     
-              <Menu.Item
-                name='Home'
-                //active={activeItem === 'home'}
-                //onClick={this.handleItemClick}
-              />
-              <Modal trigger={<Menu.Item
-                name='Upload'
-                //active={activeItem === 'messages'}
-              />}>
-                    <Modal.Header>Upload Page</Modal.Header>
-                    <Modal.Content image scrolling>
-                    <Modal.Description>
-                    <Header>Complete Upload Form</Header>
-                    <Uploadpage />
-                    </Modal.Description>
-                 
-                    </Modal.Content>
-                    <Modal.Actions>
-        
-                    </Modal.Actions>
-                     </Modal>
-        
-                  }}  
+       
+    {/* {(this.state.lightingInstClicked) ? this.props.history.push('/foo'): console.log("hi")}   */}
 
-              <Menu.Item
-                name='Recent'
-                //active={activeItem === 'friends'}
-                //onClick={this.handleItemClick}
-              />
-              <Menu.Menu position='right'>
-                <Menu.Item>
-                  <Input icon='search' placeholder='Search...' />
-                </Menu.Item>
-                <Modal trigger={<Menu.Item
-                  name='login'
-                  //active={activeItem === 'logout'}
-                
-                />}>
-                    <Modal.Header>Login</Modal.Header>
-                    <Modal.Content image scrolling>
-                    <Modal.Description>
-                    <Header>Enter login Information</Header>
-                    <Login />
-                    </Modal.Description>
-                 
-                    </Modal.Content>
-                    <Modal.Actions>
-        
-                    </Modal.Actions>
-                     </Modal>
-        
-                  }}
-
-              </Menu.Menu>
-
-            </Menu>
-
-  {(this.state.lightingInstClicked)? <InstProf s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}/>: 
+  {(this.state.lightingInstClicked)? <InstProf s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}/> : 
             <span>
 
 {/* ------------------------------------------------------------------------------------------------------------------------------- */}
 
-            <Segment id="header-id"><Header as='h2'><Icon.Group size='large'><Icon name='lightbulb' /></Icon.Group> Spectra Search
-            </Header></Segment>
+            <Header as='h2' id="header-id"><Icon.Group size='large'><Icon id="pic" name='lightbulb'/></Icon.Group> Spectra Search
+            </Header>
 
               <Segment.Group>
                 <Segment><Header>Search for Lighting Instruments</Header>
@@ -219,7 +185,9 @@ creator = this.state.serverName
                   />
                 </Segment>
             
-                <Segment><Header as='h4'>Frequent Instruments:</Header>
+            <br/>
+            
+                <span><Header as='h4'>Frequent Instruments:</Header>
                 <Label as='a'>
                   Lighting instrumet B
                   <Icon name='delete' />
@@ -236,10 +204,13 @@ creator = this.state.serverName
                   Lighting instrumet year3
                   <Icon name='delete' />
                 </Label>
-                </Segment>
-                <Divider/>OR
+                </span>
+                <br/>
+                <br/>
+                <br/>
+               
               </Segment.Group>
-
+              OR
 
               <Header as='h4'>Search via Lighting Type:</Header>
               <List horizontal>
@@ -330,22 +301,8 @@ creator = this.state.serverName
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
               </List.Item>
-              </List>
-
-              
-             
-              
-            
-              
-
-
-
-  
+              </List>  
                 </span> } 
-
-        
-            
-            
           </Segment.Group>
           
         

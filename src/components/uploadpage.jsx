@@ -1,229 +1,183 @@
 import React from "react";
 import { Component } from "react";
 import { AppRegistry, View, TextInput } from "react";
-import {Button, Segment, Divider, Search, Grid, Header, Dropdown, Form, TextArea, FormButton} from "semantic-ui-react";
+import {Button, Segment, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton} from "semantic-ui-react";
+import { thisTypeAnnotation } from "@babel/types";
+import _ from 'lodash'
 
 var currentDate = new Date().toLocaleTimeString(); //maybe will use getDate() instead use setInterval() keep updating something
 
 export default class Uploadpage extends Component {
   constructor(props) {
     super(props);
-    //you make your states here
-    this.state = {
-      manufacturer: "",
-      catalogNumber: "",
-      description: "",
-      docCreat: "",
-      uniqueIdent: "",
-      measureEquip: "",
-      labratory: "",
-      reportNum: "",
-      reportData: "",
-      reflectionGeom: "",
-      transGeom: "",
-      bandfwhm: "",
-      bandConn: ""
-    };
 
-    //bind manufactuer
-    this.handle_change = this.handle_change.bind(this);
-    //bind catalog number
-    this.cnHandle_change = this.cnHandle_change.bind(this);
-    //bind decription
-    this.descriptionHandle_change = this.descriptionHandle_change.bind(this);
-    //bind document creator
-    this.docCreatHandle_change = this.docCreatHandle_change.bind(this);
-    //bind unique identifier
-    this.uniqueIdentHandle_change = this.uniqueIdentHandle_change.bind(this);
-    //bind measurement equipment
-    this.measureEquipHandle_change = this.measureEquipHandle_change.bind(this);
-    //bind labratory
-    this.labratoryHandle_change = this.labratoryHandle_change.bind(this);
-    //bind report num
-    this.reportNumHandle_change = this.reportNumHandle_change.bind(this);
-    //bind report data
-    this.reportDataHandle_change = this.reportDataHandle_change.bind(this);
-    //bind reflection geometry
-    this.reflectionGeomHandle_change = this.reflectionGeomHandle_change.bind(
-      this
-    );
-    //bind transmission geometry
-    this.transGeomHandle_change = this.transGeomHandle_change.bind(this);
-    //bind bandwidth fwhm
-    this.bandfwhmHandle_change = this.bandfwhmHandle_change.bind(this);
-    //bind bandwidth connected
-    this.bandConnHandle_change = this.bandConnHandle_change.bind(this);
+    this.state = {SpectraSearchID: ''}
+    this.state = {Name: ''}
+    this.state = {manufacturer: ''}
+    this.state = {catalogNumber: ''}
+    this.state = {description: ''}
+    this.state = {docCreat: ''}
+    this.state = {uniqueIdent: ''}
+    this.state = {measureEquip: ''}
+    this.state = {labratory: ''}
+    this.state = {reportNum: ''}
+    this.state = {reportData: ''}
+    this.state = {comments: ''}
+    this.state = {application: ''}
+    this.state = {type: ''}
+    this.state = {technology: ''}
 
-    //for the submission value
-    this.handle_submit = this.handle_submit.bind(this);
+    this.state = {formSubmitted: false}
   }
-
-  //these are your functions
-
-  //for manufacturer
-  handle_change(event) {
-    this.setState({ manufacturer: event.target.value });
-  }
-  //for catalog number
-  cnHandle_change(event) {
-    this.setState({ catalogNumber: event.target.value });
-  }
-
-  //for description
-  descriptionHandle_change(event) {
-    this.setState({ description: event.target.value });
-    console.log(this.state.description);
-  }
-
-  //for document creator
-  docCreatHandle_change(event) {
-    this.setState({ docCreat: event.target.value });
-    console.log(this.state.docCreat);
-  }
-
-  //for unique identifier
-  uniqueIdentHandle_change(event) {
-    this.setState({ uniqueIdent: event.target.value });
-    console.log(this.state.uniqueIdent);
-  }
-
-  //for Measurement equipment:
-  measureEquipHandle_change(event) {
-    this.setState({ measureEquip: event.target.value });
-    console.log(this.state.measureEquip);
-  }
-
-  //for Laboratory:
-  labratoryHandle_change(event) {
-    this.setState({ labratory: event.target.value });
-    console.log(this.state.labratory);
-  }
-
-  //for Report #
-  reportNumHandle_change(event) {
-    this.setState({ reportNum: event.target.value });
-    console.log(this.state.reportNum);
-  }
-
-  //for report data
-  reportDataHandle_change(event) {
-    this.setState({ reportData: event.target.value });
-    console.log(this.state.reportData);
-  }
-
-  //for reflection geometry
-  reflectionGeomHandle_change(event) {
-    this.setState({ reflectionGeom: event.target.value });
-    console.log(this.state.reflectionGeom);
-  }
-
-  //for transmission geometry
-  transGeomHandle_change(event) {
-    this.setState({ transGeom: event.target.value });
-    console.log(this.state.transGeom);
-  }
-
-  //for bandwidth fwhm
-  bandfwhmHandle_change(event) {
-    this.setState({ bandfwhm: event.target.value });
-    console.log(this.state.bandfwhm);
-  }
-
-  //for bandwith corrected
-  bandConnHandle_change(event) {
-    this.setState({ bandConn: event.target.value });
-    console.log(this.state.bandConn);
-  }
+    
+  
 
   //for the submission button
-  handle_submit(event) {
-    alert("You submitted the form " + this.state.manufacturer);
+  handle_submit = (event) =>{
     event.preventDefault();
-  }
+    this.setState({formSubmitted: true})
+
+       
+        // On submit of the form, send a POST request with the data to the server.
+        fetch('http://localhost:4000/lighting', { 
+            method: 'POST',
+            body: JSON.stringify({
+              SpectraSearchID: this.state.SpectraSearchID,
+              Name: this.state.Name,
+              manufacturer: this.state.manufacturer,
+              catalogNumber: this.state.catalogNumber,
+              description: this.state.description,
+              docCreat: this.state.docCreat,
+              uniqueIdent: this.state.uniqueIdent,
+              measureEquip: this.state.measureEquip,
+              labratory: this.state.labratory,
+              reportNum: this.state.reportNum,
+              reportData: this.state.reportData,
+              comments: this.state.comments,
+              application: this.state.application,
+              type: this.state.type, 
+              technology: this.state.technology,
+            }),
+            headers: {'Content-Type': 'application/json'}
+          })
+         .then(function(response) {
+            //this is the line that is giving me the error
+            return response.json()
+          }).then(function(body) {
+            console.log(body);
+          });
+          }
+
+
+
+
+  
 
   render() {
     return (
-      <div id="form">
-        
-
+      <div>
+      <br/>
+        {this.state.formSubmitted? <div> <Form success>
+            <Message
+              success
+              header='Upload Completed'
+              content="Thanks! Your addition has been sent for review."
+            />
+        </Form> </div>
+        :  
+        <Segment id="middle-upload">
         <Form>
+          <Header id="upload-header-id">Upload Form</Header>
           <div class="formElementDecor">
+          <Form.Input
+            label="Spectra Search ID:"
+            type="number"
+            onChange={_=(event)=>{this.setState({SpectraSearchID: event.target.value})}}
+          />
+        
+          <Form.Input
+            label="Instrument name:"
+            type="text"
+            onChange={_=(event)=>{this.setState({Name: event.target.value})}}
+          />
           <Form.Input
             label="Manufacturer:"
             type="text"
-            onChange={this.handle_change}
+            onChange={_=(event)=>{this.setState({manufacturer: event.target.value});}}
           />
-          <br></br>
-          <Form.Input
-            label="Catalog Number:"
-            type="number"
-            onChange={this.cnHandle_change}
-          />
-          {/* <Form.Input label='Description:' type='text' maxLength ="255" rows="4" onChange={this.descriptionHandle_change} /> */}
-          <label>Description</label>
-          <TextArea
-            label="Description"
-            placeholder="Tell us more"
-            maxLength="255"
-            onChange={this.descriptionHandle_change}
-          />
-          <Form.Input
-            label="Document Creator"
+           <Form.Input
+            label="Catalog number:"
             type="text"
-            onChange={this.docCreatHandle_change}
+            onChange={_=(event)=>{this.setState({catalogNumber: event.target.value });}}
+          />
+          <Form.Input
+            label="Description">
+            <TextArea
+              placeholder="Describe instrument"
+              maxLength="255"
+              onChange={_=(event)=>{this.setState({description: event.target.value });}}
+            />
+          </Form.Input>
+          <Form.Input
+            label="Document creator"
+            type="text"
+            onChange={_=(event)=>{this.setState({docCreat: event.target.value });}}
           />
           <Form.Input
             label="Unique identifier:"
             type="text"
-            onChange={this.uniqueIdentHandle_change}
+            onChange={_=(event)=>{this.setState({uniqueIdent: event.target.value });}}
           />
           <Form.Input
-            label="Measurement equipment::"
+            label="Measurement equipment:"
             type="text"
-            onChange={this.measureEquipHandle_change}
+            onChange={_=(event)=>{this.setState({measureEquip: event.target.value });}}
           />
           <Form.Input
             label="Laboratory:"
             type="text"
-            onChange={this.labratoryHandle_change}
+            onChange={_=(event)=>{this.setState({labratory: event.target.value });}}
           />
           <Form.Input
-            label="Report #:"
+            label="Report number:"
             type="text"
-            onChange={this.reportNumHandle_change}
+            onChange={_=(event)=>{this.setState({reportNum: event.target.value });}}
           />
           <Form.Input
-            label="Report data:"
+            label="Report date:"
             type="text"
-            onChange={this.reportDataHandle_change}
+            onChange={_=(event)=>{this.setState({reportData: event.target.value });}}
+          />
+           <Form.Input
+            label="Comments:"
+            type="text"
+            onChange={_=(event)=>{this.setState({comments: event.target.value });}}
+
+          />
+           <Form.Input
+            label="Application (ex.A-Type):"
+            type="text"
+            onChange={_=(event)=>{this.setState({application: event.target.value });}}
+          />
+            <Form.Input
+            label="Type:"
+            type="text"
+            onChange={_=(event)=>{this.setState({type: event.target.value });}}
           />
           <Form.Input
-            label="Reflection geometry:"
+            label="Techonology:"
             type="text"
-            onChange={this.reflectionGeomHandle_change}
+            onChange={_=(event)=>{this.setState({technology: event.target.value});}}
           />
-          <Form.Input
-            label="Transmission geometry:"
-            type="text"
-            onChange={this.transGeomHandle_change}
-          />
-          <Form.Input
-            label="bandwidth fwhm:"
-            type="text"
-            onChange={this.bandfwhmHandle_change}
-          />
-          <label>Is the Bandwidth corrected</label>
-          <select class="ui dropdown" onChange={this.bandConnHandle_change}>
-            <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
+         
           </div>
         </Form>
 
         <br />
-        <Button>Upload</Button><Button onClick={this.handle_submit}>Submit</Button>
-      </div>
+        <Button onClick={this.handle_submit}>Upload</Button>
+        </Segment>}
+       
+        </div>
     );
   }
 }

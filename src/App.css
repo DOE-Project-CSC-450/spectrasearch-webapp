@@ -4,7 +4,33 @@
 
 #header-id{
   text-align: left;
+  padding-left: 2%;
+  padding-top: 1.5%;
 }
+
+#pic{
+
+}
+.playing{
+  color:black; 
+-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+-webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+animation-name: example;
+animation-duration: 4s;
+}
+
+@-webkit-keyframes example {
+  from {color: rgb(255, 153, 0);}
+  to {color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {color: rgb(74, 90, 37);}
+  to {color: rgb(243, 243, 32);}
+}
+
+
 #grand-search{
   border-radius: 0% !important;
 
@@ -18,6 +44,17 @@
   color: #09d3ac;
 }
 
+.info {
+  text-align: center;
+  
+
+}
+
+#export{
+
+  border: solid black;
+}
+
 /*--------------------------------------------Login CSS----------------------------------------*/
 /*
 h1 {
@@ -27,6 +64,17 @@ h1 {
 */
 
 /*------------------------------------------Upload page------------------------------------------*/
+
+#middle-upload{
+  width: 60% !important;
+  margin: auto !important;
+  text-align: left !important;
+  
+}
+
+#upload-header-id{
+  text-align: center !important;
+}
 /*
 input[type=text]{
   align-content: center;
@@ -83,6 +131,46 @@ body{
 
 
 */
+
+/*--------------------------------------------------------------------*/
+path {
+  stroke: black;
+  stroke-width: 1;
+  fill: none;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+.grid line {
+  stroke: #f0eee9;
+  stroke-opacity: 0.4;
+  shape-rendering: crispEdges;
+}
+.x.axis line {
+  stroke: lightgrey;
+}
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+.x.axis path {
+  display: none;
+}
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+.line{
+  fill:none;
+  stroke:black; /*will probs be black in the end */
+  stroke-width: 2px;
+}
+.area {
+    fill: url(#linear-gradient);
+    stroke-width: 0;
+}
+
+
 
 
 
