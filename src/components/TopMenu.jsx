@@ -5,7 +5,7 @@ import _ from 'lodash'
 import Login from './Login'
 import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
-import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
+import { Button, Modal, Message, Form, TextArea, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
 import { thisTypeAnnotation } from '@babel/types';
 import Searching from './Search'
@@ -56,10 +56,10 @@ export default class TopMenu extends Component {
                   name='login'
                  
                 />}>
-                    <Modal.Header>Login</Modal.Header>
+                    <Modal.Header>Login Page</Modal.Header>
                     <Modal.Content image scrolling>
                     <Modal.Description>
-                    <Header>Enter login Information</Header>
+                    
                     <Login />
                     </Modal.Description>
                  

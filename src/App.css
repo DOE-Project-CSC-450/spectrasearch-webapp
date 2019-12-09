@@ -171,6 +171,22 @@ path {
 }
 
 
+#theGraph{
+  border: solid black !important;
+}
+
+#reactgooglegraph-1 svg{
+  border: solid black !important;
+  display: inline-block !important;
+ 
+
+}
+
+#bug div{
+  margin: auto !important;
+}
+
+
 
 
 

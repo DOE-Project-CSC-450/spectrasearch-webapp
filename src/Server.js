@@ -33,6 +33,8 @@ app.get('/', (req, res) =>{
   
 })
 
+
+
 /* app.get('products/add', (req, res) =>{
   const {value, SpectralQKey} = req.query;
   console.log(value, SpectralQKey);
@@ -71,6 +73,34 @@ app.get('/lighting', (req, res) => {
   });
 })  
 
+
+app.get('/users', (req, res) =>{
+  con.query('SELECT * FROM `USERS`', (err, results) => {
+    if (err){
+      return res.send(error);
+    }
+    else{
+      return res.json({
+        data: results
+      })
+    }
+  });
+})
+
+app.post('/users', (req, result) => {
+  result.set('Access-Control-Allow-Origin', '*');
+  console.log("this?", typeof(req), "and", typeof(req.body));
+  const body = (req.body);
+  console.log("do we make it here tho")
+  console.log("show me", body.usernames)
+  
+  var practice2 = 'INSERT INTO `USERS`(`Username`, `Password`) VALUES ("'+body.usernames+'", "'+body.passwords+'")'
+  con.query(practice2, function(err, result) {
+    if (err) throw err;
+    console.log("inserted " + result);
+  });
+  result.send({ message: 'Success'})
+  });
 
 
 app.listen(4000, () => {

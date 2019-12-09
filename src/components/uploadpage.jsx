@@ -1,9 +1,10 @@
 import React from "react";
 import { Component } from "react";
-import { AppRegistry, View, TextInput } from "react";
+import { AppRegistry, TextInput } from "react";
 import {Button, Segment, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton} from "semantic-ui-react";
 import { thisTypeAnnotation } from "@babel/types";
 import _ from 'lodash'
+
 
 var currentDate = new Date().toLocaleTimeString(); //maybe will use getDate() instead use setInterval() keep updating something
 
@@ -68,9 +69,6 @@ export default class Uploadpage extends Component {
           });
           }
 
-
-
-
   
 
   render() {
@@ -85,8 +83,14 @@ export default class Uploadpage extends Component {
             />
         </Form> </div>
         :  
+        
         <Segment id="middle-upload">
+         
         <Form>
+        <div>Note* Please be sure to Login or upload cannot be processed</div>
+        <div>User uploading: {localStorage.getItem('thatUser')}</div>
+        
+        {this.props.user? <div>{this.props.user}</div>: null}
           <Header id="upload-header-id">Upload Form</Header>
           <div class="formElementDecor">
           <Form.Input
