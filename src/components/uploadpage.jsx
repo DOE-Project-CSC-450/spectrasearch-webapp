@@ -85,8 +85,11 @@ export default class Uploadpage extends Component {
             />
         </Form> </div>
         :  
+        
         <Segment id="middle-upload">
+         
         <Form>
+        <div>Note* Please be sure to Login or upload cannot be processed</div>
           <Header id="upload-header-id">Upload Form</Header>
           <div class="formElementDecor">
           <Form.Input
