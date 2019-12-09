@@ -4,7 +4,8 @@ import { Header, Segment, Image, Grid, Dropdown } from 'semantic-ui-react';
 //import Viz from './Viz.js';
 import Spectragraph2 from './Spectragraph2.js';
 
-console.log('test!!!');
+import Graph from './Graph.jsx'; 
+
 
 
 //import SpectaGraph from 'spectragraph'
@@ -113,10 +114,11 @@ export default class InstProf extends Component {
                         <Grid.Column>
                             <Header size='medium'>Calculations</Header>
                             <p> Insert Calculuations here. Calculations. </p>
-                            {/* <div className="Viz" /> */}
-                            <p>hello!!!!</p>
-                            <div className="test"></div>
-                            <Spectragraph2 /> 
+                            {/* { <div className="Viz" /> } */}
+                            {/* <p>hello!!!!</p> */}
+                            {/* <div className="test"></div> */}
+                            {/* <Spectragraph2 /> */ }
+                            <Graph />
 
                         </Grid.Column>
 
