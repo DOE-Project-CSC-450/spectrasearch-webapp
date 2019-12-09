@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { Button, Modal, Message, TextArea, Header, Form, Checkbox, Divider, Segment, Grid} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import _ from 'lodash'
+import Uploadpage from './uploadpage';
 
 var D;
 
@@ -119,8 +120,13 @@ export default class Login extends Component {
                 }
                 else{
                     console.log("we gonna do something about that good news")
+                    document.getElementById("implant").innerHTML = ''
+                    this.setState({status: false})
+                    console.log("important", this.state.finalUserName)
+                    window.location.reload() 
+                    localStorage.setItem('thatUser', this.state.finalUserName)
                 }
-                this.setState({status: false})
+               
     
         })
           .catch(err => console.error(err))

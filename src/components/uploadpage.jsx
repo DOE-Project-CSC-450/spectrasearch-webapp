@@ -90,6 +90,9 @@ export default class Uploadpage extends Component {
          
         <Form>
         <div>Note* Please be sure to Login or upload cannot be processed</div>
+        <div>User uploading: {localStorage.getItem('thatUser')}</div>
+        
+        {this.props.user? <div>{this.props.user}</div>: null}
           <Header id="upload-header-id">Upload Form</Header>
           <div class="formElementDecor">
           <Form.Input
