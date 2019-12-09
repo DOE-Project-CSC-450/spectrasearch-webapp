@@ -219,7 +219,7 @@ sendData = () => {
               <Header as='h4'>Search via Lighting Type or Application:</Header>
               <List horizontal>
               <List.Item>
-                <List.Header as='a'>Type</List.Header>
+              
                 <List.Description>
                   Lamp <a>All lamps</a>.
                 </List.Description>
@@ -234,7 +234,7 @@ sendData = () => {
 
 
               <List.Item>
-                <List.Header as='a'>Type</List.Header>
+               
                 <List.Description>
                   Luminaire <a>All luminaire</a>.
                 </List.Description>
@@ -248,7 +248,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Type</List.Header>
+               
                 <List.Description>
                   Retrofit Kit <a>All retrofit kit</a>.
                 </List.Description>
@@ -263,7 +263,7 @@ sendData = () => {
 
               <Divider/>
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   A-Type <a>All A-type</a>.
                 </List.Description>
@@ -277,7 +277,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Decorative <a>All decorative</a>.
                 </List.Description>
@@ -291,7 +291,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+                
                 <List.Description>
                   Directional <a>All directional</a>.
                 </List.Description>
@@ -305,7 +305,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Small Directional <a>All small directional</a>.
                 </List.Description>
@@ -319,7 +319,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Downlighting <a>All downlighting</a>.
                 </List.Description>
@@ -334,7 +334,7 @@ sendData = () => {
 
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Linear Fixture <a>All linear fixture</a>.
                 </List.Description>
@@ -348,7 +348,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Low/High Bay <a>All low/high bay</a>.
                 </List.Description>
@@ -362,7 +362,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Indoor other <a>All indoor other</a>.
                 </List.Description>
@@ -376,7 +376,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Parking Lot <a>All parking lot</a>.
                 </List.Description>
@@ -390,7 +390,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+                
                 <List.Description>
                   Parking Garage <a>All parking garage</a>.
                 </List.Description>
@@ -404,7 +404,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Street/Roadway <a>All street/roadway</a>.
                 </List.Description>
@@ -418,7 +418,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Building Exterior <a>All building exterior</a>.
                 </List.Description>
@@ -432,7 +432,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+               
                 <List.Description>
                   Outdoor Other <a>All outdoor other</a>.
                 </List.Description>
@@ -446,7 +446,7 @@ sendData = () => {
               </List.Item>
 
               <List.Item>
-                <List.Header as='a'>Application</List.Header>
+              
                 <List.Description>
                   Connected <a>All connected</a>.
                 </List.Description>
