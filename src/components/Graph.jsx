@@ -54,15 +54,16 @@ class Graph extends Component {
         hAxis: { title: 'Wavelength (nm)', titleTextStyle: { color: '#FF0000' } },
         vAxis: {title: 'Normalized Power', titleTextStyle: { color: '#FF0000' }, minValue: 0 },
         // For the legend to fit, we make the chart area smaller
-        chartArea: { width: '50%', height: '70%', 
+        chartArea: { width: '50%', height: '70%'},
+        
         
         //backgroundColor: myRainbow },
-        //colors: ['blue']
+        colors: ['blue'], //changes areachart fill to blue!
         //backgroundColor.fill: 'red',
         //colors: {fill: 'red'},
 	
 
-        'backgroundColor': {
+        /*'backgroundColor': {
         gradient: {
             // Start color for gradient.
             color1: '#fbf6a7',
@@ -79,8 +80,8 @@ class Graph extends Component {
             // false, it's the entire chart.
             useObjectBoundingBoxUnits: true
           }
-        }
-    }
+        }*/ 
+    //}
 
         	
 
