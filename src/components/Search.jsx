@@ -27,6 +27,7 @@ var reportNum = ''
 var catNum = ''
 var spect ='';
 var z;
+var historia =[];
 
 
 const initialState = { activeItem: 'home', serverName: 'temp', fastArray: [], isLoading: false, results: [], value: '', there: false }
@@ -42,6 +43,7 @@ export default class Searching extends Component {
     this.state = {ligtingInstClicked: false}
     this.state = {fastArray: []}
     this.state = {there: false}
+   
   }
  
 
@@ -60,6 +62,8 @@ export default class Searching extends Component {
   
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
+    historia.push((result.title));
+    console.log("finger", historia)
     console.log("yo look here" + JSON.stringify(result.title));
     console.log("and here" + JSON.stringify(result))
     sResult = (result.title);
@@ -189,19 +193,19 @@ sendData = () => {
             
                 <span><Header as='h4'>Frequent Instruments:</Header>
                 <Label as='a'>
-                  Lighting instrumet B
+                  {historia[0]}
                   <Icon name='delete' />
                 </Label>
                 <Label as='a'>
-                  Lighting instrumet magna
+                  {historia[1]}
                   <Icon name='delete' />
                 </Label>
                 <Label as='a'>
-                  Lighting instrumet wanter
+                  {historia[2]}
                   <Icon name='delete' />
                 </Label>
                 <Label as='a'>
-                  Lighting instrumet year3
+                  {historia[3]}
                   <Icon name='delete' />
                 </Label>
                 </span>
@@ -212,15 +216,13 @@ sendData = () => {
               </Segment.Group>
               OR
 
-              <Header as='h4'>Search via Lighting Type:</Header>
+              <Header as='h4'>Search via Lighting Type or Application:</Header>
               <List horizontal>
               <List.Item>
-                <List.Header as='a'>Type 1</List.Header>
+                <List.Header as='a'>Type</List.Header>
                 <List.Description>
-                  omni light <a>omni page</a>.
+                  Lamp <a>All lamps</a>.
                 </List.Description>
-
-
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -228,31 +230,13 @@ sendData = () => {
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
-
-
-              </List.Item>
-              <List.Item>
-                <List.Header as='a'>Type 2</List.Header>
-                <List.Description>
-                  bright <a>bright page</a>.
-                </List.Description>
-
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
-
-
               </List.Item>
 
 
               <List.Item>
-                <List.Header as='a'>Type 3</List.Header>
+                <List.Header as='a'>Type</List.Header>
                 <List.Description>
-                  multidirectional <a>multi page</a>.
+                  Luminaire <a>All luminaire</a>.
                 </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -261,13 +245,98 @@ sendData = () => {
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Type</List.Header>
+                <List.Description>
+                  Retrofit Kit <a>All retrofit kit</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <Divider/>
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  A-Type <a>All A-type</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Decorative <a>All decorative</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Directional <a>All directional</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Small Directional <a>All small directional</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Downlighting <a>All downlighting</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
 
 
-              </List.Item>
               <List.Item>
-                <List.Header as='a'>Type 4</List.Header>
+                <List.Header as='a'>Application</List.Header>
                 <List.Description>
-                  lumincescent <a>lumincescent page</a>.
+                  Linear Fixture <a>All linear fixture</a>.
                 </List.Description>
                 <List as='ul'>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
@@ -277,30 +346,120 @@ sendData = () => {
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
               </List.Item>
+
               <List.Item>
-                <List.Header as='a'>Type 5</List.Header>
+                <List.Header as='a'>Application</List.Header>
                 <List.Description>
-                  rounded <a>rounded page</a>.
+                  Low/High Bay <a>All low/high bay</a>.
                 </List.Description>
                 <List as='ul'>
-  <List.Item as='li'>
-  <Router>
-  <div>
-  <Link to="./uploadpage">Lighting page</Link>
-  <Route
-      path="./uploadpage"
-      component={<Uploadpage/>} 
-                />
-  </div>
-</Router>
-</List.Item>            
-                     
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                       <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
                 </List>
               </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Indoor other <a>All indoor other</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Parking Lot <a>All parking lot</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Parking Garage <a>All parking garage</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Street/Roadway <a>All street/roadway</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Building Exterior <a>All building exterior</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Outdoor Other <a>All outdoor other</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+              <List.Item>
+                <List.Header as='a'>Application</List.Header>
+                <List.Description>
+                  Connected <a>All connected</a>.
+                </List.Description>
+                <List as='ul'>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
+                </List>
+              </List.Item>
+
+            
               </List>  
                 </span> } 
           </Segment.Group>

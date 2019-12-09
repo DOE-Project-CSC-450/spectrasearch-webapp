@@ -1,9 +1,10 @@
 import React from "react";
 import { Component } from "react";
-import { AppRegistry, View, TextInput } from "react";
+import { AppRegistry, TextInput } from "react";
 import {Button, Segment, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton} from "semantic-ui-react";
 import { thisTypeAnnotation } from "@babel/types";
 import _ from 'lodash'
+
 
 var currentDate = new Date().toLocaleTimeString(); //maybe will use getDate() instead use setInterval() keep updating something
 
@@ -67,9 +68,6 @@ export default class Uploadpage extends Component {
             console.log(body);
           });
           }
-
-
-
 
   
 
