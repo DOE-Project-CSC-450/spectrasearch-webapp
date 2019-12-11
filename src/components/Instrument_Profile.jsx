@@ -366,7 +366,7 @@ export default class InstProf extends Component {
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('l','pt','a4');
-            pdf.addImage(imgData,'JPEG',20,20,780,450);
+            pdf.addImage(imgData,'JPEG',20,20,770,450);
             pdf.save('instrumentpage.pdf');
         })
         //document.getElementsByClassName("inst-dropdown")[0].innerHTML = save;
