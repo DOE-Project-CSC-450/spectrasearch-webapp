@@ -103,6 +103,22 @@ app.post('/users', (req, result) => {
   });
 
 
+
+ app.get('/SpectralData', (req, res) => {
+    con.query('SELECT * FROM `Spectral Distribution Fields`', (err, results) => {
+      if (err){
+        return res.send(error);
+      }
+      else{
+        return res.json({
+          data: results
+        })
+      }
+    });
+  })  
+   
+
+
 app.listen(4000, () => {
   console.log("lighting server listening on port 4000");
 })

@@ -171,19 +171,69 @@ path {
 }
 
 
-#theGraph{
-  border: solid black !important;
-}
-
-#reactgooglegraph-1 svg{
-  border: solid black !important;
-  display: inline-block !important;
+svg{
+  border: solid #dededf !important;
  
-
+  /* display: inline-block !important;
+  position: relative;
+  right: 110% !important; */
 }
 
-#bug div{
-  margin: auto !important;
+.inst-info{
+  margin-right: 2%;
+  margin-left: 4%;
+}
+
+.target{
+  padding-bottom: 10% !important;
+  margin: 40px !important;
+  margin-top: 0px !important;
+  border:solid #dededf !important
+  
+}
+
+.headerForTable{
+  text-align: left !important;
+}
+
+.ui.button.headerForTable{
+  float: left;
+}
+
+.inst-dropdown{
+  float: right;
+  margin-right: .5% !important;
+}
+
+
+
+
+
+path {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.districts {
+  fill: #bbb;
+}
+
+.districts :hover {
+  fill: orange;
+}
+
+.district-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.state-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
 }
 
 
@@ -192,7 +242,10 @@ path {
 
 
 
-
+#rightCol{
+  overflow: auto !important;
+  
+}
 
 
 

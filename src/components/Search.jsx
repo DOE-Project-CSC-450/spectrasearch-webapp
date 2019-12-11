@@ -46,8 +46,6 @@ export default class Searching extends Component {
    
   }
  
-
-
   handle_search = (e) => {
     
     e.preventDefault();
@@ -60,6 +58,7 @@ export default class Searching extends Component {
     this.getProducts();
   }
   
+ 
   handleResultSelect = (e, { result }) => {
     this.setState({ value: result.title })
     historia.push((result.title));
@@ -76,6 +75,7 @@ export default class Searching extends Component {
     catNum = (result.CatalogNumber)
     spect = (result.SpectraSearchID)
     this.setState({lightingInstClicked: true});
+    //this.TabClicked()
     
     
     
@@ -83,6 +83,13 @@ export default class Searching extends Component {
     //open an insrtument page based on props
     //pass instrument title manufactuerrer info and graphs and calculations
  }
+
+/*  TabClicked=()=>{
+    window.history.pushState({
+    tabForId: sResult
+    }, null, "tab-"+sResult);
+    } 
+ */
 
   handleSearchChange = (e, { value }) => {
     document.getElementById("pic").classList.add("playing");
@@ -223,13 +230,6 @@ sendData = () => {
                 <List.Description>
                   Lamp <a>All lamps</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
               </List.Item>
 
 
@@ -238,13 +238,7 @@ sendData = () => {
                 <List.Description>
                   Luminaire <a>All luminaire</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+                
               </List.Item>
 
               <List.Item>
@@ -252,13 +246,7 @@ sendData = () => {
                 <List.Description>
                   Retrofit Kit <a>All retrofit kit</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <Divider/>
@@ -267,13 +255,7 @@ sendData = () => {
                 <List.Description>
                   A-Type <a>All A-type</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+                
               </List.Item>
 
               <List.Item>
@@ -281,13 +263,7 @@ sendData = () => {
                 <List.Description>
                   Decorative <a>All decorative</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -295,13 +271,7 @@ sendData = () => {
                 <List.Description>
                   Directional <a>All directional</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -309,13 +279,7 @@ sendData = () => {
                 <List.Description>
                   Small Directional <a>All small directional</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -323,13 +287,7 @@ sendData = () => {
                 <List.Description>
                   Downlighting <a>All downlighting</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+              
               </List.Item>
 
 
@@ -338,13 +296,7 @@ sendData = () => {
                 <List.Description>
                   Linear Fixture <a>All linear fixture</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -352,13 +304,7 @@ sendData = () => {
                 <List.Description>
                   Low/High Bay <a>All low/high bay</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -366,13 +312,7 @@ sendData = () => {
                 <List.Description>
                   Indoor other <a>All indoor other</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -380,13 +320,7 @@ sendData = () => {
                 <List.Description>
                   Parking Lot <a>All parking lot</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -394,13 +328,7 @@ sendData = () => {
                 <List.Description>
                   Parking Garage <a>All parking garage</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -408,13 +336,7 @@ sendData = () => {
                 <List.Description>
                   Street/Roadway <a>All street/roadway</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -422,13 +344,7 @@ sendData = () => {
                 <List.Description>
                   Building Exterior <a>All building exterior</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -436,13 +352,7 @@ sendData = () => {
                 <List.Description>
                   Outdoor Other <a>All outdoor other</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
               <List.Item>
@@ -450,13 +360,7 @@ sendData = () => {
                 <List.Description>
                   Connected <a>All connected</a>.
                 </List.Description>
-                <List as='ul'>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                      <List.Item as='li'><a href='#'>aaaaaa</a></List.Item>
-                </List>
+               
               </List.Item>
 
             
