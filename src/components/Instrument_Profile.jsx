@@ -8,6 +8,7 @@ import _ from 'lodash'
 import { timingSafeEqual } from 'crypto';
 import { thisTypeAnnotation, thisExpression } from '@babel/types';
 import Chart from "react-google-charts";
+import Lamp from './Lamp'
 
 var CCT= 0;
 var raresult = 0;
@@ -60,7 +61,7 @@ const export_dropdown_options = [
 
 
 export default class InstProf extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = {pdf: false}
@@ -156,11 +157,7 @@ export default class InstProf extends Component {
         
         raresult = Math.round(Ra);
         rereresult = Math.round(Re);
-        
-        
-        
-        
-        
+                
         function normalize(spec) {
             var max = Math.max.apply(null, spec);
             if(max > 0){
@@ -363,26 +360,7 @@ export default class InstProf extends Component {
     jsPdfGenerator = () => {
         console.log("printing")
        
-      /*  var doc = new jsPDF('p','pt');
-        var imgData = 'https://scontent-iad3-1.xx.fbcdn.net/v/t1.15752-0/p280x280/78349443_2349797681950533_449888186349387776_n.png?_nc_cat=100&_nc_ohc=IGHwjD24hbQAQkuydUfon9UF6HO7ZSZfD5DfKDZJE8tCpULWYWIUAT7bQ&_nc_ht=scontent-iad3-1.xx&oh=d65e09e98e6c905eabc75c7f35e28099&oe=5E816F42'
-        doc.setFontSize(10)
-      doc.text(20,30,"Lighting Instrument Name: "+ this.props.s1)
-        doc.text(20,50,"Catalog Number: "+ this.props.s0);
-        doc.text(20,70, "Manufacturer: "+ this.props.s2);
-        doc.text(20,90, "Description: "+ this.props.s3);
-        doc.text(20,110, "Document Creator: "+ this.props.s4);
-        doc.text(20,130, "Laboratory: "+ this.props.s5);
-        doc.text(20,150, "Creation Date: "+ this.props.s6);
-        doc.text(20,170, "Report Number: "+ this.props.s7);
-    
-        //oc.addImage(imgData,'JPEG',20, 170);
-        doc.setFont('Garamond');
-        doc.setFontType('normal');
-        
-        //doc.text(20,60,'this is default text with courier font')
-        doc.save('instrumentPage.pdf');   */
-        //var save = document.getElementsByClassName("inst-dropdown")[0].innerHTML
-        //document.getElementsByClassName("inst-dropdown")[0].innerHTML=''
+     
        const input = document.getElementsByClassName('target')[0];
        html2canvas(input)
         .then((canvas) => {
@@ -398,6 +376,7 @@ export default class InstProf extends Component {
 
 
     render () {
+        
         var lastData;
         return (
             <Segment className='target'>
@@ -508,7 +487,7 @@ export default class InstProf extends Component {
               
                      
                
-            
+          
                 
            </Segment>
 

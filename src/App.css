@@ -249,7 +249,10 @@ path {
 
 
 
-
+#scrollable-lamps{
+  overflow-y: scroll !important;
+  padding-bottom: 20% !important;
+}
 
 
 

@@ -28,12 +28,36 @@ var catNum = ''
 var spect ='';
 var z;
 var historia =[];
+var refreshed;
+var type='';
+var tech ='';
+
+
+var place;
+var holdurl;
+ //window.onpopstate = checkState;
+
+
+
+/* function checkState(e){
+  // page reload 
+ holdurl = e.replace(/%/g, ' ')
+ holdurl = holdurl.replace(/20/g, '') 
+ holdurl = holdurl.replace("http://localhost:3000/tab-", " ")
+ showContent(holdurl);
+  
+}
+
+function showContent(id){
+  
+}  */
 
 
 const initialState = { activeItem: 'home', serverName: 'temp', fastArray: [], isLoading: false, results: [], value: '', there: false }
 const resultRenderer = ({ title }) => <Label content={title} />
 
 export default class Searching extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {activeItem: ''}
@@ -43,6 +67,7 @@ export default class Searching extends Component {
     this.state = {ligtingInstClicked: false}
     this.state = {fastArray: []}
     this.state = {there: false}
+    
    
   }
  
@@ -56,10 +81,13 @@ export default class Searching extends Component {
 
   componentDidMount(){
     this.getProducts();
-  }
   
+  }
+
+ 
  
   handleResultSelect = (e, { result }) => {
+    refreshed = result;
     this.setState({ value: result.title })
     historia.push((result.title));
     console.log("finger", historia)
@@ -74,22 +102,29 @@ export default class Searching extends Component {
     reportNum = (result.ReportNumber)
     catNum = (result.CatalogNumber)
     spect = (result.SpectraSearchID)
+    type = (result.type)
+    tech = (result.technology)
+   
     this.setState({lightingInstClicked: true});
-    //this.TabClicked()
-    
-    
-    
-    console.log("everybody 123: ", this.state.serverName.length);
-    //open an insrtument page based on props
-    //pass instrument title manufactuerrer info and graphs and calculations
+    //this.TabClicked(sResult)
+    console.log("everybody 123: ", this.state.serverName.length);   
  }
 
-/*  TabClicked=()=>{
+/* TabClicked=(e)=>{
+  
+  var contentId = e.target;
+  showContent(contentId);
     window.history.pushState({
-    tabForId: sResult
-    }, null, "tab-"+sResult);
-    } 
- */
+    tabForId: contentId
+    }, null, "tab-"+contentId);
+
+    
+    window.history.replaceState({
+      tabForId: sResult
+  }, null, "tab-"+sResult);
+ 
+    }   */
+   
 
   handleSearchChange = (e, { value }) => {
     document.getElementById("pic").classList.add("playing");
@@ -132,7 +167,9 @@ holding = '/instrument' + spect;
       "CreationDate": this.state.serverName[z].ReportDate,
       "ReportNumber": this.state.serverName[z].ReportNumber, 
       "CatalogNumber": this.state.serverName[z].CatalogNumber,
-      "SpectraSearchID": this.state.serverName[z].SpectraSearchID
+      "SpectraSearchID": this.state.serverName[z].SpectraSearchID,
+      "type" : this.state.serverName[z].Type,
+      "technology": this.state.serverName[z].Technology
       }
        if (hold.length < this.state.serverName.length){
       hold.push(sourceOption);
@@ -156,7 +193,7 @@ sendData = () => {
 
 
   render() {
-   
+    
     holding = '/instrument' + spect;
     //this.componentDidMount();
     const { activeItem } = this.state
@@ -227,8 +264,9 @@ sendData = () => {
               <List horizontal>
               <List.Item>
               
+
                 <List.Description>
-                  Lamp <a>All lamps</a>.
+                  Lamp <Link to='/lamps'><a>All lamps</a></Link>
                 </List.Description>
               </List.Item>
 
@@ -366,6 +404,8 @@ sendData = () => {
             
               </List>  
                 </span> } 
+
+        
           </Segment.Group>
           
         
