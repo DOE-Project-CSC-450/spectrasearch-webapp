@@ -7,13 +7,14 @@ app.use(bodyParser.json());
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "localhost",
-  port: 3306,
+  port: 8889, //3306 default
   user: "root",
   password: "mysql",
   database: "Round2"
 });
 var sql2;
 var ignore;
+
 con.connect(function(err){
   if(err) throw err;
   console.log("connected!");
