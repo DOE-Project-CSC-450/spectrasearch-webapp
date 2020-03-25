@@ -36,7 +36,7 @@ export default class App extends Component{
         <Route path='/lamps' exact component={Lamp}/>
         
         <Route path='/Graph_v1' exact component={Instrument_Graph_v1}/>
-        {/* question for elisabetta: why wont this work QAQ} */} 
+
         {/* <Route path='/light' 
          render={() => <InstProf parentCallback = {this.callbackFunction} s1={this.state.message} isAuthed={true} />}
         /> */}

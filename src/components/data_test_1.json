@@ -1,0 +1,25 @@
+{
+    wavelength: 350, 
+    normalized_power: data_points[0], 
+},
+
+{
+    wavelength: 351, 
+    normalized_power: data_points[1],
+},
+
+{
+    wavelength: 352, 
+    normalized_power: data_points[2],
+},
+
+{
+    wavelength: 353, 
+    normalized_power: data_points[3],
+},
+
+{
+    wavelength: 354, 
+    normalized_power: data_points[4],
+};
+  
