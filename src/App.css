@@ -133,11 +133,7 @@ body{
 */
 
 /*--------------------------------------------------------------------*/
-path {
-  stroke: black;
-  stroke-width: 1;
-  fill: none;
-}
+
 
 .axis {
   shape-rendering: crispEdges;
@@ -235,9 +231,6 @@ path {
   stroke: #fff;
   stroke-width: 1.5px;
 }
-
-
-
 
 
 

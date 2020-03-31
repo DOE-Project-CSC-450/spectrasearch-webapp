@@ -8,7 +8,8 @@ import TopMenu from './components/TopMenu'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Uploadpage from './components/uploadpage';
 import { Component } from 'react';
-import Lamp from './components/Lamp'
+import Lamp from './components/Lamp';
+import TestingGraph from './components/TestingGraph';
 
 //s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}
 
@@ -33,6 +34,7 @@ export default class App extends Component{
         <Route path='/' exact component={Searching}/>
         <Route path='/upload' exact component={Uploadpage}/>
         <Route path='/lamps' exact component={Lamp}/>
+        <Route path='/TestingGraph' exact component={TestingGraph}/>
         {/* <Route path='/light' 
          render={() => <InstProf parentCallback = {this.callbackFunction} s1={this.state.message} isAuthed={true} />}
         /> */}

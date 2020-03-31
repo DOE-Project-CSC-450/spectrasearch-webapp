@@ -72,7 +72,6 @@ export default class Searching extends Component {
   }
  
   handle_search = (e) => {
-    
     e.preventDefault();
     this.setState({search: e.target.value});
     console.log(this.state.search);
@@ -85,10 +84,9 @@ export default class Searching extends Component {
   }
 
  
- 
   handleResultSelect = (e, { result }) => {
     refreshed = result;
-    this.setState({ value: result.title })
+    this.setState({ value: result.title})
     historia.push((result.title));
     console.log("finger", historia)
     console.log("yo look here" + JSON.stringify(result.title));
