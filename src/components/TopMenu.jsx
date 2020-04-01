@@ -49,9 +49,14 @@ export default class TopMenu extends Component {
               />
               </Link>
               <Menu.Menu position='right'>
-                <Menu.Item>
-                  <Input icon='search' placeholder='Search...' />
-                </Menu.Item>
+
+                <Link to='/Administrating'>
+                <Menu.Item
+                name='Admin'
+                active={activeItem === 'Administrating'}
+                onClick={this.handleActiveItemClick}
+                />
+                </Link>
                 <Modal trigger={<Menu.Item
                   name='login'
                  

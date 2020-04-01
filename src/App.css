@@ -234,7 +234,13 @@ path {
 
 
 
-
+#soscontainer{
+ position: relative;
+ float: right;
+  width: 70%;
+  font-size: 14px;
+  overflow-x: scroll;
+}
 #rightCol{
   overflow: auto !important;
   
