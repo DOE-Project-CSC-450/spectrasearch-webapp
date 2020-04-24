@@ -47,6 +47,13 @@ export default class TopMenu extends Component {
                 active={activeItem === 'uploading'}
                 onClick={this.handleActiveItemClick}
               />
+            </Link>
+              <Link to='/spectralData'>
+              <Menu.Item
+                name='Spectral Data'
+                active={activeItem === 'Spectral Data'}
+                onClick={this.handleActiveItemClick}
+              />
               </Link>
               <Menu.Menu position='right'>
 

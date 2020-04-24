@@ -10,7 +10,7 @@ var con = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "mysql",
-  database: "Round2"
+  database: "round3"
 });
 var sql2;
 var ignore;

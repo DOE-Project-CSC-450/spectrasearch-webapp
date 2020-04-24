@@ -11,6 +11,7 @@ import { Component } from 'react';
 import Lamp from './components/Lamp';
 import TestingGraph from './components/TestingGraph';
 import Admin from './components/Admin';
+import SpectralData from './components/SpectralData'
 //s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}
 
 
@@ -32,6 +33,7 @@ export default class App extends Component{
         <TopMenu />
         <Switch>
         <Route path='/' exact component={Searching}/>
+        <Route path='/spectralData' exact component={SpectralData}/>
         <Route path='/upload' exact component={Uploadpage}/>
         <Route path='/Administrating' exact component={Admin}/>
         <Route path='/lamps' exact component={Lamp}/>

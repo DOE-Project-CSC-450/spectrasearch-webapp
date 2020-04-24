@@ -137,7 +137,7 @@ export default class Searching extends Component {
         isLoading: false,
         results: _.filter(source, isMatch),
       })
-    }, 2000)
+    }, 200)
   }
 
   handleItemClick = () =>{

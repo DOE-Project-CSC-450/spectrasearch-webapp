@@ -1,18 +1,20 @@
+  
 import React from "react";
 import { Component } from "react";
 import { AppRegistry, TextInput } from "react";
-import {Button, Segment, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton} from "semantic-ui-react";
+import {Button, Segment, Accordion, Input, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton} from "semantic-ui-react";
 import { thisTypeAnnotation } from "@babel/types";
 import _ from 'lodash'
 
 
-var currentDate = new Date().toLocaleTimeString(); //maybe will use getDate() instead use setInterval() keep updating something
+
+//var currentDate = new Date().toLocaleTimeString(); //maybe will use getDate() instead use setInterval() keep updating something
 
 export default class Uploadpage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {SpectraSearchID: ''}
+    //this.state = {SpectraSearchID: ''}
     this.state = {Name: ''}
     this.state = {manufacturer: ''}
     this.state = {catalogNumber: ''}
@@ -27,7 +29,6 @@ export default class Uploadpage extends Component {
     this.state = {application: ''}
     this.state = {type: ''}
     this.state = {technology: ''}
-
     this.state = {formSubmitted: false}
   }
     
@@ -43,7 +44,7 @@ export default class Uploadpage extends Component {
         fetch('http://localhost:4000/lighting', { 
             method: 'POST',
             body: JSON.stringify({
-              SpectraSearchID: this.state.SpectraSearchID,
+              //SpectraSearchID: this.state.SpectraSearchID,
               Name: this.state.Name,
               manufacturer: this.state.manufacturer,
               catalogNumber: this.state.catalogNumber,
@@ -72,6 +73,18 @@ export default class Uploadpage extends Component {
   
 
   render() {
+
+    const panels = [
+      {
+        key: 'details',
+        title: 'Optional Details',
+        content: {
+          as: Form.Input,
+          label: 'Maiden Name',
+          placeholder: 'Maiden Name',
+        },
+      },
+    ]
     return (
       <div>
       <br/>
@@ -93,22 +106,55 @@ export default class Uploadpage extends Component {
         {this.props.user? <div>{this.props.user}</div>: null}
           <Header id="upload-header-id">Upload Form</Header>
           <div class="formElementDecor">
-          <Form.Input
+          {/* <Form.Input
             label="Spectra Search ID:"
             type="number"
             onChange={_=(event)=>{this.setState({SpectraSearchID: event.target.value})}}
-          />
+          /> */}
         
-          <Form.Input
+          <Form.Input required
             label="Instrument name:"
             type="text"
             onChange={_=(event)=>{this.setState({Name: event.target.value})}}
           />
-          <Form.Input
+        
+           <Form.Input required
+            label="Application (ex.A-Type):"
+            type="text"
+            onChange={_=(event)=>{this.setState({application: event.target.value });}}
+          />
+            <Form.Input required
+            label="Type:"
+            type="text"
+            onChange={_=(event)=>{this.setState({type: event.target.value });}}
+          />
+          <Form.Input required
+            label="Techonology:"
+            type="text"
+            onChange={_=(event)=>{this.setState({technology: event.target.value});}}
+          />
+
+          <Form.Input required
+            label="Spectral Data:"
+            type="text"
+            placeholder='Please enter numbers as a comma seperated list'
+            onChange={_=(event)=>{this.setState({technology: event.target.value});}}
+          />
+
+
+
+      
+   <Accordion as={Form.Field} panels={panels}/>
+    
+ 
+
+          {/* --------------------------------------------collapsable ----------------------------------------------------------------------------------------------------------------*/}
+      
+           <Form.Input
             label="Manufacturer:"
             type="text"
             onChange={_=(event)=>{this.setState({manufacturer: event.target.value});}}
-          />
+          /> 
            <Form.Input
             label="Catalog number:"
             type="text"
@@ -157,21 +203,6 @@ export default class Uploadpage extends Component {
             type="text"
             onChange={_=(event)=>{this.setState({comments: event.target.value });}}
 
-          />
-           <Form.Input
-            label="Application (ex.A-Type):"
-            type="text"
-            onChange={_=(event)=>{this.setState({application: event.target.value });}}
-          />
-            <Form.Input
-            label="Type:"
-            type="text"
-            onChange={_=(event)=>{this.setState({type: event.target.value });}}
-          />
-          <Form.Input
-            label="Techonology:"
-            type="text"
-            onChange={_=(event)=>{this.setState({technology: event.target.value});}}
           />
          
           </div>
