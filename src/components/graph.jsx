@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash'
 import Uploadpage from './uploadpage';
 import { PureComponent } from 'react';
+import SpectralData from './SpectralData';
 import {
   LineChart, Line, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, Brush, Legend,
 } from 'recharts';
@@ -34,8 +35,8 @@ export default class TestingGraph extends React.Component {
 
 
   graphJSON = () => {
-    console.log("Do you know it", this.props.ssidForGraph);
 
+    console.log("Do you know it", this.props.ssidForGraph);
     //only grab what we need like demand paging. graph the row with ssid 8 for example
     fetch('http://localhost:4000/SpectralData')
       .then(response => response.json())

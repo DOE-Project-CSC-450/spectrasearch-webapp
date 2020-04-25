@@ -9,7 +9,6 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Uploadpage from './components/uploadpage';
 import { Component } from 'react';
 import Lamp from './components/Lamp';
-import TestingGraph from './components/TestingGraph';
 import Admin from './components/Admin';
 import SpectralData from './components/SpectralData'
 //s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}
@@ -37,7 +36,6 @@ export default class App extends Component{
         <Route path='/upload' exact component={Uploadpage}/>
         <Route path='/Administrating' exact component={Admin}/>
         <Route path='/lamps' exact component={Lamp}/>
-        <Route path='/TestingGraph' exact component={TestingGraph}/>
         {/* <Route path='/light' 
          render={() => <InstProf parentCallback = {this.callbackFunction} s1={this.state.message} isAuthed={true} />}
         /> */}
