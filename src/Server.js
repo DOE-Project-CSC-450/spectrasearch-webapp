@@ -120,6 +120,26 @@ app.get('/SpectralData', (req, res) => {
   });
 })
 
+app.post('/SpectralData', (req, result) => {
+  result.set('Access-Control-Allow-Origin', '*');
+  console.log("this?", typeof (req), "and", typeof (req.body));
+  const body = (req.body);
+
+  var practice3 = 'INSERT INTO `spectral distribution fields`(`SpectraSearchID`, `SpectralData`) VALUES ("' + body.SpectraSearchID + '", "' + body.specData + '")'
+  con.query(practice3, function (err, result) {
+    if (err) throw err;
+    console.log("inserted spectral result " + result);
+  });
+  result.send({ message: 'Success' })
+});
+
+
+
+
+
+
+
+
 
 
 app.listen(4000, () => {

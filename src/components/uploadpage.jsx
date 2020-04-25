@@ -143,8 +143,8 @@ export default class Uploadpage extends Component {
     this.state = { type: '' }
     this.state = { technology: '' }
     this.state = { formSubmitted: false }
-    //this.state = {lightingReponseCount: ''}
     this.state = { sidArrayPlace: '' }
+    this.state = { spectralDataState: []}
   }
 
   //need to make a fetch call to get the spectra search id of the last thing entered. length of things -1
@@ -155,13 +155,19 @@ export default class Uploadpage extends Component {
     fetch('http://localhost:4000/lighting')
       .then(response => response.json())
       .then(_ = (response) => {
+        if (Object.values(response)[0].length < 1){
+          this.setState({SpectraSearchID: 1})
+        }
+        else{
         this.setState({ lightingResponseCount: Object.values(response)[0].length - 1, sidArrayPlace: Object.values(response.data[0])[0] })
         repsonseLength = Object.values(response)[0].length - 1;
         var ssid = Object.values(response.data[repsonseLength])[0]
         newSpectraSearchId = ssid;
         newSpectraSearchId = newSpectraSearchId + 1
         this.setState({ SpectraSearchID: newSpectraSearchId });
+        }
       })
+    
   }
 
   //for the submission button
@@ -197,6 +203,21 @@ export default class Uploadpage extends Component {
       }).then(function (body) {
         console.log(body);
       });
+//--------------------------------
+fetch('http://localhost:4000/SpectralData', {
+  method: 'POST',
+  body: JSON.stringify({
+    SpectraSearchID: this.state.SpectraSearchID,
+    specData: this.state.spectralDataState
+  }),
+  headers: { 'Content-Type': 'application/json' }
+})
+  .then(function (response) {
+    //this is the line that is giving me the error
+    return response.json()
+  }).then(function (body) {
+    console.log(body);
+  });
   }
 
 
@@ -211,7 +232,7 @@ export default class Uploadpage extends Component {
             header='Upload Completed'
             content="Thanks! Your addition has been sent for review."
           />
-          <Button onClick={window.location.reload()}>Upload additional instruments</Button>
+          {/* <Button onClick={window.location.reload()}>Upload additional instruments</Button> */}
         </Form> </div>
           :
           <Segment id="middle-upload">
@@ -312,11 +333,11 @@ export default class Uploadpage extends Component {
                   label="Spectral Data"
                 >
                   <TextArea
-                    placeholder="Please enter numbers as a comma delimited list (350-800)"
-                    maxLength="2000"
-                  //onChange={_ = (event) => { this.setState({ technology: event.target.value }); }}
+                    placeholder="[Please enter numbers as a comma delimited list (350-800) inside brackets]"
+                    maxLength="10000000"
+                    onChange={_ = (event) => { this.setState({ spectralDataState: event.target.value });}}
                   />
-                  <span><Popup content='Data values for Spectral Distribution Graph.   i.e. 0.000172174,  0.00019782,  0.000172848,  ...' trigger={<Button icon='info' size="mini" circular={true} compact={true} color="blue" />} /></span>
+                  <span><Popup content='Data values for Spectral Distribution Graph.   i.e. [0.000172174,  0.00019782,  0.000172848,  ...]' trigger={<Button icon='info' size="mini" circular={true} compact={true} color="blue" />} /></span>
                 </Form.Input>
 
                 {/* --------------------------------------------------------------collapsable--------------------------------------------------------------- */}
