@@ -8,7 +8,7 @@ import Uploadpage from './uploadpage';
 import { PureComponent } from 'react';
 import SpectralData from './SpectralData';
 import {
-  LineChart, Line, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, Brush, Legend,
+  LineChart, Line, Label, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, Brush, Legend,
 } from 'recharts';
 
 
@@ -92,7 +92,9 @@ export default class TestingGraph extends React.Component {
           </defs>
 
           <CartesianGrid strokeDasharray="3 3" />
+          
           <XAxis
+          
             dataKey="wavelength"
             ticks={[350, 380, 450, 495, 570, 590, 620, 750]} />
           <YAxis />
