@@ -65,8 +65,8 @@ export default class TestingGraph extends React.Component {
       <div>
         <p>Spectral Distribution Grpah for Spectra Search id: {this.props.ssidForGraph}</p>
         <AreaChart
-          width={470}
-          height={400}
+          width={480}
+          height={415}
           data={this.state.SpectralDataNumbersArrayFromJSON}
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
@@ -94,8 +94,10 @@ export default class TestingGraph extends React.Component {
 
           <XAxis
             dataKey="wavelength"
-            ticks={[400, 450, 475, 550, 580, 600, 700]} />
-          <YAxis />
+            ticks={[400, 450, 475, 550, 580, 600, 700]} 
+            
+          />
+          <YAxis/>
           <Area label="monotone" dataKey="norm_power" stroke="#8884d8" fill="url(#colorUv)" />
 
           <Tooltip />
