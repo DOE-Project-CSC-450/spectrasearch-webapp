@@ -13,8 +13,8 @@ import {
 
 
 var graphResponse;
-
-
+var keyfeverArray = [];
+var valuefeverArray = [];
 var finalGraphValuesArray = [];
 
 
@@ -23,74 +23,70 @@ export default class TestingGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = { SpectralDataNumbersArrayFromJSON: [] }
-
   }
 
 
   componentDidMount() {
     this.graphJSON();
   }
+  componentWillUnmount() {
+    finalGraphValuesArray = [];
+    this.setState({ SpectralDataNumbersArrayFromJSON: [] })
+  }
 
 
   graphJSON = () => {
 
-    console.log("Do you know it", this.props.ssidForGraph);
+
     //only grab what we need like demand paging. graph the row with ssid 8 for example
     fetch('http://localhost:4000/SpectralData')
       .then(response => response.json())
       .then(_ = (response) => {
         //this.props.ssidForGraph
-        graphResponse = JSON.parse(Object.values(response.data[3])[6])
+        graphResponse = JSON.parse(Object.values(response.data[this.props.ssidForGraph])[6])
         //graphNums = Object.values(response.data[this.props.ssidForGraph - 1])[6].split(',')
         //CHANGE THAT 2
 
         for (var keyObject in graphResponse) {
           var valueObject = graphResponse[keyObject];
           // console.log(keyObject + ", " + valueObject);
-          finalGraphValuesArray.push({ wavelength: Number(keyObject), norm_power: Number(valueObject) })
+          keyfeverArray.push(keyObject);
+          valuefeverArray.push(valueObject)
+          finalGraphValuesArray.push({ wavelength: Number(keyObject), norm_power: Number(valueObject), })
 
         }
-
-
-
-
-        console.log(finalGraphValuesArray);
+        this.setState({ SpectralDataNumbersArrayFromJSON: finalGraphValuesArray })
       })
   }
-
 
 
   render() {
     return (
       <div>
         <p>Spectral Distribution Grpah for Spectra Search id: {this.props.ssidForGraph}</p>
-
         <AreaChart
-          width={500}
+          width={470}
           height={400}
-          data={finalGraphValuesArray}
+          data={this.state.SpectralDataNumbersArrayFromJSON}
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
-
-          {/* code bound in <defs> does not sync with graph :( */}
+          {console.log("this is what it looks like in the thing", typeof (finalGraphValuesArray))}
           <defs>
             <linearGradient id="norm_power_id" x1="0" y1="0" x2="0" y2="1">
-              <stop offset=".0.002821200001%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="0.002821200005%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset=".006%" stopColor="#8884d8" stopOpacity={0.8} />
+              <stop offset=".008%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
 
             <linearGradient id="colorUv" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0.0011821200001" stopColor="#0000FF" />
-              <stop offset="0.0012821200001" stopColor="#6495ED" />
-              <stop offset=".0013821200001" stopColor="#00FFFF" />
-              <stop offset=".0017821200001" stopColor="#7FFF00" />
-              <stop offset=".0021821200001" stopColor="#ADFF2F" />
-              <stop offset="0023821200001" stopColor="#FFFF00" />
-              <stop offset="0025821200001" stopColor="#FFA500" />
-              <stop offset="0026821200001" stopColor="#FF4500" />
-
+              <stop offset=".400" stopColor="#0100ea" />
+              <stop offset=".450" stopColor="#0375ea" />
+              <stop offset=".475" stopColor="#03ebec" />
+              <stop offset=".550" stopColor="#05ea07" />
+              <stop offset=".580" stopColor="#ebea07" />
+              <stop offset=".600" stopColor="#ec7501" />
+              <stop offset=".700" stopColor="#ea0202" />
             </linearGradient>
           </defs>
 
@@ -98,16 +94,19 @@ export default class TestingGraph extends React.Component {
 
           <XAxis
             dataKey="wavelength"
-            ticks={[350, 380, 450, 495, 570, 590, 620, 750]} />
+            ticks={[400, 450, 475, 550, 580, 600, 700]} />
           <YAxis />
           <Area label="monotone" dataKey="norm_power" stroke="#8884d8" fill="url(#colorUv)" />
 
           <Tooltip />
+          {this.componentWillUnmount}
         </AreaChart>
 
       </div>
-
-
     );
   }
 }
+
+
+
+

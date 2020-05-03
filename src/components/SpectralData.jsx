@@ -75,6 +75,7 @@ export default class SpectralData extends Component {
 
 
             {this.state.quickFlag? 
+         
              <AreaChart
            
               margin={{ top: 10, right: 30, left: 0, bottom: 0, }}
@@ -84,7 +85,7 @@ export default class SpectralData extends Component {
             
            >
    
-             {/* code bound in <defs> does not sync with graph :( */}
+             {console.log(typeof(actualGraphQuick))}
              <defs>
                <linearGradient id="norm_power_id" x1="0" y1="0" x2="0" y2="1">
                  <stop offset=".006%" stopColor="#8884d8" stopOpacity={0.8} />
