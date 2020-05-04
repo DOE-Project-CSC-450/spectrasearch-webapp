@@ -5,7 +5,7 @@ import { AppRegistry, TextInput } from "react";
 import { Button, Popup, Segment, Accordion, Icon, Input, Divider, Search, Grid, Header, Dropdown, Form, Message, TextArea, FormButton } from "semantic-ui-react";
 import { thisTypeAnnotation } from "@babel/types";
 import _ from 'lodash'
-import { now } from "d3";
+import { now, timeThursdays } from "d3";
 
 const applicationTypeOptions = [
   {
@@ -77,6 +77,17 @@ const applicationTypeOptions = [
     key: 'Connected',
     text: 'Connected',
     value: 'Connected'
+  },
+
+  {
+    key: 'Spiral',
+    text: 'Spiral',
+    value: 'Sprial'
+  },
+  {
+    key: 'Medical',
+    text: 'Medical',
+    value: 'Medical'
   }
 ]
 
@@ -95,7 +106,18 @@ const typeOptions = [
     key: 'Retrofit Kit',
     text: 'Retrofit Kit',
     value: 'Retrofit Kit'
+  },
+  {
+    key: 'No Distinction',
+    text: 'No Distinction',
+    value: 'No Distinction'
+  },
+  {
+    key: 'Other',
+    text: 'Other',
+    value: 'Other'
   }
+
 ]
 
 const technologyOptions = [
@@ -105,14 +127,19 @@ const technologyOptions = [
     value: 'Incandescent'
   },
   {
-    key: 'idk1',
-    text: 'idk1',
-    value: 'idk1'
+    key: 'LED',
+    text: 'LED',
+    value: 'LED'
   },
   {
-    key: 'idk2',
-    text: 'idk2',
-    value: 'idk2'
+    key: 'Fluorescent',
+    text: 'Fluorescent',
+    value: 'Fluorescent'
+  },
+  {
+    key: 'Other',
+    text: 'Other',
+    value: 'Other'
   }
 ]
 var repsonseLength = 0;
@@ -144,35 +171,67 @@ export default class Uploadpage extends Component {
     this.state = { technology: '' }
     this.state = { formSubmitted: false }
     this.state = { sidArrayPlace: '' }
-    this.state = { spectralDataState: []}
+    this.state = { spectralDataState: [] }
+    this.state = { errorOnSubmit: false }
+    this.state = { hidden: false }
   }
 
   //need to make a fetch call to get the spectra search id of the last thing entered. length of things -1
   //then put that in a variable
   //so assign spectra search id the current id + 1 each time
 
+  componentWillMount = () => {
+    if (localStorage.getItem('thatUser') === undefined || localStorage.getItem('thatUser') === '' || this.props.user === '' || this.props.user === undefined) {
+      //document.getElementById("middle-upload").classList.add("hidden");
+      this.setState({ hidden: true });
+      if (!localStorage.getItem('thatUser')){
+        console.log("it is still undefined")
+        
+      } 
+      else{
+      console.log("it is not undefined")
+      this.setState({ hidden: false });
+      console.log("supposed to be good")
+   
+      }
+    }
+    else {
+      this.setState({ hidden: false });
+      console.log("supposed to be good")
+    }
+  }
+
+
   handle_id_assignment = (event) => {
     fetch('http://localhost:4000/lighting')
       .then(response => response.json())
       .then(_ = (response) => {
-        if (Object.values(response)[0].length < 1){
-          this.setState({SpectraSearchID: 1})
+        if (Object.values(response)[0].length < 1) {
+          this.setState({ SpectraSearchID: 1 })
         }
-        else{
-        this.setState({ lightingResponseCount: Object.values(response)[0].length - 1, sidArrayPlace: Object.values(response.data[0])[0] })
-        repsonseLength = Object.values(response)[0].length - 1;
-        var ssid = Object.values(response.data[repsonseLength])[0]
-        newSpectraSearchId = ssid;
-        newSpectraSearchId = newSpectraSearchId + 1
-        this.setState({ SpectraSearchID: newSpectraSearchId });
+        else {
+          this.setState({ lightingResponseCount: Object.values(response)[0].length - 1, sidArrayPlace: Object.values(response.data[0])[0] })
+          repsonseLength = Object.values(response)[0].length - 1;
+          var ssid = Object.values(response.data[repsonseLength])[0]
+          newSpectraSearchId = ssid;
+          newSpectraSearchId = newSpectraSearchId + 1
+          this.setState({ SpectraSearchID: newSpectraSearchId });
         }
       })
-    
+
   }
 
   //for the submission button
   handle_submit = (event) => {
     event.preventDefault();
+    //if the required things arent there dont submit
+    //need name sprectral data application type technology
+    if (this.state.Name === undefined || this.state.spectralDataState === undefined || this.state.application === undefined || this.state.type === undefined || this.state.technology === undefined) {
+      console.log("dont send it through");
+      this.setState({ errorOnSubmit: true });
+      window.scrollTo(0, 0);
+      return -1;
+    }
     console.log("under here", this.state.Name, this.state.type, this.state.application, this.state.technology);
     this.setState({ formSubmitted: true })
     // On submit of the form, send a POST request with the data to the server.
@@ -203,21 +262,21 @@ export default class Uploadpage extends Component {
       }).then(function (body) {
         console.log(body);
       });
-//--------------------------------
-fetch('http://localhost:4000/SpectralData', {
-  method: 'POST',
-  body: JSON.stringify({
-    SpectraSearchID: this.state.SpectraSearchID,
-    specData: this.state.spectralDataState
-  }),
-  headers: { 'Content-Type': 'application/json' }
-})
-  .then(function (response) {
-    //this is the line that is giving me the error
-    return response.json()
-  }).then(function (body) {
-    console.log(body);
-  });
+    //--------------------------------
+    fetch('http://localhost:4000/SpectralData', {
+      method: 'POST',
+      body: JSON.stringify({
+        SpectraSearchID: this.state.SpectraSearchID,
+        specData: this.state.spectralDataState
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(function (response) {
+        //this is the line that is giving me the error
+        return response.json()
+      }).then(function (body) {
+        console.log(body);
+      });
   }
 
 
@@ -226,6 +285,23 @@ fetch('http://localhost:4000/SpectralData', {
     return (
       <div>
         <br />
+        {this.state.hidden ? <Form id="noFormError" error>
+          <Message
+            error
+            header='Login to Upload'
+            content='Users must have an account and be logged in to upload to Spectra Search Database.'
+          />
+
+        </Form> : console.log("it should show")}
+        {this.state.errorOnSubmit ? <Form error>
+
+          <Message
+            error
+            header='Missing required input'
+            content='Sorry, you can only submit with all required info. Please check inputs and try again.'
+          />
+
+        </Form> : console.log(".")}
         {this.state.formSubmitted ? <div> <Form success>
           <Message
             success
@@ -236,17 +312,13 @@ fetch('http://localhost:4000/SpectralData', {
         </Form> </div>
           :
           <Segment id="middle-upload">
-            <Form>
+            <Form id="uploadFormHidden">
               <div>Note* Please be sure to Login or upload cannot be processed</div>
               <div>User uploading: {localStorage.getItem('thatUser')}</div>
               {this.props.user ? <div>{this.props.user}</div> : null}
               <Header id="upload-header-id">Upload Form</Header>
               <div class="formElementDecor">
-                {/* <Form.Input
-                label="Spectra Search ID:"
-                type="number"
-                onChange={_=(event)=>{this.setState({SpectraSearchID: event.target.value})}}
-              />  */}
+
                 <Form.Input required
                   label="Instrument name:"
                   type="text"
@@ -303,31 +375,6 @@ fetch('http://localhost:4000/SpectralData', {
                   />
                 </Form.Input>
 
-                {/* 
-<Form.Input required label="Type:" onChange={_ = (event) => { this.setState({ type: event.target.value }); }}>
-<Form.Group grouped>
-      <Form.Field
-        label='Lamp'
-        control='input'
-        type='radio'
-        name='typeRadios'
-      />
-      <Form.Field
-        label='Luminaire'
-        control='input'
-        type='radio'
-        name='typeRadios'
-      />
-      <Form.Field
-        label='Retrofit Kit'
-        control='input'
-        type='radio'
-        name='typeRadios'
-      />
-    </Form.Group>
-    </Form.Input> */}
-
-
                 <Form.Input
                   required
                   label="Spectral Data"
@@ -335,9 +382,10 @@ fetch('http://localhost:4000/SpectralData', {
                   <TextArea
                     placeholder="[Please enter numbers as a comma delimited list (350-800) inside brackets]"
                     maxLength="10000000"
-                    onChange={_ = (event) => { this.setState({ spectralDataState: event.target.value });}}
+                    onChange={_ = (event) => { this.setState({ spectralDataState: event.target.value }); }}
                   />
-                  <span><Popup content='Data values for Spectral Distribution Graph.   i.e. [0.000172174,  0.00019782,  0.000172848,  ...]' trigger={<Button icon='info' size="mini" circular={true} compact={true} color="blue" />} /></span>
+                  <span><Popup content='Data values for Spectral Distribution Graph. {“wavelength1”:value1,”wavelength2”:value2,”wavelength3”:value3…}
+Example: {“350”: 0.04,”351”,0.008,”352”:0.00}' trigger={<Button icon='info' size="mini" circular={true} compact={true} color="blue" />} /></span>
                 </Form.Input>
 
                 {/* --------------------------------------------------------------collapsable--------------------------------------------------------------- */}

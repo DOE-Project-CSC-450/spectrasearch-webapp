@@ -83,6 +83,10 @@ export default class Searching extends Component {
   
   }
 
+  componentWillUnmount = () =>{
+    this.setState({lightingInstClicked: false})
+  }
+
  
   handleResultSelect = (e, { result }) => {
     refreshed = result;
@@ -108,20 +112,7 @@ export default class Searching extends Component {
     console.log("everybody 123: ", this.state.serverName.length);   
  }
 
-/* TabClicked=(e)=>{
-  
-  var contentId = e.target;
-  showContent(contentId);
-    window.history.pushState({
-    tabForId: contentId
-    }, null, "tab-"+contentId);
 
-    
-    window.history.replaceState({
-      tabForId: sResult
-  }, null, "tab-"+sResult);
- 
-    }   */
    
 
   handleSearchChange = (e, { value }) => {
@@ -183,10 +174,7 @@ holding = '/instrument' + spect;
 creator = this.state.serverName
 
 
-sendData = () => {
-  alert("hel")
-  this.props.parentCallback("Hey Popsie, How’s it going?");
-}
+
   
 
 
@@ -212,8 +200,8 @@ sendData = () => {
             <Header as='h2' id="header-id"><Icon.Group size='large'><Icon id="pic" name='lightbulb'/></Icon.Group> Spectra Search
             </Header>
 
-              <Segment.Group>
-                <Segment><Header>Search for Lighting Instruments</Header>
+             
+                <Header>Search for Lighting Instruments</Header>
                   <Search 
                   fluid
                   input={{ fluid: true }} 
@@ -227,183 +215,26 @@ sendData = () => {
                   id="grand-search" 
                   size='small' 
                   placeholder='Enter lighting search here' 
-                  //onSearchChange = {this.handle_search}
                   />
-                </Segment>
-            
             <br/>
-            
-                <span><Header as='h4'>Frequent Instruments:</Header>
-                <Label as='a'>
-                  {historia[0]}
-                  <Icon name='delete' />
-                </Label>
-                <Label as='a'>
-                  {historia[1]}
-                  <Icon name='delete' />
-                </Label>
-                <Label as='a'>
-                  {historia[2]}
-                  <Icon name='delete' />
-                </Label>
-                <Label as='a'>
-                  {historia[3]}
-                  <Icon name='delete' />
-                </Label>
-                </span>
-                <br/>
-                <br/>
-                <br/>
-               
-              </Segment.Group>
-              OR
+            <br/>
+                           
+              <Header as='h4'>About SpectraSearch Open Source Site</Header>
+              <div id="aboutUs">
+              <p id="about1">SpectraSearch is a full stack web application geared towards the lighting profession community, 
+                with the goal of helping lighting professionals evaluate lighting products against current and future requirements 
+                of SPD lighting instruments. </p>
+                <p id="about2">Evaluations are used by the DOE to give recommendations to businesses on what types 
+                of lights they should use. </p>
+                <p id="about3">The goal of this site strives to save energy, pick instruments that best meet lighting requirements,
+                explore new lighting metrics available to the community all throught the use of
+                color math functions, and complete data visualizations.
+              </p>
+              </div>
+          
+           </span> } 
 
-              <Header as='h4'>Search via Lighting Type or Application:</Header>
-              <List horizontal>
-              <List.Item>
-              
-
-                <List.Description>
-                  Lamp <Link to='/lamps'><a>All lamps</a></Link>
-                </List.Description>
-              </List.Item>
-
-
-              <List.Item>
-               
-                <List.Description>
-                  Luminaire <a>All luminaire</a>.
-                </List.Description>
-                
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Retrofit Kit <a>All retrofit kit</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <Divider/>
-              <List.Item>
-               
-                <List.Description>
-                  A-Type <a>All A-type</a>.
-                </List.Description>
-                
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Decorative <a>All decorative</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-                
-                <List.Description>
-                  Directional <a>All directional</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Small Directional <a>All small directional</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Downlighting <a>All downlighting</a>.
-                </List.Description>
-              
-              </List.Item>
-
-
-              <List.Item>
-               
-                <List.Description>
-                  Linear Fixture <a>All linear fixture</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Low/High Bay <a>All low/high bay</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Indoor other <a>All indoor other</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Parking Lot <a>All parking lot</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-                
-                <List.Description>
-                  Parking Garage <a>All parking garage</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Street/Roadway <a>All street/roadway</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Building Exterior <a>All building exterior</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-               
-                <List.Description>
-                  Outdoor Other <a>All outdoor other</a>.
-                </List.Description>
-               
-              </List.Item>
-
-              <List.Item>
-              
-                <List.Description>
-                  Connected <a>All connected</a>.
-                </List.Description>
-               
-              </List.Item>
-
-            
-              </List>  
-                </span> } 
-
-        
+       
           </Segment.Group>
           
         

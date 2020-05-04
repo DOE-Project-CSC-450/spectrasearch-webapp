@@ -60,7 +60,8 @@ export default class SpectralData extends Component {
     return (
       <Form id='quickLookupPage'>
         <Header>Spectral Data: Quick SPD Graph Calculator</Header>
-        <Popup content='Data values for Spectral Distribution Graph.   i.e. [0.000172174,  0.00019782,  0.000172848,  ...]' trigger={<Button icon='info' size="mini" floated='left' circular={true} compact={true} color="blue" />} />
+        <Popup content='Data values for Spectral Distribution Graph. Enter {“wavelength1”:value1,”wavelength2”:value2,”wavelength3”:value3…}
+Example: {“350”: 0.04,”351”,0.008,”352”:0.00}' trigger={<Button icon='info' size="mini" floated='left' circular={true} compact={true} color="blue" />} />
         <TextArea id="grabTextArea"
           rows={2}
           maxLength="10000000"
@@ -70,7 +71,7 @@ export default class SpectralData extends Component {
           onChange={this.handleTheirTextInput}
         />
         <br /><br />
-        <Button onClick={this.handleQucikSubmit} floated='left' >Sumbit</Button>
+        <Button onClick={this.handleQucikSubmit} floated='left' >Submit</Button>
         <Button onClick={this.handleQucikSubmitRefresh} floated='left' >Clear</Button>
         <br /><br />
         <Divider />

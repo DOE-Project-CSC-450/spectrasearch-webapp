@@ -9,6 +9,7 @@ import { timingSafeEqual } from 'crypto';
 import { thisTypeAnnotation, thisExpression } from '@babel/types';
 import Chart from "react-google-charts";
 import Lamp from './Lamp'
+import Searching from './Search'
 
 var CCT = 0;
 var raresult = 0;
@@ -373,7 +374,6 @@ export default class InstProf extends Component {
         var lastData;
         return (
             <Segment className='target'>
-
                 <Dropdown className="inst-dropdown" closeOnChange={true} text='Export as'>
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={this.jsPdfGenerator} text='pdf' />

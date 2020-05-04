@@ -10,7 +10,7 @@ var con = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "mysql",
-  database: "SpectraSearchDatabase"
+  database: "spectrasearchdatabase"
 });
 var sql2;
 var ignore;
@@ -108,7 +108,7 @@ app.post('/users', (req, result) => {
 
 
 app.get('/SpectralData', (req, res) => {
-  con.query('SELECT * FROM `Spectral Distribution Fields`', (err, results) => {
+  con.query('SELECT * FROM `spectraldistributionfields`', (err, results) => {
     if (err) {
       return res.send(error);
     }

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ 
 } 
 
 #header-id{
@@ -33,11 +34,15 @@ animation-duration: 4s;
 
 #grand-search{
   border-radius: 0% !important;
+  
 
 }
 
-#grand-search{ 
-  border-radius: 0% !important;
+input#grand-search{ 
+  
+  margin: .5% !important;
+  border-color:black;
+  
 }
 
 .App-link {
@@ -55,13 +60,6 @@ animation-duration: 4s;
   border: solid black;
 }
 
-/*--------------------------------------------Login CSS----------------------------------------*/
-/*
-h1 {
-  text-align: center;
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); 
-}
-*/
 
 /*------------------------------------------Upload page------------------------------------------*/
 
@@ -75,64 +73,6 @@ h1 {
 #upload-header-id{
   text-align: center !important;
 }
-/*
-input[type=text]{
-  align-content: center;
-  width: 80%;
-  padding: 12px 10px;
-  display: inline-block;
-  margin: 10px;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-h3{
-  padding: 20px;
-  margin-block: 15px;
-}
-
-
-
-.formElementDecor{
-  width: 60%;
-  color:red;
-  font-weight: bold;
-  align-self: center;
-}
-
-
-#form{
-  align-content: center;
-  padding: 50px;
-  border-color: linear-gradient(violet, indigo, blue, green, yellow, orange, red);
-}
-
-#uploadForm{
-  display: block;
-  align-items: center;
-  padding: 15px;
-  width: 200px;
-  background-color: red;
-}
-
-#h1Form{
-  text-align: center;
-}
-
-input{
-  width:40%;
-}
-
-
-
-body{
-  background-color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-}
-
-
-
-*/
-
-/*--------------------------------------------------------------------*/
 
 
 .axis {
@@ -255,4 +195,36 @@ path {
 
 #quickLookupPage{
   padding: 20px !important;
+}
+
+#aboutUs{
+  width: 60%;
+  margin: auto !important;
+  padding-top: 2% !important;
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+  padding-bottom: 5% !important;
+}
+
+#about1{
+  color: blue;
+}
+#about2{
+  color: green;
+}
+#about3{
+  color: orangered;
+}
+
+
+#uploadFormHidden{
+
+}
+
+.hidden {
+  display: block;
+}
+
+#noFormError ~ *{
+  display: none;
 }

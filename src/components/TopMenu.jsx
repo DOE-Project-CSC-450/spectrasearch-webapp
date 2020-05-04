@@ -11,7 +11,6 @@ import { thisTypeAnnotation } from '@babel/types';
 import Searching from './Search'
 import {Link} from 'react-router-dom';
 
-
 var secret;
 const initialState = { activeItem: 'home', backToHome: Boolean}
 
@@ -20,6 +19,7 @@ export default class TopMenu extends Component {
         super(props);
         this.state = {activeItem: ''}
         this.state = {backToHome: false}
+        this.state = {homeVariable : 'Home'}
       }
 
       handleActiveItemClick = (e, { name }) => {
@@ -33,12 +33,13 @@ export default class TopMenu extends Component {
         return (
             <span>
             <Menu inverted>
-            <Link to='/'>
-              <Menu.Item
-                name='Home'
+            <Link to='/home'>
+              <Menu.Item id="homeClick"
+                name= {this.state.homeVariable}
                 active={activeItem === 'homeing'}
-                onClick={this.handleActiveItemClick}
+                onClick={_=()=>{window.location.href = window.location.href }}
               />
+            
                </Link>
 
                <Link to='/upload'>
