@@ -31,7 +31,7 @@ export default class App extends Component{
         
         <TopMenu />
         <Switch>
-        <Route path='/home' exact component={Searching}/>
+        <Route path='/' exact component={Searching}/>
         <Route path='/spectralData' exact component={SpectralData}/>
         <Route path='/upload' exact component={Uploadpage}/>
         <Route path='/Administrating' exact component={Admin}/>

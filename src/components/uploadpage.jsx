@@ -174,6 +174,9 @@ export default class Uploadpage extends Component {
     this.state = { spectralDataState: [] }
     this.state = { errorOnSubmit: false }
     this.state = { hidden: false }
+    this.state = { lumens: ''}
+    this.state = { watts: ''}
+    this.state = { volts: ''}
   }
 
   //need to make a fetch call to get the spectra search id of the last thing entered. length of things -1
@@ -277,6 +280,27 @@ export default class Uploadpage extends Component {
       }).then(function (body) {
         console.log(body);
       });
+
+
+      fetch('http://localhost:4000/metrics', {
+      method: 'POST',
+      body: JSON.stringify({
+        SpectraSearchID: this.state.SpectraSearchID,
+        lumens: this.state.lumens,
+        watts: this.state.watts,
+        volts: this.state.volts
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(function (response) {
+        //this is the line that is giving me the error
+        return response.json()
+      }).then(function (body) {
+        console.log(body);
+      }); 
+
+
+
   }
 
 
@@ -387,6 +411,24 @@ export default class Uploadpage extends Component {
                   <span><Popup content='Data values for Spectral Distribution Graph. {“wavelength1”:value1,”wavelength2”:value2,”wavelength3”:value3…}
 Example: {“350”: 0.04,”351”,0.008,”352”:0.00}' trigger={<Button icon='info' size="mini" circular={true} compact={true} color="blue" />} /></span>
                 </Form.Input>
+
+                <Form.Input
+                  label="Lumens (lumens):"
+                  type="text"
+                  onChange={_ = (event) => { this.setState({ lumens: Number(event.target.value) }); }}
+                />
+
+                <Form.Input
+                  label="Watts (W):"
+                  type="text"
+                  onChange={_ = (event) => { this.setState({ watts: Number(event.target.value) }); }}
+                />
+
+                <Form.Input
+                  label="Volts (V):"
+                  type="text"
+                  onChange={_ = (event) => { this.setState({ volts: Number(event.target.value) }); }}
+                />
 
                 {/* --------------------------------------------------------------collapsable--------------------------------------------------------------- */}
                 <Accordion>

@@ -125,9 +125,36 @@ app.post('/SpectralData', (req, result) => {
   console.log("this?", typeof (req), "and", typeof (req.body));
   const body = (req.body);
 
-  var practice3 = 'INSERT INTO `spectral distribution fields`(`SpectraSearchID`, `SpectralData`) VALUES ("' + body.SpectraSearchID + '", "' + body.specData + '")'
+  var practice3 = 'INSERT INTO `spectraldistributionfields`(`SpectraSearchID`, `SpectralData`) VALUES ("' + body.SpectraSearchID + '", "' + body.specData + '")'
   con.query(practice3, function (err, result) {
     if (err) throw err;
+    console.log("inserted spectral result " + result);
+  });
+  result.send({ message: 'Success' })
+});
+
+
+app.get('/metrics', (req, res) => {
+  con.query('SELECT * FROM `metrics`', (err, results) => {
+    if (err) {
+      return res.send(error);
+    }
+    else {
+      return res.json({
+        data: results
+      })
+    }
+  });
+})
+
+app.post('/metrics', (req, result) => {
+  result.set('Access-Control-Allow-Origin', '*');
+  console.log("this?", typeof (req), "and", typeof (req.body));
+  const body = (req.body);
+
+  var practice4 = 'INSERT INTO `metrics`(`SpectraSearchID`, `lumens`, `watts`, `volts`) VALUES ("' + body.SpectraSearchID + '", "' + body.lumens + '", "' + body.watts + '", "' + body.volts + '")'
+  con.query(practice4, function (err, result) {
+    if (err) {throw err};
     console.log("inserted spectral result " + result);
   });
   result.send({ message: 'Success' })

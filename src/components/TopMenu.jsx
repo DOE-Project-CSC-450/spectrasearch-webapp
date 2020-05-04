@@ -33,14 +33,14 @@ export default class TopMenu extends Component {
     return (
       <span>
         <Menu inverted>
-          <Link to='/home'>
+          <Link to='/'>
             <Menu.Item id="homeClick"
               name={this.state.homeVariable}
               active={activeItem === 'homeing'}
               onClick={_ = () => {
 
                 var final = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-                var result = window.location.href.replace(final, "home");
+                var result = window.location.href.replace(final, "");
                 window.location.href = result
               }}
             />
