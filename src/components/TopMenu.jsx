@@ -9,84 +9,89 @@ import { Button, Modal, Message, Form, TextArea, Label, List, Menu, Input, Segme
 import { uptime } from 'os';
 import { thisTypeAnnotation } from '@babel/types';
 import Searching from './Search'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 var secret;
-const initialState = { activeItem: 'home', backToHome: Boolean}
+const initialState = { activeItem: 'home', backToHome: Boolean }
 
 export default class TopMenu extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {activeItem: ''}
-        this.state = {backToHome: false}
-        this.state = {homeVariable : 'Home'}
-      }
+  constructor(props) {
+    super(props);
+    this.state = { activeItem: '' }
+    this.state = { backToHome: false }
+    this.state = { homeVariable: 'Home' }
+  }
 
-      handleActiveItemClick = (e, { name }) => {
-        this.setState({activeItem: name})
-        console.log(this.state.activeItem)
-       
-      }
+  handleActiveItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+    console.log(this.state.activeItem)
 
-    render () {
-        const { activeItem } = this.state
-        return (
-            <span>
-            <Menu inverted>
-            <Link to='/home'>
-              <Menu.Item id="homeClick"
-                name= {this.state.homeVariable}
-                active={activeItem === 'homeing'}
-                onClick={_=()=>{window.location.href = window.location.href }}
-              />
-            
-               </Link>
+  }
 
-               <Link to='/upload'>
+  render() {
+    const { activeItem } = this.state
+    return (
+      <span>
+        <Menu inverted>
+          <Link to='/home'>
+            <Menu.Item id="homeClick"
+              name={this.state.homeVariable}
+              active={activeItem === 'homeing'}
+              onClick={_ = () => {
+
+                var final = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+                var result = window.location.href.replace(final, "home");
+                window.location.href = result
+              }}
+            />
+
+          </Link>
+
+          <Link to='/upload'>
+            <Menu.Item
+              name='Upload'
+              active={activeItem === 'uploading'}
+              onClick={this.handleActiveItemClick}
+            />
+          </Link>
+          <Link to='/spectralData'>
+            <Menu.Item
+              name='Spectral Data'
+              active={activeItem === 'Spectral Data'}
+              onClick={this.handleActiveItemClick}
+            />
+          </Link>
+          <Menu.Menu position='right'>
+
+            <Link to='/Administrating'>
               <Menu.Item
-                name='Upload'
-                active={activeItem === 'uploading'}
-                onClick={this.handleActiveItemClick}
-              />
-            </Link>
-              <Link to='/spectralData'>
-              <Menu.Item
-                name='Spectral Data'
-                active={activeItem === 'Spectral Data'}
-                onClick={this.handleActiveItemClick}
-              />
-              </Link>
-              <Menu.Menu position='right'>
-
-                <Link to='/Administrating'>
-                <Menu.Item
                 name='Admin'
                 active={activeItem === 'Administrating'}
                 onClick={this.handleActiveItemClick}
-                />
-                </Link>
-                <Modal trigger={<Menu.Item
-                  name='login'
-                 
-                />}>
-                    <Modal.Header>Login Page</Modal.Header>
-                    <Modal.Content image scrolling>
-                    <Modal.Description>
-                    
-                    <Login />
-                    </Modal.Description>
-                 
-                    </Modal.Content>
-                    <Modal.Actions>
-        
-                    </Modal.Actions>
-                     </Modal>
+              />
+            </Link>
+            <Modal trigger={<Menu.Item
+              name='login'
+
+            />}>
+              <Modal.Header>Login Page</Modal.Header>
+              <Modal.Content image scrolling>
+                <Modal.Description>
+
+                  <Login />
+                </Modal.Description>
+
+              </Modal.Content>
+              <Modal.Actions>
+
+              </Modal.Actions>
+            </Modal>
                   }}
               </Menu.Menu>
-             
-            </Menu>
-           </span>
 
-        ) 
-    } 
+        </Menu>
+      </span>
+
+    )
+  }
 } 
