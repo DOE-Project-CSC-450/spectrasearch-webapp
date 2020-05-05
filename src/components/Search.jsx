@@ -7,13 +7,13 @@ import Uploadpage from './uploadpage'
 import InstProf from './Instrument_Profile'
 import { Button, Modal, Label, List, Menu, Input, Segment, Divider, Search, Grid, Header, Icon, Dropdown, Image, GridColumn } from 'semantic-ui-react';
 import { uptime } from 'os';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { thisTypeAnnotation } from '@babel/types';
 import TopMenu from './TopMenu'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import App from '../App'
-var w=0;
-var hold=[];
+var w = 0;
+var hold = [];
 var holding = '';
 var sourceOption;
 var source;
@@ -25,17 +25,17 @@ var Lab = ''
 var createDa = ''
 var reportNum = ''
 var catNum = ''
-var spect ='';
+var spect = '';
 var z;
-var historia =[];
+var historia = [];
 var refreshed;
-var type='';
-var tech ='';
+var type = '';
+var tech = '';
 
 
 var place;
 var holdurl;
- //window.onpopstate = checkState;
+//window.onpopstate = checkState;
 
 
 
@@ -57,44 +57,40 @@ const initialState = { activeItem: 'home', serverName: 'temp', fastArray: [], is
 const resultRenderer = ({ title }) => <Label content={title} />
 
 export default class Searching extends Component {
-  
+
   constructor(props) {
     super(props);
-    this.state = {activeItem: ''}
-    this.state = {serverName: 'temp'}
-    this.state = {search: '' }
-    this.state = {lighting: []}
-    this.state = {ligtingInstClicked: false}
-    this.state = {fastArray: []}
-    this.state = {there: false}
-    
-   
+    this.state = { activeItem: '' }
+    this.state = { serverName: 'temp' }
+    this.state = { search: '' }
+    this.state = { lighting: [] }
+    this.state = { ligtingInstClicked: false }
+    this.state = { fastArray: [] }
+    this.state = { there: false }
+
+
   }
- 
+
   handle_search = (e) => {
     e.preventDefault();
-    this.setState({search: e.target.value});
-    console.log(this.state.search);
+    this.setState({ search: e.target.value });
   }
   state = initialState
 
-  componentDidMount(){
+  componentDidMount() {
     this.getProducts();
-  
+
   }
 
-  componentWillUnmount = () =>{
-    this.setState({lightingInstClicked: false})
+  componentWillUnmount = () => {
+    this.setState({ lightingInstClicked: false })
   }
 
- 
+
   handleResultSelect = (e, { result }) => {
     refreshed = result;
-    this.setState({ value: result.title})
+    this.setState({ value: result.title })
     historia.push((result.title));
-    console.log("finger", historia)
-    console.log("yo look here" + JSON.stringify(result.title));
-    console.log("and here" + JSON.stringify(result))
     sResult = (result.title);
     manu = (result.manufacturer)
     desc = (result.Description)
@@ -106,14 +102,13 @@ export default class Searching extends Component {
     spect = (result.SpectraSearchID)
     type = (result.type)
     tech = (result.technology)
-   
-    this.setState({lightingInstClicked: true});
+
+    this.setState({ lightingInstClicked: true });
     //this.TabClicked(sResult)
-    console.log("everybody 123: ", this.state.serverName.length);   
- }
+  }
 
 
-   
+
 
   handleSearchChange = (e, { value }) => {
     document.getElementById("pic").classList.add("playing");
@@ -131,116 +126,109 @@ export default class Searching extends Component {
     }, 500)
   }
 
-  handleItemClick = () =>{
+  handleItemClick = () => {
     window.location.href = '';
     alert("you clicked login");
   }
 
-  handleUploadClick = () =>{
+  handleUploadClick = () => {
     window.open("uploadpage.jsx")
   }
-holding = '/instrument' + spect;
-  getProducts = _ =>{
+  holding = '/instrument' + spect;
+  getProducts = _ => {
     fetch('http://localhost:4000/lighting')
-    .then(response => response.json())
-    .then(_ = (response) =>{ 
-      this.setState({lighting: response.data, serverName:Object.values(response.data)})
-      for (z = 0; z < this.state.serverName.length; z++){
-      sourceOption = 
-      { 
-      "title": this.state.serverName[z].Name,
-      "manufacturer": this.state.serverName[z].Manufacturer,
-      "Description": this.state.serverName[z].Description,
-      "DocumentCreator": this.state.serverName[z].DocumentCreator,
-      "Labratory": this.state.serverName[z].Laboratory,
-      "CreationDate": this.state.serverName[z].ReportDate,
-      "ReportNumber": this.state.serverName[z].ReportNumber, 
-      "CatalogNumber": this.state.serverName[z].CatalogNumber,
-      "SpectraSearchID": this.state.serverName[z].SpectraSearchID,
-      "type" : this.state.serverName[z].Type,
-      "technology": this.state.serverName[z].Technology
-      }
-       if (hold.length < this.state.serverName.length){
-      hold.push(sourceOption);
-       }
-    }
+      .then(response => response.json())
+      .then(_ = (response) => {
+        this.setState({ lighting: response.data, serverName: Object.values(response.data) })
+        for (z = 0; z < this.state.serverName.length; z++) {
+          sourceOption =
+          {
+            "title": this.state.serverName[z].Name,
+            "manufacturer": this.state.serverName[z].Manufacturer,
+            "Description": this.state.serverName[z].Description,
+            "DocumentCreator": this.state.serverName[z].DocumentCreator,
+            "Labratory": this.state.serverName[z].Laboratory,
+            "CreationDate": this.state.serverName[z].ReportDate,
+            "ReportNumber": this.state.serverName[z].ReportNumber,
+            "CatalogNumber": this.state.serverName[z].CatalogNumber,
+            "SpectraSearchID": this.state.serverName[z].SpectraSearchID,
+            "type": this.state.serverName[z].Type,
+            "technology": this.state.serverName[z].Technology
+          }
+          if (hold.length < this.state.serverName.length) {
+            hold.push(sourceOption);
+          }
+        }
 
-    this.setState({fastArray: hold});
-    console.log("marry", source);    
-    })
+        this.setState({ fastArray: hold });
+      })
       .catch(err => console.error(err))
   }
-  
-creator = this.state.serverName
+
+  creator = this.state.serverName
 
 
 
-  
+
 
 
   render() {
-    
+
     holding = '/instrument' + spect;
     //this.componentDidMount();
     const { activeItem } = this.state
-    
+
     source = this.state.fastArray
     var { lighting, lightingInstClicked, serverName, isLoading, value, results } = this.state
-    
+
     return (
       <Segment.Group>
-       
-    {/* {(this.state.lightingInstClicked) ? this.props.history.push('/foo'): console.log("hi")}   */}
 
-  {(this.state.lightingInstClicked)? <InstProf s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum}/> : 
-            <span>
+        {(this.state.lightingInstClicked) ? <InstProf s00={spect} s0={catNum} s1={sResult} s2={manu} s3={desc} s4={docCreate} s5={Lab} s6={createDa} s7={reportNum} /> :
+          <span>
 
-{/* ------------------------------------------------------------------------------------------------------------------------------- */}
+            {/* ------------------------------------------------------------------------------------------------------------------------------- */}
 
-            <Header as='h2' id="header-id"><Icon.Group size='large'><Icon id="pic" name='lightbulb'/></Icon.Group> Spectra Search
+            <Header as='h2' id="header-id"><Icon.Group size='large'><Icon id="pic" name='lightbulb' /></Icon.Group> SpectraSearch
             </Header>
 
-             
-                <Header>Search for Lighting Instruments</Header>
-                  <Search 
-                  fluid
-                  input={{ fluid: true }} 
-                  loading={isLoading}  
-                  onResultSelect={this.handleResultSelect} 
-                  onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                  leading: true,})}  
-                  results={results}
-                  value={value}
-                  {...this.props} 
-                  id="grand-search" 
-                  size='small' 
-                  placeholder='Enter lighting search here' 
-                  />
-            <br/>
-            <br/>
-                           
-              <Header as='h4'>About SpectraSearch Open Source Site</Header>
-              <div id="aboutUs">
-              <p id="about1">SpectraSearch is a full stack web application geared towards the lighting profession community, 
-                with the goal of helping lighting professionals evaluate lighting products against current and future requirements 
-                of SPD lighting instruments. </p>
-                <p id="about2">Evaluations are used by the DOE to give recommendations to businesses on what types 
-                of lights they should use. </p>
-                <p id="about3">The goal of this site strives to save energy, pick instruments that best meet lighting requirements,
-                explore new lighting metrics available to the community all throught the use of
-                color math functions, and complete data visualizations.
-              </p>
-              </div>
-          
-           </span> } 
 
-       
-          </Segment.Group>
-          
-        
+            <Header>Search for Lighting Instruments</Header>
+            <Search
+              fluid
+              input={{ fluid: true }}
+              loading={isLoading}
+              onResultSelect={this.handleResultSelect}
+              onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                leading: true,
+              })}
+              results={results}
+              value={value}
+              {...this.props}
+              id="grand-search"
+              size='small'
+              placeholder='Enter lighting search here'
+            />
+            <br />
+            <br />
+
+            <Header as='h4'>About SpectraSearch Open Source Site</Header>
+            <div id="aboutUs">
+              <p id="about1">SpectraSearch is a spectral database with accompanying lighting metric functions to help lighting professionals evaluate lighting products
+              against industry and project requirements.</p>
+              <p id="about2">SpectraSearch was developed by student
+              developers at American University in partnership with the Department of Energy's Building Technology Office's Lighting program.</p>
+
+            </div>
+
+          </span>}
+
+
+      </Segment.Group>
+
+
     )
   }
 }
-  
 
- 
+

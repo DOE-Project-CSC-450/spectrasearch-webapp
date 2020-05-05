@@ -12,7 +12,7 @@ import Searching from './Search'
 import {Link} from 'react-router-dom';
 import Graph from './graph';
 
-  
+  //this page is not in use anymore and can be developed further if the need arises
 
 export default class Admin extends Component {
     constructor(props) {

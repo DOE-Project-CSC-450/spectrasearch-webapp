@@ -49,7 +49,6 @@ export default class TestingGraph extends React.Component {
 
         for (var keyObject in graphResponse) {
           var valueObject = graphResponse[keyObject];
-          // console.log(keyObject + ", " + valueObject);
           keyfeverArray.push(keyObject);
           valuefeverArray.push(valueObject)
           finalGraphValuesArray.push({ wavelength: Number(keyObject), norm_power: Number(valueObject), })
@@ -72,7 +71,6 @@ export default class TestingGraph extends React.Component {
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
-          {console.log("this is what it looks like in the thing", typeof (finalGraphValuesArray))}
           <defs>
             <linearGradient id="norm_power_id" x1="0" y1="0" x2="0" y2="1">
               <stop offset=".006%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -94,10 +92,10 @@ export default class TestingGraph extends React.Component {
 
           <XAxis
             dataKey="wavelength"
-            ticks={[400, 450, 475, 550, 580, 600, 700]} 
-            
+            ticks={[400, 450, 475, 550, 580, 600, 700]}
+
           />
-          <YAxis/>
+          <YAxis />
           <Area label="monotone" dataKey="norm_power" stroke="#8884d8" fill="url(#colorUv)" />
 
           <Tooltip />

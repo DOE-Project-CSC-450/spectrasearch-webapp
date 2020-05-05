@@ -31,18 +31,13 @@ animation-duration: 4s;
   to {color: rgb(243, 243, 32);}
 }
 
-
 #grand-search{
   border-radius: 0% !important;
-  
-
 }
 
 input#grand-search{ 
-  
   margin: .5% !important;
   border-color:black;
-  
 }
 
 .App-link {
@@ -51,15 +46,11 @@ input#grand-search{
 
 .info {
   text-align: center;
-  
-
 }
 
 #export{
-
   border: solid black;
 }
-
 
 /*------------------------------------------Upload page------------------------------------------*/
 
@@ -67,13 +58,11 @@ input#grand-search{
   width: 60% !important;
   margin: auto !important;
   text-align: left !important;
-  
 }
 
 #upload-header-id{
   text-align: center !important;
 }
-
 
 .axis {
   shape-rendering: crispEdges;
@@ -106,13 +95,8 @@ input#grand-search{
     stroke-width: 0;
 }
 
-
 svg{
   border: solid #dededf !important;
- 
-  /* display: inline-block !important;
-  position: relative;
-  right: 110% !important; */
 }
 
 .inst-info{
@@ -141,10 +125,6 @@ svg{
   margin-right: .5% !important;
 }
 
-
-
-
-
 path {
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -172,8 +152,6 @@ path {
   stroke-width: 1.5px;
 }
 
-
-
 #soscontainer{
  position: relative;
  float: right;
@@ -186,8 +164,6 @@ path {
   
 }
 
-
-
 #scrollable-lamps{
   overflow-y: scroll !important;
   padding-bottom: 20% !important;
@@ -198,12 +174,12 @@ path {
 }
 
 #aboutUs{
-  width: 60%;
+  width: 50%;
   margin: auto !important;
   padding-top: 2% !important;
   padding-left: 5% !important;
   padding-right: 5% !important;
-  padding-bottom: 5% !important;
+  padding-bottom: 8% !important;
 }
 
 #about1{
@@ -212,13 +188,8 @@ path {
 #about2{
   color: black ;
 }
-#about3{
-  color: black;
-}
-
 
 #uploadFormHidden{
-
 }
 
 .hidden {
@@ -227,4 +198,8 @@ path {
 
 #noFormError ~ *{
   display: none;
+}
+
+#quickGraphHeader{
+  text-align: left !important;
 }

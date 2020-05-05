@@ -24,7 +24,6 @@ export default class TopMenu extends Component {
 
   handleActiveItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
-    console.log(this.state.activeItem)
 
   }
 
@@ -56,7 +55,7 @@ export default class TopMenu extends Component {
           </Link>
           <Link to='/spectralData'>
             <Menu.Item
-              name='Spectral Data'
+              name='Calculate'
               active={activeItem === 'Spectral Data'}
               onClick={this.handleActiveItemClick}
             />
