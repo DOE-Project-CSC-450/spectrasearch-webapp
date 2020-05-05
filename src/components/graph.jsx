@@ -62,7 +62,7 @@ export default class TestingGraph extends React.Component {
   render() {
     return (
       <div>
-        <p>Spectral Distribution Grpah for Spectra Search id: {this.props.ssidForGraph}</p>
+        <p>Spectral Distribution Graph for Spectra Search id: {this.props.ssidForGraph}</p>
         <AreaChart
           width={480}
           height={415}
