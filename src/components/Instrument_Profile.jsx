@@ -131,9 +131,9 @@ export default class InstProf extends Component {
             .then(_ = (response) => {
 
                 this.setState({ mrID: Object.values(response.data[this.props.s00])[0] })
-                this.setState({ mrlumens: Object.values(response.data[this.props.s00])[20] })
+                this.setState({ mrlumens: Object.values(response.data[this.props.s00])[18] })
                 this.setState({ mrwatts: Object.values(response.data[this.props.s00])[19] })
-                this.setState({ mrvolts: Object.values(response.data[this.props.s00])[18] })
+                this.setState({ mrvolts: Object.values(response.data[this.props.s00])[20] })
                 this.setState({ mrcc_X: Object.values(response.data[this.props.s00])[1] })
                 this.setState({ mrcc_Y: Object.values(response.data[this.props.s00])[2] })
                 this.setState({ mrcc_Z: Object.values(response.data[this.props.s00])[3] })
