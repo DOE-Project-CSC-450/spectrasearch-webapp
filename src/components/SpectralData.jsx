@@ -15,7 +15,6 @@ import {
   LineChart, Line, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, Brush, Legend,
 } from 'recharts';
 
-
 var actualGraphQuick;
 var graphDataObject;
 var finalGraphValuesArrayQuick = [];
@@ -55,19 +54,23 @@ export default class SpectralData extends Component {
   }
 
 
+
+
+
+
+
   render() {
     const { activeItem } = this.state
     return (
       <Form id='quickLookupPage'>
         <Header>Spectral Data: Quick SPD Graph Calculator</Header>
-        <Popup content='Data values for Spectral Distribution Graph. Enter {“wavelength1”:value1,”wavelength2”:value2,”wavelength3”:value3…}
-Example: {“350”: 0.04,”351”,0.008,”352”:0.00}' trigger={<Button icon='info' size="mini" floated='left' circular={true} compact={true} color="blue" />} />
+        <Popup content='Data values for Spectral Distribution Graph. Enter wavelength: norm power, e.i. {\"273\": 0.000000000001, \"274\": 0.000000000001, \"275\": 0.000000000001}' trigger={<Button icon='info' size="mini" floated='left' circular={true} compact={true} color="blue" />} />
         <TextArea id="grabTextArea"
           rows={2}
           maxLength="10000000"
           style={{ minHeight: 220 }}
           label="Enter Spectral Data"
-          placeholder="Enter as comma delimited list inside brackets"
+          placeholder="Enter as comma delimited list inside curly brackets"
           onChange={this.handleTheirTextInput}
         />
         <br /><br />
@@ -103,9 +106,9 @@ Example: {“350”: 0.04,”351”,0.008,”352”:0.00}' trigger={<Button icon
             <XAxis
               dataKey="wavelength"
               ticks={[350, 380, 450, 495, 570, 590, 620, 750]}
-              label={{ value: 'Wavelength (nm)', dy: 15, offset: 10, position: 'insideMiddle' }}
+             
             />
-            <YAxis label={{ value: 'Normalized Power', angle: -90, offset: 10, position: 'insideMiddle' }} />
+            <YAxis />
             <Area label="monotone" dataKey="norm_power" stroke="#8884d8" fill="url(#colorUv)" />
             <Tooltip />
           </AreaChart>

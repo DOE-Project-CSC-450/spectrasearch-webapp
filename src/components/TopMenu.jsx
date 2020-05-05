@@ -63,13 +63,13 @@ export default class TopMenu extends Component {
           </Link>
           <Menu.Menu position='right'>
 
-            <Link to='/Administrating'>
+            {/* <Link to='/Administrating'>
               <Menu.Item
                 name='Admin'
                 active={activeItem === 'Administrating'}
                 onClick={this.handleActiveItemClick}
               />
-            </Link>
+            </Link> */}
             <Modal trigger={<Menu.Item
               name='login'
 
