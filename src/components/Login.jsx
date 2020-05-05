@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import _ from 'lodash'
 import Uploadpage from './uploadpage';
 
+var sha1 = require('js-sha1');
 var D;
 
 /* the login/signup page. **/
@@ -85,8 +86,7 @@ export default class Login extends Component {
   
 
     loginButton = (value) =>{
-       console.log("username", this.state.username)
-       console.log("password", this.state.password)
+      
 
        console.log("logging you in maybe")
 
@@ -101,7 +101,7 @@ export default class Login extends Component {
           for (D = 0; D < this.state.serverData.length; D++){
               
             if (this.state.serverData[D].Username === this.state.username){
-                if (this.state.serverData[D].Password === this.state.password){
+                if (this.state.serverData[D].Password === sha1(this.state.password)){
                     //they are logged on
                     console.log("Congratulations you are logged on")
                     this.setState({finalUserName: this.state.serverData[D].Username})
@@ -155,7 +155,7 @@ export default class Login extends Component {
                                 </Form.Field>
                                 <Form.Field>
                                     <Header as ='h5' textAlign = 'left'>Password</Header>
-                                    <input label="password" onChange={this.handleLoginChangePassword} fluid placeholder='Password' />
+                                    <input type="password" label="password" onChange={this.handleLoginChangePassword} fluid placeholder='Password' />
                                 </Form.Field>
                                 
                                 <br/>
@@ -186,7 +186,7 @@ export default class Login extends Component {
                                 </Form.Field>
                                 <Form.Field>
                                     <Header as = 'h5' textAlign = 'left'>Password</Header>
-                                    <input onChange={_=(event)=>{this.setState({signUpPassword: event.target.value})}}fluid label = 're-enter E-mail address' placeholder = 'Enter password' />
+                                    <input type="password" onChange={_=(event)=>{this.setState({signUpPassword: event.target.value})}}fluid label = 're-enter E-mail address' placeholder = 'Enter password' />
                                 </Form.Field>
                                                                
                                 <br/>

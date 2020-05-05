@@ -11,6 +11,7 @@
     "express": "^4.17.1",
     "file-loader": "^4.3.0",
     "html2canvas": "^1.0.0-rc.5",
+    "js-sha1": "^0.6.0",
     "jspdf": "^1.5.3",
     "lodash": "^4.17.15",
     "mysql": "^2.18.1",
