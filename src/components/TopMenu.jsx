@@ -85,7 +85,7 @@ export default class TopMenu extends Component {
 
               </Modal.Actions>
             </Modal>
-                  }}
+                  
               </Menu.Menu>
 
         </Menu>

@@ -4,13 +4,15 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+//mysql://b391ced6135ff3:baa0d21a@us-cdbr-east-02.cleardb.com/heroku_5ba4f23c163fea6?reconnect=true
+
 var mysql = require("mysql");
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "us-cdbr-east-02.cleardb.com",
   port: 3306,
-  user: "root",
-  password: "mysql",
-  database: "spectrasearchdatabase"
+  user: "b391ced6135ff3",
+  password: "baa0d21a",
+  database: "heroku_5ba4f23c163fea6"
 });
 var sql2;
 var ignore;
