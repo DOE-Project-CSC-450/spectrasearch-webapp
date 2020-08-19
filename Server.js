@@ -6,13 +6,14 @@ app.use(bodyParser.json());
  
 //mysql://b391ced6135ff3:baa0d21a@us-cdbr-east-02.cleardb.com/heroku_5ba4f23c163fea6?reconnect=true
 //mysql://b53a0acdedd905:39310839@us-cdbr-east-02.cleardb.com/heroku_6f65e659c3e17a8?reconnect=true
+
+//mysql://b605fe48a133bf:8393b1b5@us-cdbr-east-02.cleardb.com/heroku_6f69cd56e9e4ec9?reconnect=true
 var mysql = require("mysql");
 var con = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "mysql",
-  database: "spectrasearchdatabase"
+  host: "us-cdbr-east-02.cleardb.com",
+  user: "b605fe48a133bf",
+  password: "8393b1b5",
+  database: "heroku_6f69cd56e9e4ec9"
 });
 var sql2;
 var ignore;
