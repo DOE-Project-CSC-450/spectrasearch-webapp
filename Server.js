@@ -8,24 +8,18 @@ app.use(bodyParser.json());
 //mysql://b53a0acdedd905:39310839@us-cdbr-east-02.cleardb.com/heroku_6f65e659c3e17a8?reconnect=true
 var mysql = require("mysql");
 var con = mysql.createConnection({
-  host: "us-cdbr-east-02.cleardb.com",
-  port: process.env.PORT || 4000,
-  user: "b53a0acdedd905",
-  password: "39310839",
-  database: "heroku_6f65e659c3e17a8"
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "mysql",
+  database: "spectrasearchdatabase"
 });
 var sql2;
 var ignore;
 con.connect(function (err) {
   if (err){
     console.log("error when connecting to database");
-    con = mysql.createConnection({
-      host: "us-cdbr-east-02.cleardb.com",
-      port: process.env.PORT || 4000,
-      user: "b53a0acdedd905",
-      password: "39310839",
-      database: "heroku_6f65e659c3e17a8"
-    });
+    throw err;
   } 
   console.log("connected!");
   /*  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
