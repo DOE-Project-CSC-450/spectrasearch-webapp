@@ -20,6 +20,12 @@ var ignore;
 con.connect(function (err) {
   if (err){
     console.log("error when connecting to database");
+    con = mysql.createConnection({
+      host: "us-cdbr-east-02.cleardb.com",
+      user: "b605fe48a133bf",
+      password: "8393b1b5",
+      database: "heroku_6f69cd56e9e4ec9"
+    });
     throw err;
   } 
   console.log("connected!");
