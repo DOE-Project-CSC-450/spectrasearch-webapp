@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
  
 //mysql://b391ced6135ff3:baa0d21a@us-cdbr-east-02.cleardb.com/heroku_5ba4f23c163fea6?reconnect=true
-
+//mysql://b53a0acdedd905:39310839@us-cdbr-east-02.cleardb.com/heroku_6f65e659c3e17a8?reconnect=true
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
-  port: 3306,
-  user: "b391ced6135ff3",
-  password: "baa0d21a",
-  database: "heroku_5ba4f23c163fea6"
+  user: "b53a0acdedd905",
+  password: "39310839",
+  database: "heroku_6f65e659c3e17a8"
 });
 var sql2;
 var ignore;
@@ -170,15 +169,10 @@ app.post('/metrics', (req, result) => {
 
 
 
-
-
-
-app.listen(4000, () => {
-  console.log("lighting server listening on port 4000");
-  console.log("somethings happening");
-})
-
-
+var ports = process.env.PORT || 4000;
+app.listen(ports, function() {
+  console.log("Listening on " + ports);
+});
 
 //user logs in verify email
 //any person can make an account
