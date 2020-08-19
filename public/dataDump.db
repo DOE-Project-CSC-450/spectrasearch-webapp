@@ -2,7 +2,7 @@
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
+-- Host: us-cdbr-east-02.cleardb.com
 -- Generation Time: Aug 18, 2020 at 09:21 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
@@ -20,14 +20,6 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `spectrasearchdatabase`
---
-
--- --------------------------------------------------------
-- --------------------------------------------------------
-
---
--- Table structure for table `spectraldistributionfields`
---
 
 CREATE TABLE `spectraldistributionfields` (
   `SpectraSearchID` int(6) NOT NULL DEFAULT '0',
@@ -36,7 +28,7 @@ CREATE TABLE `spectraldistributionfields` (
   `TransmissionGeometry` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `BandwidthFWHM` decimal(6,6) DEFAULT NULL,
   `BandwidthCorrected` tinyint(1) DEFAULT NULL,
-  `SpectralData` json NOT NULL
+  `SpectralData` LONGTEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -85,8 +77,7 @@ ALTER TABLE `header element fields`
 --
 -- Indexes for table `metrics`
 --
-ALTER TABLE `metrics`
-  ADD PRIMARY KEY (`SpectraSearchID`);
+
 
 --
 -- Indexes for table `spectraldistributionfields`

@@ -136,7 +136,7 @@ export default class Searching extends Component {
   }
   holding = '/instrument' + spect;
   getProducts = _ => {
-    fetch('http://localhost:4000/lighting')
+    fetch('/lighting')
       .then(response => response.json())
       .then(_ = (response) => {
         this.setState({ lighting: response.data, serverName: Object.values(response.data) })
