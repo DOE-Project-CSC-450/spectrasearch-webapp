@@ -26,7 +26,7 @@ con.connect(function (err) {
       password: "8393b1b5",
       database: "heroku_6f69cd56e9e4ec9"
     });
-    throw err;
+    
   } 
   console.log("connected!");
   /*  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
