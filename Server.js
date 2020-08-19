@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
-  port: process.env.PORT || 3306,
+  port: process.env.PORT || 4000,
   user: "b53a0acdedd905",
   password: "39310839",
   database: "heroku_6f65e659c3e17a8"
@@ -17,7 +17,16 @@ var con = mysql.createConnection({
 var sql2;
 var ignore;
 con.connect(function (err) {
-  if (err) throw err;
+  if (err){
+    console.log("error when connecting to database");
+    con = mysql.createConnection({
+      host: "us-cdbr-east-02.cleardb.com",
+      port: process.env.PORT || 4000,
+      user: "b53a0acdedd905",
+      password: "39310839",
+      database: "heroku_6f65e659c3e17a8"
+    });
+  } 
   console.log("connected!");
   /*  sql2 = 'SELECT * FROM `Spectral Distribution Fields`';
   ignore = "DELETE FROM `Spectral Distribution Fields` WHERE 'SpectralQuantity' = 'able'";
