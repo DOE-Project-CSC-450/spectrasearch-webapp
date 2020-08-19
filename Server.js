@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
-  port: process.env.PORT,
+  port: process.env.PORT || 4000,
   user: "b53a0acdedd905",
   password: "39310839",
   database: "heroku_6f65e659c3e17a8"
