@@ -29,10 +29,10 @@ con.connect(function (err) {
 app.use(cors());
 
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send("hello from the lighting server");
 
-})
+}) */
 
 
 
