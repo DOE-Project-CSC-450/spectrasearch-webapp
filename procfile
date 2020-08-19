@@ -1,1 +1,2 @@
+web: cd src 
 web: node Server.js
