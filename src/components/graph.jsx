@@ -39,7 +39,7 @@ export default class TestingGraph extends React.Component {
 
 
     //only grab what we need like demand paging. graph the row with ssid 8 for example
-    fetch('http://localhost:4000/SpectralData')
+    fetch('/SpectralData')
       .then(response => response.json())
       .then(_ = (response) => {
         //this.props.ssidForGraph
