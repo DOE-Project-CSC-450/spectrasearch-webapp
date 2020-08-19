@@ -15,7 +15,7 @@ var con = mysql.createConnection({
   password: "8393b1b5",
   database: "heroku_6f69cd56e9e4ec9"
 });
-var sql2;
+
 var ignore;
 con.connect(function (err) {
   if (err){
