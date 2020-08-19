@@ -5,19 +5,19 @@
   "dependencies": {
     "canvasjs": "^1.8.3",
     "chart.js": "^2.9.3",
-    "concurrently": "^5.2.0",
+    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "d3": "^5.16.0",
     "d3-queue": "^3.0.7",
     "express": "^4.17.1",
     "file-loader": "^4.3.0",
-    "html2canvas": "^1.0.0-rc.5",
+    "html2canvas": "^1.0.0-rc.7",
     "js-sha1": "^0.6.0",
     "jspdf": "^1.5.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
-    "react-chartjs-2": "^2.9.0",
+    "react-chartjs-2": "^2.10.0",
     "react-d3-library": "^1.1.8",
     "react-dom": "^16.13.1",
     "react-google-charts": "^3.0.15",
@@ -32,7 +32,7 @@
     "url-loader": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node Server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
