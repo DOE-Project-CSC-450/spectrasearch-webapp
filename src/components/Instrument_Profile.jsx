@@ -88,7 +88,7 @@ export default class InstProf extends Component {
     }
 
     getProductsSpectral = _ => {
-        fetch('/SpectralData')
+        fetch('http://localhost:4000/SpectralData')
             .then(response => response.json())
             .then(_ = (response) => {
                 this.setState({ S: response.data })
@@ -126,7 +126,7 @@ export default class InstProf extends Component {
 
 
 
-        fetch('/metrics')
+        fetch('http://localhost:4000/metrics')
             .then(response => response.json())
             .then(_ = (response) => {
 

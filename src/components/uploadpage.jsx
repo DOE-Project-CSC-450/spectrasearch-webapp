@@ -261,7 +261,7 @@ export default class Uploadpage extends Component {
     }
     this.setState({ formSubmitted: true })
     // On submit of the form, send a POST request with the data to the server.
-    fetch('/lighting', {
+    fetch('http://localhost:4000/lighting', {
       method: 'POST',
       body: JSON.stringify({
         SpectraSearchID: this.state.SpectraSearchID,
@@ -289,7 +289,7 @@ export default class Uploadpage extends Component {
         console.log(body);
       });
     //--------------------------------
-    fetch('/SpectralData', {
+    fetch('http://localhost:4000/SpectralData', {
       method: 'POST',
       body: JSON.stringify({
         SpectraSearchID: this.state.SpectraSearchID,
@@ -998,7 +998,7 @@ export default class Uploadpage extends Component {
 
 
 
-    fetch('/metrics', {
+    fetch('http://localhost:4000/metrics', {
       method: 'POST',
       body: JSON.stringify({
         SpectraSearchID: this.state.SpectraSearchID,
