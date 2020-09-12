@@ -55,7 +55,7 @@ export default class Login extends Component {
             this.setState({ SignUpformSubmitted: true })
             //nee to put email and password in the db
             //fetch
-            fetch('/users', {
+            fetch('http://localhost:4000/users', {
                 method: 'POST',
                 body: JSON.stringify({
                     usernames: this.state.signUpEmail2,
@@ -85,7 +85,7 @@ export default class Login extends Component {
 
     }
     getUsers = _ => {
-        fetch('/users')
+        fetch('http://localhost:4000/users')
             .then(response => response.json())
             .then(_ = (response) => {
                 this.setState({ serverData: Object.values(response.data) })
